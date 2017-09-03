@@ -18,6 +18,7 @@ alias la='ls -lah'
 alias ll='ls -l'
 
 #touch file, then enter
+#change 'nano' to your preferred editor
 grope () {
 	touch "$1"
 	nano "$1"
