@@ -30,7 +30,7 @@ mkcd () {
 }
 
 #change directory, then list everything within
-cd () {
+cs () {
 	cd $1
 	ls -ah
 }
