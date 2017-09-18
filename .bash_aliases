@@ -13,7 +13,7 @@ alias h='history'
 #alias ag='alias | grep' ## Can't get this to work for some reason, never returns anything
 
 #rerun last command as sudo
-alias fuck='sudo !!'
+alias fuck='sudo $(history -p !!)'
 
 #cd to /var/www/html
 alias html='cd /var/www/html'
