@@ -1,10 +1,11 @@
 ## These are my aliases, take a gander
-##
-#update alias file to newest from @Dovry's GitHub
+
+
+## update alias file to newest from @Dovry's GitHub
 newalias () {
 rm ~/.bash_aliases
 wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases
-rlal
+source ~/.bashrc
 }
 
 ## update, upgrade, install, update+upgrade
