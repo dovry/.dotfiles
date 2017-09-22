@@ -4,7 +4,7 @@
 newalias () {
 rm ~/.bash_aliases
 wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases
-source ~/.bash_rc
+rlal
 }
 
 ## update, upgrade, install, update+upgrade
