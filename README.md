@@ -1,7 +1,48 @@
 # Dotfiles
-probably my 30th 'dotfiles' repo on GitHub, I swear I'll put something in it this time.
+
+
+
+# Programs I'm using
+
+[Firefox Beta](https://aur.archlinux.org/packages/firefox-beta/)
+
+[Atom](https://atom.io/)
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
 
 
 # Useful websites
 
 [Color Palette](http://www.pictaculous.com/)
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
