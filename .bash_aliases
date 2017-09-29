@@ -3,7 +3,7 @@
 
 ## update alias file to newest from @Dovry's GitHub
 newalias () {
-rm ~/.bash_aliases
+mv ~/.bash_aliases ~/.bash_aliases.old
 wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases
 source ~/.bashrc
 }
