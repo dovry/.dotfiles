@@ -8,6 +8,8 @@
 
 #variables
 editor=nano #text editor
+video=vlc #video media
+#player= #audio media
 
 
 ## update alias file to newest from Dovry's GitHub
@@ -62,4 +64,9 @@ mkcd () {
 cs () {
 	cd $1
 	ls -ah
+}
+
+#play video without a webbrowser
+stream () {
+youtube-dl -o - "$1" | $video -
 }
