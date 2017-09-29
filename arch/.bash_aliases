@@ -7,7 +7,7 @@
 ###    fi
 
 #variables
-$nano #text editor
+editor=nano #text editor
 
 
 ## update alias file to newest from Dovry's GitHub
@@ -26,6 +26,7 @@ alias updog='sudo pacman -Syu'
 alias c='clear'
 alias s='sudo'
 alias h='history'
+alias grep='grep --color=auto'
 
 #rerun last command as sudo
 alias please='sudo $(history -p !!)'
@@ -39,16 +40,16 @@ alias ll='ls -l'
 
 #mod aliases
 alias alises='aliases'
-alias aliases='nano ~/.bash_aliases'
+alias aliases='$editor ~/.bash_aliases'
 alias rlal='source ~/.bashrc'
-alias cpal='cp ~/.bash_aliases bash_alias_old'
+alias cpal='cp ~/.bash_aliases ~/.bash_alias.old'
 #copy alises, then reload bashrc
 alias cprl='cpal;rlal'
 
 #touch file, then enter
 grope () {
 	touch "$1"
-	nano "$1"
+	$editor "$1"
 }
 
 #create directory, then enter
