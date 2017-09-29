@@ -1,6 +1,6 @@
 # Dotfiles
 
-
+Arch-based couscous files
 
 # Programs I'm using
 
@@ -8,15 +8,15 @@
 
 [Atom](https://atom.io/)
 
-[]()
+[Nomacs](https://www.archlinux.org/packages/community/i686/nomacs/)
 
-[]()
+Deluge
 
-[]()
+[Discord](https://aur.archlinux.org/packages/discord/)
 
-[]()
+Filezilla
 
-[]()
+Thunderbird
 
 []()
 
