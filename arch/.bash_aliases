@@ -13,7 +13,7 @@ $nano #text editor
 ## update alias file to newest from Dovry's GitHub
 newalias () {
 rm ~/.bash_aliases
-wget https://raw.githubusercontent.com/Dovry/master/dotfiles/arch/.bash_aliases
+wget https://raw.githubusercontent.com/Dovry/dotfiles/master/arch/.bash_aliases
 source ~/.bashrc
 }
 
