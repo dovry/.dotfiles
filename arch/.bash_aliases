@@ -1,10 +1,10 @@
 ## These are my aliases, take a gander
 
-#remember to add .bash_aliases to your .bashrc
-#add .bash_aliases file
-#if [ -f ~/.bash_aliases ]; then
-#. ~/.bash_aliases
-#fi
+### remember to add .bash_aliases to your .bashrc
+### add .bash_aliases file
+###    if [ -f ~/.bash_aliases ]; then
+###    . ~/.bash_aliases
+###    fi
 
 #variables
 $nano #text editor
@@ -13,7 +13,7 @@ $nano #text editor
 ## update alias file to newest from Dovry's GitHub
 newalias () {
 rm ~/.bash_aliases
-wget https://raw.githubusercontent.com/Dovry/dotfiles/arch/.bash_aliases
+wget https://raw.githubusercontent.com/Dovry/master/dotfiles/arch/.bash_aliases
 source ~/.bashrc
 }
 
