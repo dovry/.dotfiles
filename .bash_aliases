@@ -1,5 +1,15 @@
 ## These are my aliases, take a gander
 
+### remember to add .bash_aliases to your .bashrc
+### add .bash_aliases file
+###    if [ -f ~/.bash_aliases ]; then
+###    . ~/.bash_aliases
+###    fi
+
+#variables
+editor=nano #text editor
+video=vlc #video media
+#player= #audio media
 
 ## update alias file to newest from @Dovry's GitHub
 newalias () {
@@ -18,12 +28,12 @@ alias updog='sudo apt-get update && sudo apt-get dist-upgrade -y && sudo apt aut
 alias c='clear'
 alias s='sudo'
 alias h='history'
-#alias ag='alias | grep' ## Can't get this to work for some reason, never returns anything
+alias grep='grep --color=auto'
 
 #rerun last command as sudo
 alias please='sudo $(history -p !!)'
 
-#cd to /var/www/html
+#cd to /var/www/html, useful if you're working with webservers
 alias html='cd /var/www/html'
 
 #lists
@@ -31,17 +41,17 @@ alias la='ls -lah'
 alias ll='ls -l'
 
 #mod aliases
-alias alises='aliases'
-alias aliases='nano ~/.bash_aliases'
-alias rlal='source ~/.bashrc'
-alias cpal='cp ~/.bash_aliases bash_alias_old'
-#copy alises, then reload bashrc
-alias cprl='cpal;rlal'
+alias alises='aliases'  				#spelling error	for command below
+alias aliases='$editor ~/.bash_aliases'			#edit the .bash_aliases file
+alias rlal='source ~/.bashrc'				#source the .bash.rc file
+alias cpal='cp ~/.bash_aliases ~/.bash_alias.old'	#backup the .bash_aliases file
+alias cprl='cpal;rlal'					#copy alises, then reload bashrc
+
 
 #touch file, then enter
 grope () {
 	touch "$1"
-	nano "$1"
+	$editor "$1"
 }
 
 #create directory, then enter
@@ -54,4 +64,10 @@ mkcd () {
 cs () {
 	cd $1
 	ls -ah
+}
+
+
+#play video without a webbrowser
+stream () {
+youtube-dl -o - "$1" | $video -
 }
