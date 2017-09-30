@@ -33,7 +33,7 @@ alias grep='grep --color=auto'
 #rerun last command as sudo
 alias please='sudo $(history -p !!)'
 
-#cd to /var/www/html, useful if you're dealing with webservers
+#cd to /var/www/html, useful if you're working with webservers
 alias html='cd /var/www/html'
 
 #lists
@@ -41,12 +41,11 @@ alias la='ls -lah'
 alias ll='ls -l'
 
 #mod aliases
-alias alises='aliases'
-alias aliases='$editor ~/.bash_aliases'
-alias rlal='source ~/.bashrc'
-alias cpal='cp ~/.bash_aliases ~/.bash_alias.old'
-#copy alises, then reload bashrc
-alias cprl='cpal;rlal'
+alias alises='aliases'  				#spelling error	for command below
+alias aliases='$editor ~/.bash_aliases'			#edit the .bash_aliases file
+alias rlal='source ~/.bashrc'				#source the .bash.rc file
+alias cpal='cp ~/.bash_aliases ~/.bash_alias.old'	#backup the .bash_aliases file
+alias cprl='cpal;rlal'					#copy alises, then reload bashrc
 
 #touch file, then enter
 grope () {
