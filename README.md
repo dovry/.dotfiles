@@ -16,7 +16,7 @@ Deluge
 
 Filezilla
 
-[]()
+[rofi](https://aur.archlinux.org/packages/rofi-git/)
 
 []()
 
