@@ -1,6 +1,7 @@
 ## Lockscreen
 
 # How it works
+install scrot, imagemagick, i3lock
 
 Set your hotkey (Super + L) to run
 `location/of/script.sh`
