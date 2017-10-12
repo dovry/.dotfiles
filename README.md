@@ -8,17 +8,13 @@ Arch-based couscous files
 
 [Firefox Beta](https://aur.archlinux.org/packages/firefox-beta/)
 
-[Atom](https://atom.io/)
-
-[Nomacs](https://www.archlinux.org/packages/community/i686/nomacs/)
+[Sublime Text 3](https://www.sublimetext.com/docs/3/linux_repositories.html#pacman)
 
 Deluge
 
 [Discord](https://aur.archlinux.org/packages/discord/)
 
 Filezilla
-
-Thunderbird
 
 []()
 
