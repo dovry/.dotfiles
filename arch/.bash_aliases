@@ -21,7 +21,7 @@ source ~/.bashrc
 
 ## update, upgrade, install
 alias install='sudo pacman -S'
-alias instally='yaourt'
+alias aur='yaourt'
 alias updog='sudo pacman -Syu'
 
 ## Utility
