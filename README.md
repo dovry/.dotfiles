@@ -10,17 +10,11 @@ Arch-based couscous files
 
 [Sublime Text 3](https://www.sublimetext.com/docs/3/linux_repositories.html#pacman)
 
-Deluge
-
-[Discord](https://aur.archlinux.org/packages/discord/)
-
-Filezilla
-
 [rofi](https://aur.archlinux.org/packages/rofi-git/)
 
-[]()
+[nitrogen (wallpaper)](https://wiki.archlinux.org/index.php/nitrogen)
 
-[]()
+[Tilix](https://github.com/gnunn1/tilix)
 
 
 # Useful websites
