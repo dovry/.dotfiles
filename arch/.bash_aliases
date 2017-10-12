@@ -53,6 +53,9 @@ grope () {
 	$editor "$1"
 }
 
+#create file, then edit with sudo (its faster to type, ok?)
+alias grope='sudo $editor "$1"'
+
 #create directory, then enter
 mkcd () {
 	mkdir "$1"
