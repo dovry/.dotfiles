@@ -71,3 +71,5 @@ cs () {
 stream () {
 youtube-dl -o - "$1" | $video -
 }
+
+alias publicip='dig +short myip.opendns.com @resolver1.opendns.com'
