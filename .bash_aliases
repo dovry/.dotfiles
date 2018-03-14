@@ -22,7 +22,7 @@ source ~/.bashrc
 alias upd='sudo apt update'
 alias upg='sudo apt dist-upgrade -y'
 alias install='sudo apt install'
-alias updog='sudo apt-get update && sudo apt-get dist-upgrade -y && sudo apt autoremove' 
+alias updog='sudo apt-get update && sudo apt-get dist-upgrade -y && sudo apt autoremove -y && mv ~/.bash_aliases ~/.bash_aliases.old && wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases && source ~/.bashrc' 
 
 ## Utility 
 alias c='clear'
