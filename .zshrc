@@ -69,19 +69,18 @@ source ~/.zshrc
 alias alises='aliases'  				#spelling error	for command below
 alias aliases='$editor ~/.zshrc'			#edit the .zshrc file
 alias rlal='source ~/.zshrc'				#source the .zshrc file
-alias cpal='cp ~/.zshrc ~/.zshrc'			#backup the .zshrc file
+alias cpal='cp ~/.zshrc ~/.zshrc.new'			#backup the .zshrc file
 alias cprl='cpal;rlal'	
 
 #update, upgrade, install, update+upgrade+renew alias file
-alias upd='sudo apt update'
-alias upg='sudo apt dist-upgrade -y'
-alias install='sudo apt install'
-alias updog='sudo apt-get update && sudo apt-get dist-upgrade -y && mv ~/.zshrc ~/.zshrcold && wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.zshrc && source ~/.zshrc' 
+#alias upd='sudo apt update'
+#alias upg='sudo apt dist-upgrade -y'
+#alias install='sudo apt install'
+#alias updog='sudo apt-get update && sudo apt-get dist-upgrade -y && mv ~/.zshrc ~/.zshrcold && wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.zshrc && source ~/.zshrc' 
 
 ## Utility 
 alias c='clear'
 alias s='sudo'
-alias h='history'
 alias grep='grep --color=auto'
 
 #rerun last command as sudo
@@ -94,3 +93,11 @@ mkcd () {
 }
 
 alias publicip='dig +short myip.opendns.com @resolver1.opendns.com'
+
+#plugin hotkeys
+function options() {
+    PLUGIN_PATH="$HOME/.oh-my-zsh/plugins/"
+    for plugin in $plugins; do
+        echo "\n\nPlugin: $plugin"; grep -r "^function \w*" $PLUGIN_PATH$plugin | awk '{print $2}' | sed 's/()//'| tr '\n' ', '; grep -r "^alias" $PLUGIN_PATH$plugin | awk '{print $2}' | sed 's/=.*//' |  tr '\n' ', '
+    done
+}
