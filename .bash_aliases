@@ -37,7 +37,9 @@ alias rwx='stat -c %a'
 #rerun last command as sudo
 alias please='sudo $(history -p !!)'
 
-#cd to /var/www/html, useful if you're working with webservers
+#cd to /var/www/
+alias www='cd /var/www/'
+#cd to /var/www/html
 alias html='cd /var/www/html'
 
 #lists
