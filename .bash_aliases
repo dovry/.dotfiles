@@ -32,6 +32,7 @@ alias c='clear'
 alias s='sudo'
 alias h='history'
 alias grep='grep --color=auto'
+alias rwx='stat -c %a'
 
 #rerun last command as sudo
 alias please='sudo $(history -p !!)'
