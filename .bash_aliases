@@ -6,6 +6,9 @@
 ###    . ~/.bash_aliases
 ###    fi
 
+## last line in .bashrc for neat colors
+# export PS1="\[\033[38;5;160m\]>_\[$(tput sgr0)\]\[\033[38;5;15m\] \w\n\[$(tput sgr0)\]\[\033[38;5;160m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;160m\]\H\[$(tput sgr0)\]\[\033[38;5;15m\] \\\\ \[$(tput sgr0)\]\[\03$
+
 #variables
 editor=nano #text editor
 video=vlc #video media
