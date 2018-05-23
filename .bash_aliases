@@ -7,7 +7,7 @@
 ###    fi
 
 ## last line in .bashrc for neat colors
-# export PS1="\[\033[38;5;160m\]>_\[$(tput sgr0)\]\[\033[38;5;15m\] \w\n\[$(tput sgr0)\]\[\033[38;5;160m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;160m\]\H\[$(tput sgr0)\]\[\033[38;5;15m\] \\\\ \[$(tput sgr0)\]\[\03$"
+# export PS1="\[\033[38;5;160m\]>_\[$(tput sgr0)\]\[\033[38;5;15m\] \w\n\[$(tputsgr0)\]\[\033[38;5;160m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;160m\]\H\[$(tput sgr0)\]\[\033[38;5;15m\] \\\\ \[$(tputsgr0)\]\[\033[38;5;160m\]\\$\[$(tput sgr0)\]\[\033[38;5;15m\]:\[$(tput sgr0)\]"
 
 #variables
 editor=nano #text editor
