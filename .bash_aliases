@@ -19,6 +19,7 @@ alias cdgh='cd /mnt/c/Users/Dovry/Documents/GitHub'
 
 ## update alias file to newest from @Dovry's GitHub
 newalias () {
+cd
 mv ~/.bash_aliases ~/.bash_aliases.old
 wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases
 source ~/.bashrc
