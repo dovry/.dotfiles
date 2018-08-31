@@ -25,11 +25,12 @@ wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases
 source ~/.bashrc
 }
 
-## update, upgrade, install, update+upgrade
+## update, upgrade, (un)install, update+upgrade
 alias upd='sudo apt update'
 alias upg='sudo apt dist-upgrade -y'
-alias install='sudo apt install'
 alias updog='sudo apt-get update && sudo apt-get dist-upgrade -y && cd && mv ~/.bash_aliases ~/.bash_aliases.old && wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases && source ~/.bashrc' 
+alias install='sudo apt install'
+alias uninstall='sudo apt remove'
 
 ## Utility 
 alias c='clear'
