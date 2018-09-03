@@ -14,9 +14,6 @@ editor=nano #text editor
 video=vlc #video media
 #player= #audio media
 
-# WSL GitHub directory
-alias cdgh='cd /mnt/c/Users/Dovry/Documents/GitHub'
-
 ## update alias file to newest from @Dovry's GitHub
 newalias () {
 cd
