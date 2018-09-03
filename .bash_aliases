@@ -32,6 +32,20 @@ alias updog='sudo apt-get update && sudo apt-get dist-upgrade -y && cd && mv ~/.
 alias install='sudo apt install'
 alias uninstall='sudo apt remove'
 
+
+## Tmux
+
+# Attaches tmux to the last session; creates a new session if none exists.
+alias t='tmux attach || tmux new-session'
+
+# Attaches tmux to a session (example: ta portal)
+alias ta='tmux attach -t'
+
+# Creates a new session
+alias tn='tmux new-session'
+
+# Lists all ongoing sessions
+alias tl='tmux list-sessions'
 ## Utility 
 alias c='clear'
 alias s='sudo'
