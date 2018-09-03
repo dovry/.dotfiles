@@ -46,6 +46,8 @@ alias tn='tmux new-session'
 
 # Lists all ongoing sessions
 alias tl='tmux list-sessions'
+
+
 ## Utility 
 alias c='clear'
 alias s='sudo'
@@ -73,10 +75,10 @@ alias cpal='cp ~/.bash_aliases ~/.bash_alias.old'	#backup the .bash_aliases file
 alias cprl='cpal;rlal'					#copy alises, then reload bashrc
 
 
-#touch file, then enter
+# (forcibly) touch file, then (forcibly) enter
 grope () {
-	touch "$1"
-	$editor "$1"
+	sudo touch "$1"
+	sudo $editor "$1"
 }
 
 #create directory, then enter
