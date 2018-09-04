@@ -52,6 +52,10 @@ alias h='history'
 alias grep='grep --color=auto'
 alias rwx='stat -c %a'
 
+# write amount of seconds before restart, if you don't it defaults to 60 seconds
+# example: 'restart 5' restarts the machine in 5 seconds
+alias restart='sudo shutdown -r -h'
+
 #rerun last command as sudo
 alias please='sudo $(history -p !!)'
 
