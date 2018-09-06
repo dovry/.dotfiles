@@ -2,10 +2,6 @@
 
 Arch-based couscous files
 
-short link for .bash_aliases
-
-https://bit.ly/2wL9xl6
-
 # Programs I'm using
 
 [youtube-dl](https://github.com/rg3/youtube-dl/)
