@@ -33,7 +33,7 @@ alias uninstall='sudo apt remove'
 ## Tmux
 
 # Attaches tmux to the last session; creates a new session if none exists.
-alias tm="tmux -2 attach-session || tmux -2 new-session"
+alias tm="tmux -2 attach-session || tmux -2 new-session -s"
 
 # Attaches tmux to a session (example: ta portal)
 alias ta='tmux attach -t'
