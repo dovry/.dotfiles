@@ -79,7 +79,7 @@ alias cprlal='cpal && rlal'				#copies alises, then reloads bashrc
 alias tmconf='$editor ~/.tmux.conf'			#edit the .tmux.conf file
 alias rltm='tmux source ~/.tmux.conf'			#reload the .tmux.conf file
 alias cptm='cp ~/.tmux.conf ~/.tmux.conf.old'		#creates a copy of the .tmux.conf file
-alias 'cprltm='cptm && rltm'				#copies tmux conf, then reloads it
+alias cprltm='cptm && rltm'				#copies tmux conf, then reloads it
 
 
 # (forcibly) touch file, then (forcibly) enter
