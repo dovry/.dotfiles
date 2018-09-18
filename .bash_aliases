@@ -25,7 +25,7 @@ source ~/.bashrc
 ## update, upgrade, (un)install, update+upgrade
 alias upd='sudo apt update'
 alias upg='sudo apt dist-upgrade -y'
-alias updog='sudo apt-get update && sudo apt-get dist-upgrade -y && cd && mv ~/.bash_aliases ~/.bash_aliases.old && wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases && source ~/.bashrc' && echo "Remember to add the long line of gibberish to the bottom of your '.bashrc' if this is your first time running the script"
+alias updog='sudo apt-get update && sudo apt-get dist-upgrade -y && cd && mv ~/.bash_aliases ~/.bash_aliases.old && wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases && source ~/.bashrc'
 alias install='sudo apt install'
 alias uninstall='sudo apt remove'
 
