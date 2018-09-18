@@ -73,7 +73,13 @@ alias alises='aliases'  				#spelling error	for command below
 alias aliases='$editor ~/.bash_aliases'			#edit the .bash_aliases file
 alias rlal='source ~/.bashrc'				#source the .bash.rc file
 alias cpal='cp ~/.bash_aliases ~/.bash_alias.old'	#backup the .bash_aliases file
-alias cprl='cpal;rlal'					#copy alises, then reload bashrc
+alias cprlal='cpal && rlal'				#copies alises, then reloads bashrc
+
+#mod tmux
+alias tmconf='$editor ~/.tmux.conf'			#edit the .tmux.conf file
+alias rltm='tmux source ~/.tmux.conf'			#reload the .tmux.conf file
+alias cptm='cp ~/.tmux.conf ~/.tmux.conf.old'		#creates a copy of the .tmux.conf file
+alias 'cprltm='cptm && rltm'				#copies tmux conf, then reloads it
 
 
 # (forcibly) touch file, then (forcibly) enter
