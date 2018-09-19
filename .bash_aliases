@@ -1,4 +1,4 @@
-echo "v0.0.0"
+echo "aliases v0.0.1"
 ## These are my aliases, take a gander
 
 ### remember to add .bash_aliases to your .bashrc
