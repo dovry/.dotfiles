@@ -1,4 +1,6 @@
-echo "aliases v0.0.1"
+# aliases v0.0.1
+head -n 1 ~/.bash_aliases
+head -n 1 ~/.tmux.conf
 ## These are my aliases, take a gander
 
 ### remember to add .bash_aliases to your .bashrc
