@@ -22,6 +22,15 @@ wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases
 source ~/.bashrc
 }
 
+## update alias file to newest from @Dovry's GitHub
+newtmux () {
+cd
+mv ~/.tmux.conf ~/.tmux.conf.old
+wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf
+tmux source ~/.tmux.conf
+}
+
+
 ## update, upgrade, (un)install, update+upgrade
 alias upd='sudo apt update'
 alias upg='sudo apt dist-upgrade -y'
