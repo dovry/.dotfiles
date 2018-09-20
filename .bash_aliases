@@ -1,4 +1,8 @@
-# aliases v0.0.1
+# aliases v1.1.2
+# X.0.0 means major version, where the whole file is changed
+# 0.X.0 means a minor version, where a command is added/removed
+# 0.0.X means a fix, where a command is moved or a command is expanded upon
+
 head -n 1 ~/.bash_aliases
 head -n 1 ~/.tmux.conf
 ## These are my aliases, take a gander
@@ -17,7 +21,7 @@ editor=nano #text editor
 video=vlc #video media
 #player= #audio media
 
-## update alias file to newest from @Dovry's GitHub
+## update alias file to the latest version from @Dovry's GitHub
 newalias () {
 cd
 mv ~/.bash_aliases ~/.bash_aliases.old
@@ -25,7 +29,7 @@ wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases
 source ~/.bashrc
 }
 
-## update alias file to newest from @Dovry's GitHub
+## update tmux file to the lastest version from @Dovry's GitHub
 newtmux () {
 cd
 mv ~/.tmux.conf ~/.tmux.conf.old
@@ -34,51 +38,37 @@ tmux source ~/.tmux.conf
 }
 
 
-## update, upgrade, (un)install, update+upgrade
-alias upd='sudo apt update'
-alias upg='sudo apt dist-upgrade -y'
-alias updog='sudo apt-get update && sudo apt-get dist-upgrade -y && cd && mv ~/.bash_aliases ~/.bash_aliases.old && wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases && source ~/.bashrc'
-alias install='sudo apt install'
-alias uninstall='sudo apt remove'
-
+## Updates & Upgrades
+alias upd='sudo apt update'				#updates
+alias upg='sudo apt dist-upgrade -y'			#upgrades
+alias updog='upd && upg && newalias && newtmux'		#the whole shebang
+alias install='sudo apt install'			#type 'install' instead of 'sudo apt install'
+alias uninstall='sudo apt remove'			#type 'uninstal' instead of 'sudo apt remove'
 
 ## Tmux
-
-# Attaches tmux to the last session; creates a new session if none exists.
-alias tm="tmux -2 attach-session || tmux -2 new-session -s"
-
-# Attaches tmux to a session (example: ta portal)
-alias ta='tmux attach -t'
-
-# Creates a new session
-alias tn='tmux new -s'
-
-# Lists all ongoing sessions
-alias tl='tmux list-sessions'
-
+alias tm="tmux -2 attach-session || tmux -2 new-session -s" 	# Attaches tmux to the last session; creates a new session if none exists.
+alias ta='tmux attach -t'					# Attaches tmux to a session (example: ta portal)
+alias tn='tmux new -s'						# Creates a new session
+alias tl='tmux list-sessions'					# Lists all ongoing sessions
 
 ## Utility 
-alias c='clear'
-alias s='sudo'
-alias h='history'
-alias grep='grep --color=auto'
-alias rwx='stat -c %a'
+alias c='clear'						#clears the terminal, ctrl+L works as well
+alias s='sudo'						#type 's' instead of 'sudo'
+alias h='history'					#shows you all the entries of the session
+alias grep='grep --color=auto'				#makes grep show colors (should be default in most shells)
+alias rwx='stat -c %a'					#shows you the RWX rights on a file (rwx .bash_aliases should return 664)
+alias please='sudo $(history -p !!)'			#rerun last command as sudo
+alias www='cd /var/www/'				#cd to /var/www/
+alias html='cd /var/www/html'				#cd to /var/www/html
 
-# write amount of seconds before restart, if you don't it defaults to 60 seconds
-# example: 'restart 5' restarts the machine in 5 seconds
-alias restart='sudo shutdown -r -h'
-
-#rerun last command as sudo
-alias please='sudo $(history -p !!)'
-
-#cd to /var/www/
-alias www='cd /var/www/'
-#cd to /var/www/html
-alias html='cd /var/www/html'
+grope () {sudo touch "$1" && sudo $editor "$1"}		# (forcibly) touch file, then (forcibly) enter
+mkcd () {mkdir "$1" && cd "$1"}				#create directory, then enter
+cs () {cd $1 && ls -ah}					#change directory, then list everything within
 
 #lists
-alias la='ls -lah'
-alias ll='ls -l'
+alias la='ls -lAh --block-size=M --color --file-type'	#list all the things
+alias ll='ls -l'					#list things in a list
+alias lac='ls -laC --color'				#list things in columns
 
 #mod aliases
 alias alises='aliases'  				#spelling error	for command below
@@ -94,28 +84,9 @@ alias cptm='cp ~/.tmux.conf ~/.tmux.conf.old'		#creates a copy of the .tmux.conf
 alias cprltm='cptm && rltm'				#copies tmux conf, then reloads it
 
 
-# (forcibly) touch file, then (forcibly) enter
-grope () {
-	sudo touch "$1"
-	sudo $editor "$1"
-}
-
-#create directory, then enter
-mkcd () {
-	mkdir "$1"
-	cd "$1"
-}
-
-#change directory, then list everything within
-cs () {
-	cd $1
-	ls -ah
-}
-
-
-#play video without a webbrowser
+#play video without a web browser
 stream () {
 youtube-dl -o - "$1" | $video -
 }
 
-alias publicip='dig +short myip.opendns.com @resolver1.opendns.com'
+alias pubip='dig +short myip.opendns.com @resolver1.opendns.com'
