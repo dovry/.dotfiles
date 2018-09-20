@@ -1,8 +1,9 @@
-# aliases v1.1.2
+# aliases v1.1.3
 # X.0.0 means major version, where the whole file is changed
 # 0.X.0 means a minor version, where a command is added/removed
 # 0.0.X means a fix, where a command is moved or a command is expanded upon
 
+#tells you what versions of the files you currently have
 head -n 1 ~/.bash_aliases
 head -n 1 ~/.tmux.conf
 ## These are my aliases, take a gander
