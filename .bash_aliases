@@ -1,7 +1,7 @@
-# aliases v1.1.3
+# aliases v1.1.4
 # X.0.0 means major version, where the whole file is changed
 # 0.X.0 means a minor version, where a command is added/removed
-# 0.0.X means a fix, where a command is moved or a command is expanded upon
+# 0.0.X means a fix, where a command is moved, changed or a command is expanded or simplified
 
 #tells you what versions of the files you currently have
 head -n 1 ~/.bash_aliases
@@ -62,9 +62,23 @@ alias please='sudo $(history -p !!)'			#rerun last command as sudo
 alias www='cd /var/www/'				#cd to /var/www/
 alias html='cd /var/www/html'				#cd to /var/www/html
 
-grope () {sudo touch "$1" && sudo $editor "$1"}		# (forcibly) touch file, then (forcibly) enter
-mkcd () {mkdir "$1" && cd "$1"}				#create directory, then enter
-cs () {cd $1 && ls -ah}					#change directory, then list everything within
+# (forcibly) touch file, then (forcibly) enter
+grope () {
+sudo touch "$1"
+sudo $editor "$1"
+}
+
+#create directory, then enter
+mkcd () {
+mkdir "$1" 
+cd "$1"
+}
+
+#change directory, then list everything within
+cs () {
+cd $1
+ls -ah
+}					
 
 #lists
 alias la='ls -lAh --block-size=M --color --file-type'	#list all the things
