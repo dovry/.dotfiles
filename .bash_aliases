@@ -1,4 +1,4 @@
-# version 1.1.6
+# version 1.1.7
 # X.0.0 means major version, where the whole file is changed
 # 0.X.0 means a minor version, where a command is added/removed
 # 0.0.X means a fix, where a command is moved, changed or a command is expanded or simplified
@@ -39,11 +39,11 @@ tmux source ~/.tmux.conf
 
 
 ## Updates & Upgrades
-alias upd='sudo apt update'				#updates
-alias upg='sudo apt dist-upgrade -y'			#upgrades
+alias upd='sudo apt update'				                #updates
+alias upg='sudo apt dist-upgrade -y'			        #upgrades
 alias updog='upd && upg && newalias && newtmux'		#the whole shebang
-alias install='sudo apt install'			#type 'install' instead of 'sudo apt install'
-alias uninstall='sudo apt remove'			#type 'uninstal' instead of 'sudo apt remove'
+alias install='sudo apt install'			            #type 'install' instead of 'sudo apt install'
+alias uninstall='sudo apt remove'			            #type 'uninstal' instead of 'sudo apt remove'
 
 ## Tmux
 alias tm="tmux -2 attach-session || tmux -2 new-session -s" 	# Attaches tmux to the last session; creates a new session if none exists.
@@ -98,7 +98,7 @@ alias cptm='cp ~/.tmux.conf ~/.tmux.conf.old'		#creates a copy of the .tmux.conf
 alias cprltm='cptm && rltm'				#copies tmux conf, then reloads it
 
 
-#play video without a web browser
+#play video without a web browser, requires youtube-dl to be installed
 stream () {
 youtube-dl -o - "$1" | $video -
 }
