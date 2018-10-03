@@ -1,4 +1,4 @@
-# version 1.1.8
+# version 1.1.9
 # X.0.0 means major version, where the whole file is changed
 # 0.X.0 means a minor version, where a command is added/removed
 # 0.0.X means a fix, where a command is moved, changed or a command is expanded or simplified
@@ -14,7 +14,7 @@ head -n 1 ~/.bash_aliases ~/.tmux.conf
 ###    fi
 
 ## last line in .bashrc for neat colors
-#export PS1=">_\[$(tput sgr0)\]\[\033[38;5;1m\] \[$(tput sgr0)\]\[\033[38;5;10m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]\n\[$(tput sgr0)\]\[\033[38;5;49m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;85m\]\H\[$(tput sgr0)\]\[\033[38;5;15m\] \\ \\$:\[$(tput sgr0)\]"
+#export PS1="\[\033[38;5;14m\]\\\\\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;9m\]\W\[$(tput sgr0)\]\[\033[38;5;15m\]\n\[$(tput sgr0)\]\[\033[38;5;14m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;9m\]\\$:\[$(tput sgr0)\]"
 
 #variables
 editor=nano #text editor
