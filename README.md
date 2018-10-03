@@ -1,6 +1,6 @@
 # Dotfiles
 
-Arch-based couscous files
+My Couscous files :^]
 
 # Programs I'm using
 
