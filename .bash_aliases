@@ -41,7 +41,7 @@ tmux source ~/.tmux.conf
 ## Updates & Upgrades
 alias upd='sudo apt update'				                #updates
 alias upg='sudo apt dist-upgrade -y'			        #upgrades
-alias updog='upd && upg && newalias && newtmux'		#the whole shebang
+alias updog='upd && upg && newtmux && newalias'		#the whole shebang
 alias install='sudo apt install'			            #type 'install' instead of 'sudo apt install'
 alias uninstall='sudo apt remove'			            #type 'uninstal' instead of 'sudo apt remove'
 
