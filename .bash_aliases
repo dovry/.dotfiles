@@ -103,4 +103,7 @@ stream () {
 youtube-dl -o - "$1" | $video -
 }
 
-alias pubip='dig +short myip.opendns.com @resolver1.opendns.com'
+
+alias pubip='dig +short myip.opendns.com @resolver1.opendns.com' # gets your public ip
+
+alias oppo='sudo netstat -tulpn | grep LISTEN' # OPen POrts
