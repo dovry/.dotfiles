@@ -1,4 +1,4 @@
-# version 1.1.9
+# version 1.1.10
 # X.0.0 means major version, where the whole file is changed
 # 0.X.0 means a minor version, where a command is added/removed
 # 0.0.X means a fix, where a command is moved, changed or a command is expanded or simplified
@@ -106,4 +106,4 @@ youtube-dl -o - "$1" | $video -
 
 alias pubip='dig +short myip.opendns.com @resolver1.opendns.com' # gets your public ip
 
-alias oppo='sudo netstat -tulpn | grep LISTEN' # OPen POrts
+alias opo='sudo netstat -tulpn | grep LISTEN' # OPen POrts
