@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# gets my .bash_aliases file and puts it in the home directory
+wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/.
+# sets the ps1 config and reloads the .bashrc for everything to take effect
+crazyvariablenobodycouldeveruse=$(wget https://raw.githubusercontent.com/Dovry/dotfiles/master/fresh-install/ps1 -q -O -)
+echo $crazyvariablenobodycouldeveruse >> ~/.bashrc
+source ~/.bashrc
+# requires the .bash_aliases file, runs a full update & upgrade on the system, renews the aliases file and gets the tmux.conf file as well.
+updog
+# starts installing packages
+install -y avahi-daemon \
+	openssh-server \
+	tmux \
