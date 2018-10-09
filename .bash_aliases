@@ -1,4 +1,4 @@
-# version 1.3.10
+# version 1.4.10
 # X.0.0 means major version, where the whole file is changed
 # 0.X.0 means a minor version, where a command is added/removed
 # 0.0.X means a fix, where a command is moved, changed or a command is expanded or simplified
@@ -43,9 +43,8 @@ alias install='sudo apt install'			            #type 'install' instead of 'sudo 
 alias uninstall='sudo apt remove'			            #type 'uninstal' instead of 'sudo apt remove'
 
 ## Tmux
-alias tm="tmux -2 attach-session || tmux -2 new-session -s" 	# Attaches tmux to the last session; creates a new session if none exists.
 alias ta='tmux attach -t'					# Attaches tmux to a session (example: ta portal)
-alias tn='tmux new -s'						# Creates a new session
+alias tm='tmux new -s'						# Creates a new session
 alias tl='tmux list-sessions'					# Lists all ongoing sessions
 
 ## Utility 
