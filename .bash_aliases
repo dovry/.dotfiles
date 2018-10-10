@@ -1,4 +1,4 @@
-# version 1.4.10
+# version 1.4.11
 # X.0.0 means major version, where the whole file is changed
 # 0.X.0 means a minor version, where a command is added/removed
 # 0.0.X means a fix, where a command is moved, changed or a command is expanded or simplified
@@ -20,17 +20,15 @@ video=vlc #video media
 
 ## update alias file to the latest version from @Dovry's GitHub
 newalias () {
-cd
 mv ~/.bash_aliases ~/.bash_aliases.old
-wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases
+wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/
 source ~/.bashrc
 }
 
 ## update tmux file to the lastest version from @Dovry's GitHub
 newtmux () {
-cd
 mv ~/.tmux.conf ~/.tmux.conf.old
-wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf
+wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/
 tmux source ~/.tmux.conf
 }
 
@@ -102,4 +100,5 @@ youtube-dl -o - "$1" | $video -
 
 alias pubip='dig +short myip.opendns.com @resolver1.opendns.com' # gets your public ip
 
-alias opo='sudo netstat -tulpn | grep LISTEN' # *OP*en *P*orts
+# *OP*en *P*orts
+alias opo='sudo netstat -tulpn | grep LISTEN' 
