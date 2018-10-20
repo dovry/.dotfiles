@@ -1,4 +1,4 @@
-# version 1.5.11
+# version 1.6.11
 # X.0.0 means major version, where the whole file is changed
 # 0.X.0 means a minor version, where a command is added/removed
 # 0.0.X means a fix, where a command is moved, changed or a command is expanded or simplified
@@ -59,6 +59,7 @@ alias rwx='stat -c %a'					#shows you the RWX rights on a file (rwx .bash_aliase
 alias please='sudo $(history -p !!)'			#rerun last command as sudo
 alias www='cd /var/www/'				#cd to /var/www/
 alias html='cd /var/www/html'				#cd to /var/www/html
+alias tree='tree -phug'
 
 # (forcibly) touch file, then (forcibly) enter
 grope () {
