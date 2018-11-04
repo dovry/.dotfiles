@@ -60,6 +60,7 @@ alias please='sudo $(history -p !!)'			#rerun last command as sudo
 alias www='cd /var/www/'				#cd to /var/www/
 alias html='cd /var/www/html'				#cd to /var/www/html
 alias phug='tree -phug'
+alias network-restart='sudo /etc/init.d/networking restart'
 
 # (forcibly) touch file, then (forcibly) enter
 grope () {
