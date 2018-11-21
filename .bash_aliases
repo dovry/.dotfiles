@@ -1,10 +1,10 @@
-# version 2.7.11
+# version 2.7.12
 # X.0.0 means major version, where the major portion is changed
 # 0.X.0 means a minor version, where a command is added/removed
 # 0.0.X means a fix, where a command is moved, changed or a command is expanded or simplified
 
 #tells you what versions of the files you currently have
-head -n 1 ~/.bash_aliases ~/.tmux.conf 
+head -n 1 ~/.bash_aliases ~/.tmux.conf ~/.vimrc
 ## These are my aliases, take a gander
 
 ### remember to add .bash_aliases to your .bashrc
