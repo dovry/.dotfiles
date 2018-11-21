@@ -1,7 +1,7 @@
-# version 0.0.0                                            
+# version 0.0.1                                            
 # X.0.0 means major version, where the whole file is changed  
 # 0.X.0 means a minor version, where a command is added/removed
-# 0.0.X means a fix, where a command is moved, changed or is improved in any way
+# 0.0.X means a fix, where a command is moved, or the file is improved in any way
 
 syntax on               
                         
