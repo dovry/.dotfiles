@@ -2,7 +2,7 @@
 
 ### what's this?
 
-I'm trying to automate everything I do whenever I setup an ubuntu server, raspberry pi or a linux VM to make it comfy to work with
+I'm trying to automate everything I do whenever I setup any sort of debian based environment to make it comfy to work with
 
 ### what it do?
 * updates and upgrades
@@ -17,6 +17,6 @@ I'm trying to automate everything I do whenever I setup an ubuntu server, raspbe
 
 ### currently what I have planned
 * ask what colorscheme you want on the ps1
-* ask if you want docker installed
-  * if so, if you want docker-compose installed as well
-* 
+* ask which colorscheme you want in vim
+* ask if you want bash or oh my zsh, and sets aliases accordingly
+ 
