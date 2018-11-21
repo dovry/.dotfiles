@@ -1,4 +1,4 @@
-" version 1.0.1
+" version 0.0.1 
 " X.0.0 means major version, where the whole file is changed
 " 0.X.0 means a minor version, where a command is added/removed
 " 0.0.X means a fix, where a command is moved, or the file is improved in any way
@@ -18,9 +18,13 @@ Plugin 'VundleVim/Vundle.vim'
 " plugins start
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/nerdtree'
-
+Plugin 'sjl/gundo.vim'
+Plugin 'vim-airline/vim-airline'
 
 " plugins end
+" to install the newest (versions) plugins, run:
+" :so ~/.vimrc and then :PluginInstall
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
