@@ -3,4 +3,3 @@ https://raw.githubusercontent.com/wolf-dog/nighted.vim/master/colors/nighted.vim
 https://raw.githubusercontent.com/sts10/vim-pink-moon/master/colors/pink-moon.vim
 https://raw.githubusercontent.com/agreco/vim-citylights/master/colors/citylights.vim
 https://raw.githubusercontent.com/TroyFletcher/vim-colors-synthwave/master/colors/synthwave.vim
-https://raw.githubusercontent.com/flazz/vim-colorschemes/master/colors/solarized8_dark_flat.vim
