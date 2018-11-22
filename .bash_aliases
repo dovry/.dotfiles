@@ -1,4 +1,4 @@
-# version 2.7.14
+# version 2.8.14
 # X.0.0 means major version, where the major portion is changed
 # 0.X.0 means a minor version, where a command is added/removed
 # 0.0.X means a fix, where a command is moved, or the file is improved in any way
@@ -7,41 +7,61 @@
 head -n 1 ~/.bash_aliases ~/.tmux.conf ~/.vimrc
 ## These are my aliases, take a gander
 
-### remember to add .bash_aliases to your .bashrc
-### add .bash_aliases file
-###    if [ -f ~/.bash_aliases ]; then
-###    . ~/.bash_aliases
-###    fi
-
 #variables
 editor=vim #text editor
 video=vlc #video media
 #player= #audio media
 
-## update alias file to the latest version from @Dovry's GitHub
-newalias () {
-mv ~/.bash_aliases ~/.bash_aliases.old
-wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/
-source ~/.bashrc
-}
 
-## update tmux file to the lastest version from @Dovry's GitHub
-newtmux () {
-mv ~/.tmux.conf ~/.tmux.conf.old
-wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/
-tmux source ~/.tmux.conf
-}
+## checks if .bash_aliases exists, if it does it updates and sources it
+## if it doesn't exist, it gets the file from Dovry's GitHub repo
+## and sources it so it takes effect
+if [ -e ~/.bash_aliases ]
+then
+	mv ~/.bash_aliases ~/.bash_aliases.old
+	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/
+else
+	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/
+	source ~/.bashrc
+fi
 
-## update vimrc file to the lastest version from @Dovry's GitHub
-newvim () {
-mv ~/.vimrc ~/.vimrc.old
-wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
-}
+## checks if .tmux.conf exists, if it does it updates and sources it
+## if it doesn't exist, it gets the file from Dovry's GitHub repo
+## and sources it so it takes effect
+if [ -e ~/.tmux.conf ]
+then
+	mv ~/.tmux.conf ~/.tmux.conf.old
+	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/
+	tmux source ~/.tmux.conf
+else
+	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
+	tmux source ~/.tmux.conf
+fi
+
+## checks if .vimrc exists, if it does it updates and sources it
+## if it doesn't exist, it gets the file from Dovry's GitHub repo
+## and sources it so it takes effect
+## since Vim can utilise plugins, it requires a bunch more than just
+## getting the file and sourcing it.
+if [[ -e ~/.vimrc && ~/.vim/colors ]]
+then
+	mv ~/.vimrc ~/.vimrc.old
+	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
+	echo | vim +"so %"
+else
+	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
+	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	mkdir ~/.vim/colors
+	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/fresh-install/vim-themes.txt -P ~/.vim/colors
+	wget -i ~/.vim/colors/vim-themes.txt -P ~/.vim/colors/
+	rm ~/.vim/colors/vim-themes.txt
+	echo | vim +PluginInstall +qall
+fi
 
 ## Updates & Upgrades
 alias upd='sudo apt update'				                #updates
 alias upg='sudo apt dist-upgrade -y'			        #upgrades
-alias newconf='newtmux ; newvim && newalias'     #moves old config files, and fetches new ones from GitHub
+alias newconf='newvim && newalias && newtmux'     #moves old config files, and fetches new ones from GitHub
 alias updog='upd && upg && newconf'           		#the whole shebang
 alias install='sudo apt install'			            #type 'install' instead of 'sudo apt install'
 alias uninstall='sudo apt remove'			            #type 'uninstal' instead of 'sudo apt remove'
@@ -115,6 +135,13 @@ alias cprltm='cptm && rltm'				#copies tmux conf, then reloads it
 alias vimrc='$editor ~/.vimrc'      #edits the .vimrc with your preferred editor
 alias vimconf='$editor ~/.vimrc'      #edits the .vimrc with your preferred editor
 alias vip='cd ~/.vim/'      #goes to the vim folder
+alias vimcp='cp ~/.vimrc ~/.vimrc.old' # creates a copy of the .vimrc file
+alias rlvim='echo | vim +"so %"  '# sources .vimrc
+# copies .vimrc, then sources it
+cprlvim () {
+vimcp
+echo | vim +"so %"
+}
 
 #play video without a web browser, requires youtube-dl to be installed
 stream () {
