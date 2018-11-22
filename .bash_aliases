@@ -41,7 +41,7 @@ wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
 ## Updates & Upgrades
 alias upd='sudo apt update'				                #updates
 alias upg='sudo apt dist-upgrade -y'			        #upgrades
-alias newconf='newtmux && newvim && newalias'     #moves old config files, and fetches new ones from GitHub
+alias newconf='newtmux ; newvim && newalias'     #moves old config files, and fetches new ones from GitHub
 alias updog='upd && upg && newconf'           		#the whole shebang
 alias install='sudo apt install'			            #type 'install' instead of 'sudo apt install'
 alias uninstall='sudo apt remove'			            #type 'uninstal' instead of 'sudo apt remove'
