@@ -1,4 +1,4 @@
-# version 3.7.15
+# version 3.8.15
 # X.0.0 means major version, where the major portion is changed
 # 0.X.0 means a minor version, where a command is added/removed
 # 0.0.X means a fix, where a command is moved, or the file is improved in any way
@@ -16,6 +16,7 @@ video=vlc #video media
 ## checks if .bash_aliases exists, if it does it updates and sources it
 ## if it doesn't exist, it gets the file from Dovry's GitHub repo
 ## and sources it so it takes effect
+newalias () {
 if [ -e ~/.bash_aliases ]
 then
 	mv ~/.bash_aliases ~/.bash_aliases.old
@@ -24,10 +25,12 @@ else
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/
 	source ~/.bashrc
 fi
+}
 
 ## checks if .tmux.conf exists, if it does it updates and sources it
 ## if it doesn't exist, it gets the file from Dovry's GitHub repo
 ## and sources it so it takes effect
+newtmux () {
 if [ -e ~/.tmux.conf ]
 then
 	mv ~/.tmux.conf ~/.tmux.conf.old
@@ -37,12 +40,14 @@ else
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
 	tmux source ~/.tmux.conf
 fi
+}
 
 ## checks if .vimrc exists, if it does it updates and sources it
 ## if it doesn't exist, it gets the file from Dovry's GitHub repo
 ## and sources it so it takes effect
 ## since Vim can utilise plugins, it requires a bunch more than just
 ## getting the file and sourcing it.
+newvim () {
 if [[ -e ~/.vimrc && ~/.vim/colors ]]
 then
 	mv ~/.vimrc ~/.vimrc.old
@@ -57,6 +62,7 @@ else
 	rm ~/.vim/colors/vim-themes.txt
 	echo | vim +PluginInstall +qall
 fi
+}
 
 ## Updates & Upgrades
 alias upd='sudo apt update'				                #updates
