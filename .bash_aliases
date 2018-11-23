@@ -136,7 +136,7 @@ alias vimrc='$editor ~/.vimrc'      #edits the .vimrc with your preferred editor
 alias vimconf='$editor ~/.vimrc'      #edits the .vimrc with your preferred editor
 alias vip='cd ~/.vim/'      #goes to the vim folder
 alias vimcp='cp ~/.vimrc ~/.vimrc.old' # creates a copy of the .vimrc file
-alias rlvim='echo | vim +"so %"  '# sources .vimrc
+alias rlvim='echo | vim +"so %"  ' # sources .vimrc
 # copies .vimrc, then sources it
 cprlvim () {
 vimcp
