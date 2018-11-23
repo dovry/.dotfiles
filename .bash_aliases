@@ -1,4 +1,4 @@
-# version 3.8.15
+# version 3.9.15
 # X.0.0 means major version, where the major portion is changed
 # 0.X.0 means a minor version, where a command is added/removed
 # 0.0.X means a fix, where a command is moved, or the file is improved in any way
@@ -92,7 +92,7 @@ alias dprune='docker system prune'   #
 alias c='clear'						#clears the terminal, ctrl+L works as well
 alias s='sudo'						#type 's' instead of 'sudo'
 alias h='history'					#shows you all the entries of the session
-alias v='vim'             #runs vim
+alias v='vim'             				#runs vim
 alias grep='grep --color=auto'				#makes grep show colors (should be default in most shells)
 alias rwx='stat -c %a'					#shows you the RWX rights on a file (rwx .bash_aliases should return 664)
 alias please='sudo $(history -p !!)'			#rerun last command as sudo
@@ -100,6 +100,7 @@ alias www='cd /var/www/'				#cd to /var/www/
 alias html='cd /var/www/html'				#cd to /var/www/html
 alias phug='tree -phug'
 alias network-restart='sudo /etc/init.d/networking restart'
+alias vols='lvs -o +devices'				# lists volumes and where they're mounted
 
 # (forcibly) touch file, then (forcibly) enter
 grope () {
