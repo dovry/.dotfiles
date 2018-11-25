@@ -1,4 +1,4 @@
-# version 3.9.15
+# version 3.10.15
 # X.0.0 means major version, where the major portion is changed
 # 0.X.0 means a minor version, where a command is added/removed
 # 0.0.X means a fix, where a command is moved, or the file is improved in any way
@@ -37,16 +37,15 @@ then
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/
 	tmux source ~/.tmux.conf
 else
-	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
+	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/
 	tmux source ~/.tmux.conf
 fi
 }
 
 ## checks if .vimrc exists, if it does it updates and sources it
-## if it doesn't exist, it gets the file from Dovry's GitHub repo
-## and sources it so it takes effect
-## since Vim can utilise plugins, it requires a bunch more than just
-## getting the file and sourcing it.
+## if it doesn't exist, it gets the file that
+## installs and configures it from Dovry's GitHub repo
+
 newvim () {
 if [[ -e ~/.vimrc && ~/.vim/colors ]]
 then
@@ -54,13 +53,9 @@ then
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
 	echo | vim +"so %"
 else
-	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
-	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-	mkdir ~/.vim/colors
-	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/fresh-install/vim-themes.txt -P ~/.vim/colors
-	wget -i ~/.vim/colors/vim-themes.txt -P ~/.vim/colors/
-	rm ~/.vim/colors/vim-themes.txt
-	echo | vim +PluginInstall +qall
+	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/fresh-install/config-install/vim-install.sh -P ~/
+	echo "download complete"
+	chmod +x ~/vim-install.sh && sh ~/vim-install.sh && rm ~/vim-install.sh
 fi
 }
 
