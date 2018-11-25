@@ -1,4 +1,4 @@
-# version 5.11.19
+# version 5.11.20
 # X.0.0 major	 	- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -13,6 +13,9 @@ editor=vim
 newalias () {
 if [ -e ~/.bash_aliases ]
 then
+  if [! -d ~/.backup ]
+    mkdir ~/.backup
+  fi
 	mv ~/.bash_aliases ~/.backup/.bash_aliases.old
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/
 	clear && echo "updated to newest .bash_aliases"
