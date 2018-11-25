@@ -8,7 +8,7 @@ editor=vim
 
 ### Aliases and functions
 
-## checks if .bash_aliases exists, if it does it updates and sources it if it doesn't exist,
+## checks if .bash_aliases exists, if it does it updates and sources it if it doesn't exist
 ## it gets the file from Dovry's GitHub repo and sources it so it takes effect
 newalias () {
 if [ -e ~/.bash_aliases ]
@@ -25,7 +25,7 @@ else
 fi
 }
 
-## checks if .tmux.conf exists, if it does it updates and sources it. If it doesn't exist,
+## checks if .tmux.conf exists, if it does it updates and sources it. If it doesn't exist
 ## it gets the file from Dovry's GitHub repo and sources it so it takes effect
 newtmux () {
 if [ -e ~/.tmux.conf ]
@@ -40,7 +40,7 @@ fi
 }
 
 ## checks if .vimrc exists, if it does it updates and sources it. If it doesn't exist
-##it gets the file that installs and configures it from Dovry's GitHub repo
+## it gets the file that installs and configures it from Dovry's GitHub repo
 newvim () {
 if [[ -e ~/.vimrc && ~/.vim/colors ]]
 then
@@ -54,7 +54,7 @@ fi
 }
 
 #moves old config files, and fetches new ones from GitHub
-newconf () {newvim && newtmux && newalias}
+newconf () {newalias && newvim && newtmux}
 
 #tells you what versions of the files you currently have
 alias ver='head -n 1 ~/.bash_aliases ~/.tmux.co ~/.vimrc'
@@ -76,21 +76,20 @@ alias vimrc='$editor ~/.vimrc'				#edit .vimrc
 alias vimconf='$editor ~/.vimrc'			#edits the .vimrc with your preferred editor
 alias vimcp='cp ~/.vimrc ~/.vimrc.old'			# creates a copy of the .vimrc file
 alias rlvim='echo | vim +"so %"  '			# sources .vimrc from shell
-# backup .vimrc, then sources it
-cprlvim () {vimcp && echo | vim +"so %"}
+cprlvim () {vimcp && echo | vim +"so %"}		# backup .vimrc, then sources it
 
 ## Updates & Upgrades
-alias upd='sudo apt update'		#updates
-alias upg='sudo apt dist-upgrade -y'	#upgrades
-alias updog='upd && upg && newconf'	#the whole shebang
-alias install='sudo apt install'	#type 'install' instead of 'sudo apt install'
-alias uninstall='sudo apt remove'	#type 'uninstal' instead of 'sudo apt remove'
-alias ai='sudo apt install'		#another version of 'install'
-alias ar='sudo apt remove'		#another version of 'uninstall'
-alias aud='sudo apt update'		#another version of 'upd'
-alias aug='sudo apt upgrade'		#another version of 'upg'
-alias aa='sudo apt autoremove'		#cleans unused packages
-alias af='sudo apt install -f'		#fixes broken packages
+alias upd='sudo apt update'			#updates
+alias upg='sudo apt dist-upgrade -y'		#upgrades
+alias updog='upd && upg && newconf && ver'	#the whole shebang
+alias install='sudo apt install'		#type 'install' instead of 'sudo apt install'
+alias uninstall='sudo apt remove'		#type 'uninstal' instead of 'sudo apt remove'
+alias ai='sudo apt install'			#another version of 'install'
+alias ar='sudo apt remove'			#another version of 'uninstall'
+alias aud='sudo apt update'			#another version of 'upd'
+alias aug='sudo apt upgrade'			#another version of 'upg'
+alias aa='sudo apt autoremove'			#cleans unused packages
+alias af='sudo apt install -f'			#fixes broken packages
 
 ## Tmux
 alias ta='tmux attach -t'		# Attaches tmux to a session
@@ -112,12 +111,6 @@ alias pubip='dig +short myip.opendns.com @resolver1.opendns.com' # gets your pub
 alias opo='sudo netstat -tulpn | grep LISTEN' 		# *OP*en *P*orts
 alias la='ls -lAh --block-size=M --file-type'	#list all the things
 alias lac='ls -laC --color'			#list things in columns
-
-# (forcibly) touch file, then (forcibly) enter
-grope () {sudo touch "$1" && sudo $editor "$1"}
-
-#create directory, then change to that dir
-mkcd () {mkdir "$1" && cd "$1"}
-
-#create dir tree, then change to the deepest dir created
-mpcd () {mkdir -p "$1" && cd "$1"}
+grope () {sudo touch "$1" && sudo $editor "$1"}		# (forcibly) touch file, then (forcibly) enter
+mkcd () {mkdir "$1" && cd "$1"}				#create directory, then change to that dir
+mpcd () {mkdir -p "$1" && cd "$1"}			#create dir tree, then change to the deepest dir created
