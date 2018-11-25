@@ -1,4 +1,4 @@
-" version 1.0.1 
+" version 1.1.1 
 " X.0.0 means major version, where the whole file is changed
 " 0.X.0 means a minor version, where a command is added/removed
 " 0.0.X means a fix, where a command is moved, or the file is improved in any way
@@ -15,7 +15,6 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
 
 " plugins start
 Plugin 'ervandew/supertab'
@@ -42,12 +41,11 @@ set laststatus=2
 set noshowmode
 
 let g:lightline = {
-\ 'colorscheme': 'seoul256',
+\ 'colorscheme': 'iceberg',
 \ }
 
-
 " colorscheme
-colorscheme synthwave
+colorscheme iceberg
 
 " ### keybindings
 map <C-n> :NERDTreeToggle<CR>
@@ -63,7 +61,6 @@ set foldmethod=indent
 set foldlevel=99
 " Enable folding with the spacebar
 nnoremap <C-space> za
-
 
 " ### plugin configurations
 
