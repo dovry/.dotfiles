@@ -1,4 +1,4 @@
-# version 4.11.17
+# version 5.11.18
 # X.0.0 major	 	- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -8,13 +8,12 @@ editor=vim
 
 ### Aliases and functions
 
-## checks if .bash_aliases exists, if it does it updates and sources it
-## if it doesn't exist, it gets the file from Dovry's GitHub repo
-## and sources it so it takes effect
+## checks if .bash_aliases exists, if it does it updates and sources it if it doesn't exist,
+## it gets the file from Dovry's GitHub repo and sources it so it takes effect
 newalias () {
 if [ -e ~/.bash_aliases ]
 then
-	mv ~/.bash_aliases ~/.bash_aliases.old
+	mv ~/.bash_aliases ~/.backup/.bash_aliases.old
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/
 else
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/
@@ -23,13 +22,12 @@ else
 fi
 }
 
-## checks if .tmux.conf exists, if it does it updates and sources it
-## if it doesn't exist, it gets the file from Dovry's GitHub repo
-## and sources it so it takes effect
+## checks if .tmux.conf exists, if it does it updates and sources it. If it doesn't exist,
+## it gets the file from Dovry's GitHub repo and sources it so it takes effect
 newtmux () {
 if [ -e ~/.tmux.conf ]
 then
-	mv ~/.tmux.conf ~/.tmux.conf.old
+	mv ~/.tmux.conf ~/.backup/.tmux.conf.old
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/
 	tmux source ~/.tmux.conf
 else
@@ -39,13 +37,12 @@ else
 fi
 }
 
-## checks if .vimrc exists, if it does it updates and sources it
-## if it doesn't exist, it gets the file that
-## installs and configures it from Dovry's GitHub repo
+## checks if .vimrc exists, if it does it updates and sources it. If it doesn't exist
+##it gets the file that installs and configures it from Dovry's GitHub repo
 newvim () {
 if [[ -e ~/.vimrc && ~/.vim/colors ]]
 then
-	mv ~/.vimrc ~/.vimrc.old
+	mv ~/.vimrc ~/.backup/.vimrc.old
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
 	echo | vim +"so %"
 else
@@ -114,7 +111,7 @@ alias v='vim'             				#runs vim
 alias rwx='stat -c %a'					#shows you the RWX rights on a file (rwx .bash_aliases should return 664)
 alias please='sudo $(history -p !!)'			#rerun last command as sudo
 alias ffs='sudo $(history -p !!)'			#rerun last command as sudo
-alias phug='tree -phug'
+alias phug='tree -phug'					#Print filetype - Human readable size - Username - Groupname
 alias network-restart='sudo /etc/init.d/networking restart'
 alias vols='lvs -o +devices'				# lists volumes and where they're mounted
 alias pubip='dig +short myip.opendns.com @resolver1.opendns.com' # gets your public ip
