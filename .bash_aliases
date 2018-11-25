@@ -1,17 +1,12 @@
-# version 3.10.16
-# X.0.0 means major version, where the major portion is changed
-# 0.X.0 means a minor version, where a command is added/removed
-# 0.0.X means a fix, where a command is moved, or the file is improved in any way
+# version 4.11.16
+# X.0.0 major version 	- the file is overhauled
+# 0.X.0 minor version - a command is added/removed
+# 0.0.X fix 		- the file is improved in any way
 
-#tells you what versions of the files you currently have
-head -n 1 ~/.bash_aliases ~/.tmux.conf ~/.vimrc
-## These are my aliases, take a gander
-
-#variables
+### Variables
 editor=vim #text editor
-video=vlc #video media
-#player= #audio media
 
+### Aliases and functions
 
 ## checks if .bash_aliases exists, if it does it updates and sources it
 ## if it doesn't exist, it gets the file from Dovry's GitHub repo
@@ -45,7 +40,6 @@ fi
 ## checks if .vimrc exists, if it does it updates and sources it
 ## if it doesn't exist, it gets the file that
 ## installs and configures it from Dovry's GitHub repo
-
 newvim () {
 if [[ -e ~/.vimrc && ~/.vim/colors ]]
 then
@@ -53,16 +47,28 @@ then
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
 	echo | vim +"so %"
 else
-	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/fresh-install/config-install/vim-install.sh -P ~/
-	echo "download complete"
-	chmod +x ~/vim-install.sh && sh ~/vim-install.sh && rm ~/vim-install.sh
+	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/fresh-install/config-install/vim-install.sh -P ~/ && chmod +x ~/vim-install.sh
+	sh ~/vim-install.sh && rm ~/vim-install.sh
 fi
+}
+
+#tells you what versions of the files you currently have
+ver () {
+head -n 1 ~/.bash_aliases  
+head -n 1 ~/.tmux.conf
+head -n 1 ~/.vimrc
 }
 
 ## Updates & Upgrades
 alias upd='sudo apt update'				                #updates
 alias upg='sudo apt dist-upgrade -y'			        #upgrades
-alias newconf='newvim ; newtmux ; newalias'     #moves old config files, and fetches new ones from GitHub
+# alias newconf='newvim ; newtmux ; newalias'
+#moves old config files, and fetches new ones from GitHub
+newconf () {
+    newvim
+    newtmux
+    newalias
+}
 alias updog='upd && upg && newconf'           		#the whole shebang
 alias install='sudo apt install'			            #type 'install' instead of 'sudo apt install'
 alias uninstall='sudo apt remove'			            #type 'uninstal' instead of 'sudo apt remove'
@@ -79,9 +85,9 @@ alias tm='tmux new -s'						# Creates a new session
 alias tl='tmux list-sessions'					# Lists all ongoing sessions
 
 # Docker
-alias docc='docker container'   #
-alias docv='docker volume'   #
-alias dprune='docker system prune'   #
+alias docc='docker container'
+alias docv='docker volume'
+alias dprune='docker system prune'
 
 ## Utility 
 alias c='clear'						#clears the terminal, ctrl+L works as well
@@ -91,11 +97,12 @@ alias v='vim'             				#runs vim
 alias grep='grep --color=auto'				#makes grep show colors (should be default in most shells)
 alias rwx='stat -c %a'					#shows you the RWX rights on a file (rwx .bash_aliases should return 664)
 alias please='sudo $(history -p !!)'			#rerun last command as sudo
-alias www='cd /var/www/'				#cd to /var/www/
-alias html='cd /var/www/html'				#cd to /var/www/html
+alias ffs='sudo $(history -p !!)'			#rerun last command as sudo
 alias phug='tree -phug'
 alias network-restart='sudo /etc/init.d/networking restart'
 alias vols='lvs -o +devices'				# lists volumes and where they're mounted
+alias pubip='dig +short myip.opendns.com @resolver1.opendns.com' # gets your public ip
+alias opo='sudo netstat -tulpn | grep LISTEN' 		# *OP*en *P*orts
 
 # (forcibly) touch file, then (forcibly) enter
 grope () {
@@ -103,9 +110,15 @@ sudo touch "$1"
 sudo $editor "$1"
 }
 
-#create directory, then enter
+#create directory, then change to that dir
 mkcd () {
 mkdir "$1" 
+cd "$1"
+}
+
+#create directory tree, then change to the deepest dir created
+mpcd () {
+mkdir -p "$1" 
 cd "$1"
 }
 
@@ -117,7 +130,6 @@ ls -ah
 
 #lists
 alias la='ls -lAh --block-size=M --file-type'	#list all the things
-alias ll='ls -l'					#list things in a list
 alias lac='ls -laC --color'				#list things in columns
 
 #mod aliases
@@ -136,21 +148,10 @@ alias cprltm='cptm && rltm'				#copies tmux conf, then reloads it
 #mod vim
 alias vimrc='$editor ~/.vimrc'      #edits the .vimrc with your preferred editor
 alias vimconf='$editor ~/.vimrc'      #edits the .vimrc with your preferred editor
-alias vip='cd ~/.vim/'      #goes to the vim folder
 alias vimcp='cp ~/.vimrc ~/.vimrc.old' # creates a copy of the .vimrc file
-alias rlvim='echo | vim +"so %"  ' # sources .vimrc
+alias rlvim='echo | vim +"so %"  ' # sources .vimrc from shell
 # copies .vimrc, then sources it
 cprlvim () {
 vimcp
 echo | vim +"so %"
 }
-
-#play video without a web browser, requires youtube-dl to be installed
-stream () {
-youtube-dl -o - "$1" | $video -
-}
-
-alias pubip='dig +short myip.opendns.com @resolver1.opendns.com' # gets your public ip
-
-# *OP*en *P*orts
-alias opo='sudo netstat -tulpn | grep LISTEN' 
