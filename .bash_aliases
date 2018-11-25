@@ -1,4 +1,4 @@
-# version 3.10.15
+# version 3.10.16
 # X.0.0 means major version, where the major portion is changed
 # 0.X.0 means a minor version, where a command is added/removed
 # 0.0.X means a fix, where a command is moved, or the file is improved in any way
@@ -62,7 +62,7 @@ fi
 ## Updates & Upgrades
 alias upd='sudo apt update'				                #updates
 alias upg='sudo apt dist-upgrade -y'			        #upgrades
-alias newconf='newvim && newalias && newtmux'     #moves old config files, and fetches new ones from GitHub
+alias newconf='newvim ; newtmux ; newalias'     #moves old config files, and fetches new ones from GitHub
 alias updog='upd && upg && newconf'           		#the whole shebang
 alias install='sudo apt install'			            #type 'install' instead of 'sudo apt install'
 alias uninstall='sudo apt remove'			            #type 'uninstal' instead of 'sudo apt remove'
