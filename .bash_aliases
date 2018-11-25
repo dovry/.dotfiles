@@ -12,10 +12,6 @@ editor=vim
 ## it gets the file from Dovry's GitHub repo and sources it so it takes effect
 newalias () {
 if [ -e ~/.bash_aliases ]
-then
-  if [! -d ~/.backup ]
-    mkdir ~/.backup
-  fi
 	mv ~/.bash_aliases ~/.backup/.bash_aliases.old
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/
 	clear && echo "updated to newest .bash_aliases"
