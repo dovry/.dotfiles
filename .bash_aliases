@@ -15,10 +15,10 @@ if [ -e ~/.bash_aliases ]
 then
 	mv ~/.bash_aliases ~/.backup/.bash_aliases.old
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/
+	clear && echo "updated to newest .bash_aliases"
 else
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/
-	source ~/.bashrc
-	clear
+	source ~/.bashrc && clear && echo "aliases active"
 fi
 }
 
@@ -29,11 +29,10 @@ if [ -e ~/.tmux.conf ]
 then
 	mv ~/.tmux.conf ~/.backup/.tmux.conf.old
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/
-	tmux source ~/.tmux.conf
+	tmux source ~/.tmux.conf && clear && echo "updated to newest .tmux.conf"
 else
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/
-	tmux source ~/.tmux.conf
-	clear
+	tmux source ~/.tmux.conf && clear && echo "tmux config active"
 fi
 }
 
@@ -44,20 +43,15 @@ if [[ -e ~/.vimrc && ~/.vim/colors ]]
 then
 	mv ~/.vimrc ~/.backup/.vimrc.old
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
-	echo | vim +"so %"
+	echo | vim +"so %" && clear && echo "updated to newest .vimrc"
 else
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/fresh-install/config-install/vim-install.sh -P ~/
-	chmod +x ~/vim-install.sh && sh ~/vim-install.sh && rm ~/vim-install.sh
-	clear
+	chmod +x ~/vim-install.sh && sh ~/vim-install.sh && rm ~/vim-install.sh && clear && echo "vim config active"
 fi
 }
 
 #moves old config files, and fetches new ones from GitHub
-newconf () {
-    newvim
-    newtmux
-    newalias
-}
+newconf () {newvim && newtmux && newalias}
 
 #tells you what versions of the files you currently have
 alias ver='head -n 1 ~/.bash_aliases ~/.tmux.co ~/.vimrc'
@@ -80,10 +74,7 @@ alias vimconf='$editor ~/.vimrc'			#edits the .vimrc with your preferred editor
 alias vimcp='cp ~/.vimrc ~/.vimrc.old'			# creates a copy of the .vimrc file
 alias rlvim='echo | vim +"so %"  '			# sources .vimrc from shell
 # backup .vimrc, then sources it
-cprlvim () {
-vimcp
-echo | vim +"so %"
-}
+cprlvim () {vimcp && echo | vim +"so %"}
 
 ## Updates & Upgrades
 alias upd='sudo apt update'		#updates
@@ -120,19 +111,10 @@ alias la='ls -lAh --block-size=M --file-type'	#list all the things
 alias lac='ls -laC --color'			#list things in columns
 
 # (forcibly) touch file, then (forcibly) enter
-grope () {
-sudo touch "$1"
-sudo $editor "$1"
-}
+grope () {sudo touch "$1" && sudo $editor "$1"}
 
 #create directory, then change to that dir
-mkcd () {
-mkdir "$1" 
-cd "$1"
-}
+mkcd () {mkdir "$1" && cd "$1"}
 
 #create dir tree, then change to the deepest dir created
-mpcd () {
-mkdir -p "$1" 
-cd "$1"
-}
+mpcd () {mkdir -p "$1" && cd "$1"}
