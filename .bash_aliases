@@ -12,6 +12,7 @@ editor=vim
 ## it gets the file from Dovry's GitHub repo and sources it so it takes effect
 newalias () {
 if [ -e ~/.bash_aliases ]
+then
 	mv ~/.bash_aliases ~/.backup/.bash_aliases.old
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/
 	clear && echo "updated to newest .bash_aliases"
@@ -50,7 +51,7 @@ fi
 }
 
 #moves old config files, and fetches new ones from GitHub
-newconf () {newalias && newvim && newtmux}
+newconf () { newalias && newvim && newtmux }
 
 #tells you what versions of the files you currently have
 alias ver='head -n 1 ~/.bash_aliases ~/.tmux.conf ~/.vimrc'
@@ -72,7 +73,7 @@ alias vimrc='$editor ~/.vimrc'				#edit .vimrc
 alias vimconf='$editor ~/.vimrc'			#edits the .vimrc with your preferred editor
 alias vimcp='cp ~/.vimrc ~/.vimrc.old'			# creates a copy of the .vimrc file
 alias rlvim='echo | vim +"so %"  '			# sources .vimrc from shell
-cprlvim () {vimcp && echo | vim +"so %"}		# backup .vimrc, then sources it
+cprlvim () { vimcp && echo | vim +"so %" }		# backup .vimrc, then sources it
 
 ## Updates & Upgrades
 alias upd='sudo apt update'			#updates
@@ -107,6 +108,6 @@ alias pubip='dig +short myip.opendns.com @resolver1.opendns.com' # gets your pub
 alias opo='sudo netstat -tulpn | grep LISTEN' 		# *OP*en *P*orts
 alias la='ls -lAh --block-size=M --file-type'	#list all the things
 alias lac='ls -laC --color'			#list things in columns
-grope () {sudo touch "$1" && sudo $editor "$1"}		# (forcibly) touch file, then (forcibly) enter
-mkcd () {mkdir "$1" && cd "$1"}				#create directory, then change to that dir
-mpcd () {mkdir -p "$1" && cd "$1"}			#create dir tree, then change to the deepest dir created
+grope () { sudo touch "$1" && sudo $editor "$1" }		# (forcibly) touch file, then (forcibly) enter
+mkcd () { mkdir "$1" && cd "$1" }				#create directory, then change to that dir
+mpcd () { mkdir -p "$1" && cd "$1" }			#create dir tree, then change to the deepest dir created
