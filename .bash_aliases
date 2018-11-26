@@ -29,17 +29,17 @@ if [ -e ~/.tmux.conf ]
 then
 	mv ~/.tmux.conf ~/.backup/.tmux.conf.old
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/
-	tmux source ~/.tmux.conf && clear && echo "updated to newest .tmux.conf"
+	tmux source-file ~/.tmux.conf && clear && echo "updated to newest .tmux.conf"
 else
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/
-	tmux source ~/.tmux.conf && clear && echo "tmux config active"
+	tmux source-file ~/.tmux.conf && clear && echo "tmux config active"
 fi
 }
 
 ## checks if .vimrc exists, if it does it updates and sources it. If it doesn't exist
 ## it gets the file that installs and configures it from Dovry's GitHub repo
 newvim () {
-if [[ -e ~/.vimrc && ~/.vim/colors ]]
+if [ -e ~/.vimrc && ~/.vim/colors ]
 then
 	mv ~/.vimrc ~/.backup/.vimrc.old
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
@@ -57,21 +57,21 @@ newconf () { newalias && newvim && newtmux; }
 alias ver='head -n 1 ~/.bash_aliases ~/.tmux.conf ~/.vimrc'
 
 #mod aliases
-alias alconf='$editor ~/.bash_aliases'			#edit .bash_aliases
-alias rlal='source ~/.bashrc'				#source .bash.rc
-alias cpal='cp ~/.bash_aliases ~/.bash_alias.old'	#backup .bash_aliases
-alias cprlal='cpal && rlal'				#copies .bash_aliases, then sources .bashrc
+alias alconf='$editor ~/.bash_aliases'				#edit .bash_aliases
+alias rlal='source ~/.bashrc'					#source .bash.rc
+alias cpal='cp ~/.bash_aliases ~/.backup/.bash_alias.old'	#backup .bash_aliases
+alias cprlal='cpal && rlal'					#copies .bash_aliases, then sources .bashrc
 
 #mod tmux
-alias tmconf='$editor ~/.tmux.conf'			#edit .tmux.conf
-alias rltm='tmux source ~/.tmux.conf'			#reload .tmux.conf
-alias cptm='cp ~/.tmux.conf ~/.tmux.conf.old'		#backup .tmux.conf
-alias cprltm='cptm && rltm'				#copies .tmux.conf, then sources it
+alias tmconf='$editor ~/.tmux.conf'				#edit .tmux.conf
+alias rltm='tmux source-file ~/.tmux.conf'			#reload .tmux.conf
+alias cptm='cp ~/.tmux.conf ~/backup/.tmux.conf.old'		#backup .tmux.conf
+alias cprltm='cptm && rltm'					#copies .tmux.conf, then sources it
 
 #mod vim
 alias vimrc='$editor ~/.vimrc'				#edit .vimrc
 alias vimconf='$editor ~/.vimrc'			#edits the .vimrc with your preferred editor
-alias vimcp='cp ~/.vimrc ~/.vimrc.old'			# creates a copy of the .vimrc file
+alias vimcp='cp ~/.vimrc ~/.backup/.vimrc.old'		# creates a copy of the .vimrc file
 alias rlvim='echo | vim +"so %"  '			# sources .vimrc from shell
 cprlvim () { vimcp && echo | vim +"so %"; }		# backup .vimrc, then sources it
 
