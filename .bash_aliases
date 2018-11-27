@@ -92,6 +92,7 @@ alias af='sudo apt install -f'			#fixes broken packages
 alias ta='tmux attach -t'		# Attaches tmux to a session
 alias tm='tmux new -s'			# Creates a new session
 alias tl='tmux list-sessions'		# Lists all ongoing sessions
+alias tk='tmux kill-session -t'		# kill specific session
 
 ## Utility 
 alias c='clear'						#clears the terminal, ctrl+L works as well
