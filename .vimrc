@@ -1,4 +1,4 @@
-" version 1.1.1 
+" version 1.2.1 
 " X.0.0 means major version, where the whole file is changed
 " 0.X.0 means a minor version, where a command is added/removed
 " 0.0.X means a fix, where a command is moved, or the file is improved in any way
@@ -30,8 +30,11 @@ Plugin 'dhruvasagar/vim-table-mode'
 "Plugin 'Valloric/YouCompleteMe'
 
 " plugins end
-" to install the newest (versions) plugins, run:
-" :so ~/.vimrc and then :PluginInstall
+" to install the newest (versions) plugins, run
+" :w
+" :so ~/.vimrc
+" :PluginInstall
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -49,24 +52,23 @@ colorscheme iceberg
 
 " ### keybindings
 map <C-n> :NERDTreeToggle<CR>
-
+"Allow saving of files as sudo when vim is in read-only mode
+cmap w!! w !sudo tee > /dev/null %
 " split navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-
 " code folding
 set foldmethod=indent
 set foldlevel=99
 " Enable folding with the spacebar
 nnoremap <C-space> za
 
-" ### plugin configurations
 
+" ### plugin configurations
 " vim-table-mode
 let g:table_mode_corner="|"
-
 "vim-indent-guides
 let g:indent_guides_guide_size = 1
 let g:indent_guides_color_change_percent = 3
