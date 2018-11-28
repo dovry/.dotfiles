@@ -11,7 +11,7 @@ editor=vim
 ## checks if .bash_aliases exists, if it does it updates and sources it if it doesn't exist
 ## it gets the file from Dovry's GitHub repo and sources it so it takes effect
 newalias () {
-if [ -e ~/.bash_aliases ]
+if [ -f ~/.bash_aliases ]
 then
 	mv ~/.bash_aliases ~/.backup/.bash_aliases.old
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/
@@ -25,7 +25,7 @@ fi
 ## checks if .tmux.conf exists, if it does it updates and sources it. If it doesn't exist
 ## it gets the file from Dovry's GitHub repo and sources it so it takes effect
 newtmux () {
-if [ -e ~/.tmux.conf ]
+if [ -f ~/.tmux.conf ]
 then
 	mv ~/.tmux.conf ~/.backup/.tmux.conf.old
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/
@@ -39,7 +39,7 @@ fi
 ## checks if .vimrc exists, if it does it updates and sources it. If it doesn't exist
 ## it gets the file that installs and configures it from Dovry's GitHub repo
 newvim () {
-if [[ -e ~/.vimrc && ~/.vim/colors ]]
+if [[ -f ~/.vimrc && -d ~/.vim/colors ]]
 then
 	mv ~/.vimrc ~/.backup/.vimrc.old
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
