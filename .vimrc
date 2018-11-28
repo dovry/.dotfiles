@@ -1,4 +1,4 @@
-" version 1.2.1 
+" version 1.2.2
 " X.0.0 means major version, where the whole file is changed
 " 0.X.0 means a minor version, where a command is added/removed
 " 0.0.X means a fix, where a command is moved, or the file is improved in any way
@@ -6,6 +6,7 @@
 " general config / utility
 syntax enable
 set nocompatible 	" be iMproved, required
+set number    " line numbers
 filetype off 		" required
 set ignorecase 		" https://stackoverflow.com/questions/2287440/how-to-do-case-insensitive-search-in-vim
 set smartcase
