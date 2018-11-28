@@ -1,4 +1,4 @@
-# version 5.12.21
+# version 5.12.22
 # X.0.0 major	 	- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -39,7 +39,7 @@ fi
 ## checks if .vimrc exists, if it does it updates and sources it. If it doesn't exist
 ## it gets the file that installs and configures it from Dovry's GitHub repo
 newvim () {
-if [[ -f ~/.vimrc && -d ~/.vim/colors ]]
+if [[ -f ~/.vimrc ]] && [[ -d ~/.vim/colors ]]
 then
 	mv ~/.vimrc ~/.backup/.vimrc.old
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
