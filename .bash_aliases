@@ -1,4 +1,4 @@
-# version 5.12.22
+# version 5.13.22
 # X.0.0 major	 	- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -32,6 +32,7 @@ then
 	tmux source-file ~/.tmux.conf && clear && echo "updated to newest .tmux.conf"
 else
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 	tmux source-file ~/.tmux.conf && clear && echo "tmux config active"
 fi
 }
