@@ -25,15 +25,17 @@ fi
 ## checks if .tmux.conf exists, if it does it updates and sources it. If it doesn't exist
 ## it gets the file from Dovry's GitHub repo and sources it so it takes effect
 newtmux () {
-if [ -f ~/.tmux.conf ]
+if [[ -f ~/.tmux.conf ]] && [[ -d ~/.tmux/plugins/tpm ]]
 then
 	mv ~/.tmux.conf ~/.backup/.tmux.conf.old
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/
-	tmux source-file ~/.tmux.conf && clear && echo "updated to newest .tmux.conf"
+	tmux source-file ~/.tmux.conf && ~/.tmux/plugins/tpm/bin/update_plugins all
+	clear && echo "updated to newest .tmux.conf"
 else
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-	tmux source-file ~/.tmux.conf && clear && echo "tmux config active"
+	tmux source-file ~/.tmux.conf && ~/.tmux/plugins/tpm/bin/install_plugins
+	clear && echo "tmux config active"
 fi
 }
 
