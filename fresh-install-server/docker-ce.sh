@@ -1,5 +1,9 @@
 #!/bin/bash
 
+## If you're running this on a cloud (AWS / Azure / GCP etc.) you'll need to relog
+## for the permissions to apply to your account, meaning you won't be able to run
+## containers because your user won't have the privileges to do so until it logs back in.
+
 echo "running update"
 sudo apt-get update
 echo "installing dependencies"
@@ -27,7 +31,7 @@ echo "adding current user to group docker"
 username="$(whoami)"
 sudo usermod -aG docker $username
 echo "running test container"
-docker run hello-world
+docker run --rm hello-world
 echo "docker has been successfully installed"
 
 # the following installs docker compose (newest as of this writing)
