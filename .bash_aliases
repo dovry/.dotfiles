@@ -1,4 +1,4 @@
-# version 5.13.22
+# version 5.14.22
 # X.0.0 major	 	- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -115,3 +115,9 @@ alias lac='ls -laC --color'			#list things in columns
 grope () { sudo touch "$1" && sudo $editor "$1"; }		# (forcibly) touch file, then (forcibly) enter
 mkcd () { mkdir "$1" && cd "$1"; }				#create directory, then change to that dir
 mpcd () { mkdir -p "$1" && cd "$1"; }			#create dir tree, then change to the deepest dir created
+
+## Docker
+alias dc='docker-compose'         # shortcut for docker-compose
+alias dcd='docker-compose down'   # brings down the environment gracefully
+alias dcu='docker-compose up -d'  # brings up the environment
+alias dcp='docker-compose pull'   # pulls all images listed in the docker-compose file
