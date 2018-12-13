@@ -1,4 +1,4 @@
-" version 1.3.4
+" version 1.3.5
 " X.0.0 means major version, where the whole file is changed
 " 0.X.0 means a minor version, where a command is added/removed
 " 0.0.X means a fix, where a command is moved, or the file is improved in any way
