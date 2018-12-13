@@ -28,6 +28,7 @@ Plugin 'kien/ctrlp.vim' " C-p to open up files from within Vim
 Plugin 'nathanaelkane/vim-indent-guides' " display indent levels
 Plugin 'dhruvasagar/vim-table-mode' " table formatter, use | text| <newline> || to take affect
 Plugin 'tpope/vim-surround' " edit/close surrounding symbols such as brackets or quotes
+Plugin 'terryma/vim-multiple-cursors' " multiple cursors
 
 " # Python plugins
 Plugin 'davidhalter/jedi-vim' " python autocompletion - uses jedi
