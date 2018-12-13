@@ -1,4 +1,4 @@
-" version 1.3.3
+" version 1.3.4
 " X.0.0 means major version, where the whole file is changed
 " 0.X.0 means a minor version, where a command is added/removed
 " 0.0.X means a fix, where a command is moved, or the file is improved in any way
@@ -27,6 +27,7 @@ Plugin 'easymotion/vim-easymotion' " jump around with <leader><leader> for[W]ard
 Plugin 'kien/ctrlp.vim' " C-p to open up files from within Vim
 Plugin 'nathanaelkane/vim-indent-guides' " display indent levels
 Plugin 'dhruvasagar/vim-table-mode' " table formatter, use | text| <newline> || to take affect
+Plugin 'tpope/vim-surround' " edit/close surrounding symbols such as brackets or quotes
 
 " # Python plugins
 Plugin 'davidhalter/jedi-vim' " python autocompletion - uses jedi
