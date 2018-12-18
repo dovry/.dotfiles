@@ -12,7 +12,8 @@ source ~/.bashrc
 updog
 # starts installing packages
 install -y avahi-daemon tmux vim \
-	 rxvt-unicode tree htop git	
+	 rxvt-unicode tree htop git \
+	 curl
 
 # fetches vim colorschemes, puts them in the correct folder, then removes the theme file
 # This is required by ~/.vimrc
