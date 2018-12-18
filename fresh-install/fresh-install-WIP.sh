@@ -11,16 +11,12 @@ source ~/.bashrc
 # requires the .bash_aliases file, runs a full update & upgrade on the system, and fetches the latest dotfiles.
 updog
 # starts installing packages
-install -y avahi-daemon \
-	openssh-server \
-	tmux \
-	vim \
-	tree \
-	htop \
-	
+install -y avahi-daemon tmux vim \
+	 rxvt-unicode tree htop git	
 
 # fetches vim colorschemes, puts them in the correct folder, then removes the theme file
 # This is required by ~/.vimrc
+# requires package 'git' to work
 mkdir ~/.vim/colors
 wget -P ~/. https://raw.githubusercontent.com/Dovry/dotfiles/master/fresh-install/vim-themes.txt
 wget -P ~/.vim/colors/ -i vim-themes.txt
