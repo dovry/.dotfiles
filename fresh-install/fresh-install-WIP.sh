@@ -8,12 +8,22 @@ crazyvariablenobodycouldeveruse=$(wget https://raw.githubusercontent.com/Dovry/d
 echo $crazyvariablenobodycouldeveruse >> ~/.bashrc
 source ~/.bashrc
 
-# requires the .bash_aliases file, runs a full update & upgrade on the system, and fetches the latest dotfiles.
-updog
+# requires the .bash_aliases file and runs a full update & upgrade on the system
+upd && upg
 # starts installing packages
 install -y avahi-daemon tmux vim \
 	 rxvt-unicode tree htop git \
 	 curl
+
+# removes junk
+uninstall -y --purge libreoffice-core aisleriot* gnome-mines* gnome-sudoku
+uninstall -y ubuntu-web-launchers rhythmbox cheese 
+
+#autoremove
+aa -y
+
+# fetches config files for tmux & vim
+newvim && newtmux
 
 # fetches vim colorschemes, puts them in the correct folder, then removes the theme file
 # This is required by ~/.vimrc
