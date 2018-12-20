@@ -26,8 +26,7 @@ sudo apt autoremove -y
 # fetches config files for tmux
 wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-tmux source-file ~/.tmux.conf && ~/.tmux/plugins/tpm/bin/install_plugins
-clear && echo "tmux config active"
+tmux source-file ~/.tmux.conf
 
 # fetches Vim config
 wget https://raw.githubusercontent.com/Dovry/dotfiles/master/fresh-install/config-install/vim-install.sh -P ~/
