@@ -20,7 +20,7 @@ sudo apt install -y avahi-daemon tmux vim \
 tree htop git curl
 
 # removes junk, most of this is not installed with the minimal version of ubuntu
-sudo apt remove -y --purge libreoffice* aisleriot* gnome-mines* gnome-sudoku
+sudo apt remove -y --purge libreoffice* aisleriot* gnome-mines* gnome-sudoku thunderbird*
 sudo apt remove -y ubuntu-web-launchers rhythmbox cheese 
 
 # clean up unused package dependencies
