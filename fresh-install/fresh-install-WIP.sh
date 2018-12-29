@@ -12,8 +12,8 @@ crazyvariablenobodycouldeveruse=$(wget https://raw.githubusercontent.com/Dovry/d
 echo $crazyvariablenobodycouldeveruse >> /home/$username/.bashrc
 
 # runs a full update & upgrade on the system
-sudo apt update -y
-sudo apt upgrade
+sudo apt -y update
+sudo apt -y upgrade
 
 # starts installing packages
 sudo apt install -y avahi-daemon tmux vim \
