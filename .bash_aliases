@@ -15,10 +15,9 @@ if [ -f ~/.bash_aliases ]
 then
 	mv ~/.bash_aliases ~/.backup/.bash_aliases.old
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/
-	clear && echo "updated to newest .bash_aliases"
 else
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/
-	source ~/.bashrc && clear && echo "aliases active"
+	source ~/.bashrc
 fi
 }
 
@@ -30,12 +29,10 @@ then
 	mv ~/.tmux.conf ~/.backup/.tmux.conf.old
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/
 	tmux source-file ~/.tmux.conf && ~/.tmux/plugins/tpm/bin/update_plugins all
-	clear && echo "updated to newest .tmux.conf"
 else
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 	tmux source-file ~/.tmux.conf && ~/.tmux/plugins/tpm/bin/install_plugins
-	clear && echo "tmux config active"
 fi
 }
 
@@ -46,10 +43,10 @@ if [[ -f ~/.vimrc ]] && [[ -d ~/.vim/colors ]]
 then
 	mv ~/.vimrc ~/.backup/.vimrc.old
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
-	echo | vim +"so %" && clear && echo "updated to newest .vimrc"
+	echo | vim +"so %"
 else
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/fresh-install/config-install/vim-install.sh -P ~/
-	chmod +x ~/vim-install.sh && sh ~/vim-install.sh && rm ~/vim-install.sh && clear && echo "vim config active"
+	chmod +x ~/vim-install.sh && sh ~/vim-install.sh && rm ~/vim-install.sh
 fi
 }
 
