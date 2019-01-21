@@ -118,4 +118,4 @@ alias dc='docker-compose'         # shortcut for docker-compose
 alias dcd='docker-compose down'   # brings down the environment gracefully
 alias dcu='docker-compose up -d'  # brings up the environment
 alias dcp='docker-compose pull'   # pulls all images listed in the docker-compose file
-alias dcdpu='dcd && dcp && dcu'
+alias dcdpu='dcd && dcp && dcu'   # oneline for the previous three commands
