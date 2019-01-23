@@ -1,4 +1,4 @@
-# version 5.15.24
+# version 5.15.25
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -45,9 +45,6 @@ then
 	mv ~/.vimrc ~/.backup/.vimrc.old
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
 	echo | vim +"so %"
-else
-	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/fresh-install/config-install/vim-install.sh -P ~/
-	chmod +x ~/vim-install.sh && sh ~/vim-install.sh && rm ~/vim-install.sh
 fi
 }
 
