@@ -1,4 +1,4 @@
-" version 2.3.7
+" version 2.4.7
 " X.0.0 major 	- the file is overhauled
 " 0.X.0 minor	- commands are added or removed
 " 0.0.X fix 	- the file is improved in any other way
@@ -9,15 +9,10 @@ set number   		" line numbers
 set ignorecase 		" http://vim.wikia.com/wiki/Searching
 set smartcase		" ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-" install plugin manager if it's not installed already
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
 call plug#begin('~/.vim/plugged')
 Plug 'ervandew/supertab'                 " tab completion
 Plug 'scrooloose/nerdtree'               " file explorer in vim 
 Plug 'kien/ctrlp.vim'                    " C-p to open up files from within Vim
-Plug 'itchyny/lightline.vim'             " status at the bottom of the vim window
 Plug 'tomtom/tcomment_vim'               " smart commenting
 Plug 'easymotion/vim-easymotion'         " jump around with <leader><leader> for[W]ard, [B]ackward or [S]earch
 Plug 'nathanaelkane/vim-indent-guides'   " display indent levels
@@ -32,8 +27,7 @@ Plug 'airblade/vim-gitgutter'            " shows diff in sidebar
 
 " Themes
 Plug 'cocopon/iceberg.vim'               " dark blue & grey theme
-Plug 'TroyFletcher/vim-colors-synthwave' " A E S T H E T I C - use Kolor from 'vim-airline' plugin to match themes
-Plug 'vim-airline/vim-airline-themes'    " multiple themes for Lightline plugin
+Plug 'TroyFletcher/vim-colors-synthwave' " A E S T H E T I C
 
 " to install the newest (versions) plugins, run
 " :w
@@ -42,19 +36,8 @@ Plug 'vim-airline/vim-airline-themes'    " multiple themes for Lightline plugin
 
 call plug#end()
 
-
-" statusbar - lightline plugin
-set laststatus=2
-set noshowmode
-
 " colorscheme
-colorscheme iceberg
-
-" 'kolor' matches synthwave theme
-let g:lightline = {
-\ 'colorscheme': 'iceberg',
-\ }
-
+colorscheme synthwave 
 
 " ### keybindings
 map <C-n> :NERDTreeToggle<CR>
@@ -82,6 +65,12 @@ function! s:isAtStartOfLine(mapping)
   let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
   return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
 endfunction
+
+" automatically install plugins on startup
+autocmd VimEnter *
+  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \|   PlugInstall --sync | q
+  \| endif
 
 inoreabbrev <expr> <bar><bar>
           \ <SID>isAtStartOfLine('\|\|') ?
