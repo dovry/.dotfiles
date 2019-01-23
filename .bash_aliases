@@ -15,9 +15,9 @@ newalias () {
 if [ -f ~/.bash_aliases ]
 then
 	mv ~/.bash_aliases ~/.backup/.bash_aliases.old
-	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/
+	wget -q --show-progress https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/
 else
-	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/
+	wget -q --show-progress https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/
 	source ~/.bashrc
 fi
 }
@@ -28,10 +28,10 @@ newtmux () {
 if [[ -f ~/.tmux.conf ]] && [[ -d ~/.tmux/plugins/tpm ]]
 then
 	mv ~/.tmux.conf ~/.backup/.tmux.conf.old
-	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/
+	wget -q --show-progress https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/
 	tmux source-file ~/.tmux.conf && ~/.tmux/plugins/tpm/bin/update_plugins all
 else
-	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/
+	wget -q --show-progress https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 	tmux source-file ~/.tmux.conf && ~/.tmux/plugins/tpm/bin/install_plugins
 fi
@@ -43,12 +43,12 @@ newvim () {
 if [[ -f ~/.vimrc ]]
 then
 	mv ~/.vimrc ~/.backup/.vimrc.old
-	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
+	wget -q --show-progress https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
 	echo | vim +"so %"
 else
 	mkdir -p ~/.vim/autoload/
-	wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -P ~/.vim/autoload/
-        wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
+	wget -q --show-progress https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -P ~/.vim/autoload/
+        wget -q --show-progress https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
 	echo | vim +"so %"
 fi
 }
