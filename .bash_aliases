@@ -1,4 +1,4 @@
-# version 5.15.25
+# version 5.15.26
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -44,6 +44,11 @@ if [[ -f ~/.vimrc ]]
 then
 	mv ~/.vimrc ~/.backup/.vimrc.old
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
+	echo | vim +"so %"
+else
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+   	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
 	echo | vim +"so %"
 fi
 }
