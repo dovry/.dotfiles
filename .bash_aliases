@@ -54,7 +54,7 @@ fi
 }
 
 #moves old config files, and fetches new ones from GitHub
-newconf () { newalias && newvim && newtmux; }
+newconf () { newalias; newvim; newtmux; }
 
 #tells you what versions of the files you currently have
 alias ver='head -n 1 ~/.bash_aliases ~/.tmux.conf ~/.vimrc'
