@@ -1,4 +1,4 @@
-# version 5.16.29
+# version 5.16.30
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -55,7 +55,7 @@ fi
 newconf () { newalias & newvim & newtmux & wait;}
 
 #tells you what versions of the files you currently have
-alias ver='grep -E "\" version|# version" ~/.vimrc ~/.tmux.conf ~/.bash_aliases | head -n -1'
+alias ver='grep -P "version \d+.\d+.\d+" ~/.vimrc ~/.tmux.conf ~/.bash_aliases | awk -F {print $2 " " $3}
 
 #mod aliases
 alias alconf='$editor ~/.bash_aliases'				#edit .bash_aliases
