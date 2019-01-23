@@ -40,7 +40,7 @@ fi
 ## checks if .vimrc exists, if it does it updates and sources it. If it doesn't exist
 ## it gets the file that installs and configures it from Dovry's GitHub repo
 newvim () {
-if [[ -f ~/.vimrc ]] && [[ -d ~/.vim/colors ]]
+if [[ -f ~/.vimrc ]]
 then
 	mv ~/.vimrc ~/.backup/.vimrc.old
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
