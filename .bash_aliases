@@ -1,5 +1,5 @@
-# version 5.15.23
-# X.0.0 major	 	- the file is overhauled
+# version 5.15.24
+# X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
 
@@ -8,8 +8,9 @@ editor=vim
 
 ### Aliases and functions
 
-## checks if .bash_aliases exists, if it does it updates and sources it if it doesn't exist
-## it gets the file from Dovry's GitHub repo and sources it so it takes effect
+## checks if .bash_aliases exists, if it does it updates and sources it.
+## if it doesn't exist it gets the file from Dovry's GitHub 
+## repo and sources it so it takes effect
 newalias () {
 if [ -f ~/.bash_aliases ]
 then
