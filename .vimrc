@@ -1,63 +1,60 @@
-" version 1.3.7
-# X.0.0 major 	- the file is overhauled
-# 0.X.0 minor		- commands are added or removed
-# 0.0.X fix 		- the file is improved in any other way
+" version 2.3.7
+" X.0.0 major 	- the file is overhauled
+" 0.X.0 minor	- commands are added or removed
+" 0.0.X fix 	- the file is improved in any other way
 
 " general config / utility
-syntax enable
 set nocompatible 	" be iMproved, required
-set number    " line numbers
-filetype off 		" required
-set ignorecase 		" https://stackoverflow.com/questions/2287440/how-to-do-case-insensitive-search-in-vim
-set smartcase
+set number   		" line numbers
+set ignorecase 		" http://vim.wikia.com/wiki/Searching
+set smartcase		" ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" install plugin manager if it's not installed already
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" plugins start
-Plugin 'ervandew/supertab' " tab completion
-Plugin 'scrooloose/nerdtree' " file explorer in vim 
-Plugin 'itchyny/lightline.vim' " line at the bottom of the vim window
-Plugin 'tomtom/tcomment_vim' " smart commenting
-Plugin 'tmhedberg/SimpylFold' " better code folding 
-Plugin 'easymotion/vim-easymotion' " jump around with <leader><leader> for[W]ard, [B]ackward or [S]earch
-Plugin 'kien/ctrlp.vim' " C-p to open up files from within Vim
-Plugin 'nathanaelkane/vim-indent-guides' " display indent levels
-Plugin 'dhruvasagar/vim-table-mode' " table formatter, use | text| <newline> || to take affect
-Plugin 'tpope/vim-surround' " edit/close surrounding symbols such as brackets or quotes
-Plugin 'terryma/vim-multiple-cursors' " multiple cursors
-Plugin 'chrisbra/Colorizer' " Color highlighting
+call plug#begin('~/.vim/plugged')
+Plug 'ervandew/supertab'                 " tab completion
+Plug 'scrooloose/nerdtree'               " file explorer in vim 
+Plug 'kien/ctrlp.vim'                    " C-p to open up files from within Vim
+Plug 'itchyny/lightline.vim'             " status at the bottom of the vim window
+Plug 'tomtom/tcomment_vim'               " smart commenting
+Plug 'easymotion/vim-easymotion'         " jump around with <leader><leader> for[W]ard, [B]ackward or [S]earch
+Plug 'nathanaelkane/vim-indent-guides'   " display indent levels
+Plug 'tpope/vim-surround'                " edit/close surrounding symbols such as brackets or quotes
 
 " # Python plugins
-Plugin 'davidhalter/jedi-vim' " python autocompletion - uses jedi
+"Plug 'davidhalter/jedi-vim'             " python autocompletion - uses jedi
 
 " # Git plugins
-"Plugin 'airblade/vim-gitgutter'
-"Plugin 'sjl/gundo.vim' " visualise git undo tree
+Plug 'airblade/vim-gitgutter'            " shows diff in sidebar
+"Plug 'sjl/gundo.vim'                    " visualise git undo tree
 
-" plugins end
+" Themes
+Plug 'cocopon/iceberg.vim'               " dark blue & grey theme
+Plug 'TroyFletcher/vim-colors-synthwave' " A E S T H E T I C - use Kolor from 'vim-airline' plugin to match themes
+Plug 'vim-airline/vim-airline-themes'    " multiple themes for Lightline plugin
+
 " to install the newest (versions) plugins, run
 " :w
 " :so ~/.vimrc
 " :PluginInstall
 
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
 
 
 " statusbar - lightline plugin
 set laststatus=2
 set noshowmode
 
+" colorscheme
+colorscheme iceberg
+
+" 'kolor' matches synthwave theme
 let g:lightline = {
 \ 'colorscheme': 'iceberg',
 \ }
 
-" colorscheme
-colorscheme iceberg
 
 " ### keybindings
 map <C-n> :NERDTreeToggle<CR>
