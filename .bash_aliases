@@ -1,4 +1,4 @@
-# version 5.15.28
+# version 5.16.29
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -44,17 +44,15 @@ if [[ -f ~/.vimrc ]]
 then
 	mv ~/.vimrc ~/.backup/.vimrc.old
 	wget -q --show-progress https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
-	echo | vim +"so %"
 else
 	mkdir -p ~/.vim/autoload/
 	wget -q --show-progress https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -P ~/.vim/autoload/
         wget -q --show-progress https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
-	echo | vim +"so %"
 fi
 }
 
 #moves old config files, and fetches new ones from GitHub
-newconf () { newalias; newvim; newtmux; }
+newconf () { newalias & newvim & newtmux & wait}
 
 #tells you what versions of the files you currently have
 alias ver='head -n 1 ~/.bash_aliases ~/.tmux.conf ~/.vimrc'
