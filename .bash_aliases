@@ -55,7 +55,7 @@ fi
 newconf () { newalias & newvim & newtmux & wait;}
 
 #tells you what versions of the files you currently have
-alias ver='grep -P "version \d+.\d+.\d+" ~/.vimrc ~/.tmux.conf ~/.bash_aliases | awk -F {print $2 " " $3}
+alias ver='grep -P "version \d+.\d+.\d+" ~/.vimrc ~/.tmux.conf ~/.bash_aliases | awk -F {print $2 " " $3}'
 
 #mod aliases
 alias alconf='$editor ~/.bash_aliases'				#edit .bash_aliases
