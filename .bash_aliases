@@ -1,4 +1,4 @@
-# version 5.16.31
+# version 5.17.31
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -105,6 +105,7 @@ alias please='sudo $(history -p !!)'			#rerun last command as sudo
 alias ffs='sudo $(history -p !!)'			#rerun last command as sudo
 alias phug='tree -phug'					#Print filetype - Human readable size - Username - Groupname
 alias network-restart='sudo /etc/init.d/networking restart'
+alias flushdns='sudo systemd-resolve --flush-caches'
 alias vols='lvs -o +devices'				# lists volumes and where they're mounted
 alias pubip='dig +short myip.opendns.com @resolver1.opendns.com' # gets your public ip
 alias opo='sudo netstat -tulpn | grep LISTEN' 		# *OP*en *P*orts
