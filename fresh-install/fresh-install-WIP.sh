@@ -33,8 +33,8 @@ tmux source-file /home/$username/.tmux.conf
 
 # fetches Vim config
 mkdir -p ~/.vim/autoload/
-	wget -bqc --show-progress https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -P ~/.vim/autoload/
-        wget -bqc --show-progress https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
+wget -bqc --show-progress https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -P ~/.vim/autoload/
+wget -bqc --show-progress https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
 
 # Clean up the homefolder
 rmdir /home/$username/{Music,Public,Templates,Videos,Desktop}
