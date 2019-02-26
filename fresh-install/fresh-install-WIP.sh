@@ -17,7 +17,7 @@ sudo apt -y upgrade
 
 # starts installing packages
 sudo apt install -y avahi-daemon tmux vim \
-tree htop git curl net-tools
+tree htop git curl net-tools autojump
 
 # removes junk, most of this is not installed with the minimal version of ubuntu
 sudo apt remove -y --purge libreoffice* aisleriot* gnome-mines* gnome-sudoku thunderbird*
@@ -40,6 +40,9 @@ wget -bqc --show-progress https://raw.githubusercontent.com/Dovry/dotfiles/maste
 rmdir /home/$username/{Music,Public,Templates,Videos,Desktop}
 mkdir /home/$username/.backups
 chown -R $username:$username /home/$username/*
+
+# Add Autojump configuration to the system
+echo ". /usr/share/autojump/autojump.sh" > ~/.bashrc
 
 # tells user to source .bashrc
 source /home/$username/.bashrc
