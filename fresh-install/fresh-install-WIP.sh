@@ -32,8 +32,9 @@ git clone https://github.com/tmux-plugins/tpm /home/$username/.tmux/plugins/tpm
 tmux source-file /home/$username/.tmux.conf
 
 # fetches Vim config
-wget https://raw.githubusercontent.com/Dovry/dotfiles/master/fresh-install/config-install/vim-install.sh -P /home/$username
-chmod +x /home/$username/vim-install.sh && sh /home/$username/vim-install.sh && rm /home/$username/vim-install.sh
+mkdir -p ~/.vim/autoload/
+	wget -bqc --show-progress https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -P ~/.vim/autoload/
+        wget -bqc --show-progress https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/
 
 # Clean up the homefolder
 rmdir /home/$username/{Music,Public,Templates,Videos,Desktop}
