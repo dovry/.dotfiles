@@ -42,7 +42,7 @@ mkdir /home/$username/.backups
 chown -R $username:$username /home/$username/*
 
 # Add Autojump configuration to the system
-echo ". /usr/share/autojump/autojump.sh" > ~/.bashrc
+echo ". /usr/share/autojump/autojump.sh" >> ~/.bashrc
 
 # tells user to source .bashrc
 source /home/$username/.bashrc
