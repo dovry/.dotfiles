@@ -1,13 +1,13 @@
-" version 2.5.7
+" version 2.5.8
 " X.0.0 major 	- the file is overhauled
 " 0.X.0 minor	- commands are added or removed
 " 0.0.X fix 	- the file is improved in any other way
 
 " general config / utility
-set nocompatible 	" be iMproved, required
-set number   		" line numbers
-set ignorecase 		" http://vim.wikia.com/wiki/Searching
-set smartcase		" ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+set nocompatible    " be iMproved, required
+set relativenumber  " line numbers, but RELATIVE!
+set ignorecase      " http://vim.wikia.com/wiki/Searching
+set smartcase       " ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 call plug#begin('~/.vim/plugged')
 Plug 'ervandew/supertab'                 " tab completion
