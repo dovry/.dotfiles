@@ -1,4 +1,4 @@
-# version 5.17.31
+# version 5.18.31
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -111,13 +111,23 @@ alias pubip='dig +short myip.opendns.com @resolver1.opendns.com' # gets your pub
 alias opo='sudo netstat -tulpn | grep LISTEN' 		# *OP*en *P*orts
 alias la='ls -lAh --block-size=M --file-type'	#list all the things
 alias lac='ls -laC --color'			#list things in columns
-grope () { sudo touch "$1" && sudo $editor "$1"; }		# (forcibly) touch file, then (forcibly) enter
+grope () { sudo touch "$1" && sudo $editor "$1"; }		# (forcibly) touch file, then (forcibly) edit
 mkcd () { mkdir "$1" && cd "$1"; }				#create directory, then change to that dir
 mpcd () { mkdir -p "$1" && cd "$1"; }			#create dir tree, then change to the deepest dir created
 
 ## Docker
+alias wd='watch docker ps'	  # live view of running docker containers
+alias dps='docker ps'		  # list of running docker containers
+alias dils='docker image ls'	  # list of images stored locally
+alias dirm='docker image rm'	  # docker image remove
+
+## Docker-compose
 alias dc='docker-compose'         # shortcut for docker-compose
 alias dcd='docker-compose down'   # brings down the environment gracefully
 alias dcu='docker-compose up -d'  # brings up the environment
 alias dcp='docker-compose pull'   # pulls all images listed in the docker-compose file
 alias dcdpu='dcd && dcp && dcu'   # oneline for the previous three commands
+
+## Vagrant
+alias vup='vagrant up'		  # start vm from vagrant file
+alias vs='vagrant ssh'		  # ssh into the vagrant vm
