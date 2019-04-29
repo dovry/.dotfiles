@@ -1,4 +1,4 @@
-# version 5.18.31
+# version 5.19.31
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -131,3 +131,4 @@ alias dcdpu='dcd && dcp && dcu'   # oneline for the previous three commands
 ## Vagrant
 alias vup='vagrant up'		  # start vm from vagrant file
 alias vs='vagrant ssh'		  # ssh into the vagrant vm
+alias vde='vagrant destroy'	  # destroy the vagrant vm
