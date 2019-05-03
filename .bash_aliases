@@ -1,4 +1,4 @@
-# version 5.20.31
+# version 5.20.32
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -118,9 +118,9 @@ mpcd () { mkdir -p "$1" && cd "$1"; }			#create dir tree, then change to the dee
 ## Docker
 alias wd='watch docker ps'	  # live view of running docker containers
 alias dps='docker ps'		  # list of running docker containers
-alias dcst='docker container stop'# stop container
+alias dcst='docker container stop' # stop container
 alias dcrm='docker container rm'  # remove container
-dcstrm () {docker container stop "$1" && docker container rm "$1";}
+dcstrm () { docker container stop "$1" && docker container rm "$1"; }
 alias dils='docker image ls'	  # list of images stored locally
 alias dirm='docker image rm'	  # docker image remove
 
