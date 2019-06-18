@@ -1,4 +1,4 @@
-# version 5.21.32
+# version 5.21.33
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -138,5 +138,5 @@ alias vde='vagrant destroy'	  # destroy the vagrant vm
 
 ## Ansible
 alias ap='ansible-playbook'   # run playbooks
-alias ave='ansible-vault edit'# modify vault-encrypted files
+alias ave='ansible-vault edit' # modify vault-encrypted files
 alias ams='ansible -m setup' # run facts-gathering on a target host
