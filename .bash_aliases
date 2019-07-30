@@ -1,4 +1,4 @@
-# version 5.22.33
+# version 5.23.33
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -116,7 +116,7 @@ alias lac='ls -laC --color'			#list things in columns
 grope () { sudo touch "$1" && sudo $editor "$1"; }		# (forcibly) touch file, then (forcibly) edit
 mkcd () { mkdir "$1" && cd "$1"; }				#create directory, then change to that dir
 mpcd () { mkdir -p "$1" && cd "$1"; }			#create dir tree, then change to the deepest dir created
-
+..() { cd $(for ((c=0; c<${1:-1}; ++c)); do echo -n ../; done) } # cd up N directories - cd 3 goes up 3
 ## Docker
 alias wd='watch docker ps'	  # live view of running docker containers
 alias dps='docker ps'		  # list of running docker containers
