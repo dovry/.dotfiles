@@ -8,7 +8,7 @@ Version numbering in the files
 ### .bash_aliases
 meat and potatoes of the repo. 
 
-This file contains all my shortcuts and alises
+This file contains all my shortcuts and aliases
 
 ### .tmux.conf
 configuration for [Tmux](https://github.com/tmux/tmux)
