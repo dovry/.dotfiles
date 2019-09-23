@@ -1,4 +1,4 @@
-# version 5.23.35
+# version 5.24.35
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -156,3 +156,8 @@ alias vde='vagrant destroy'	  # destroy the vagrant vm
 alias ap='ansible-playbook'   # run playbooks
 alias ave='ansible-vault edit' # modify vault-encrypted files
 alias ams='ansible -m setup' # run facts-gathering on a target host
+
+## Terraform
+alias tf='terraform'
+alias tfp='terraform plan'
+alias tfa='terraform apply'
