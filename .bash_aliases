@@ -1,4 +1,4 @@
-# version 5.24.35
+# version 5.25.35
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -161,3 +161,9 @@ alias ams='ansible -m setup' # run facts-gathering on a target host
 alias tf='terraform'
 alias tfp='terraform plan'
 alias tfa='terraform apply'
+alias tfd='terraform destroy'
+alias tft='terraform taint'
+alias tfut='terraform untaint'
+alias tfi='terraform init'
+alias tfv='terraform validate'
+alias tfver='terraform version'
