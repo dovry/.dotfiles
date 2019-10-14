@@ -5,12 +5,14 @@ Version numbering in the files
 - 0.X.0 minor		- commands are added or removed
 - 0.0.X fix 		- the file is improved in any other way
 
-### .bash_aliases
+### .bash_aliases & .zshrc
+
 meat and potatoes of the repo. 
 
-This file contains all my shortcuts and aliases
+These files contain all my shortcuts and aliases
 
 ### .tmux.conf
+
 configuration for [Tmux](https://github.com/tmux/tmux)
 
 ### .vimrc
