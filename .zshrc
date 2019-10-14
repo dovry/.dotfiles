@@ -1,4 +1,4 @@
-# version 1.0.0
+# version 1.1.0
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -8,11 +8,10 @@ export ZSH="~/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="spaceship"
-
-HYPHEN_INSENSITIVE="true"
-COMPLETION_WAITING_DOTS="true"
-DISABLE_UNTRACKED_FILES_DIRTY="true"
+ZSH_THEME                     ="spaceship"
+HYPHEN_INSENSITIVE            ="true"
+COMPLETION_WAITING_DOTS       ="true"
+DISABLE_UNTRACKED_FILES_DIRTY ="true"
 
 plugins=(
   ansible
@@ -40,6 +39,48 @@ if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 fi
 
+newzsh () {
+if [ -f ~/.zshrc ]; then
+  mv ~/.zshrc ~/.backup/.zshrc.old
+  wget https: //raw.githubusercontent.com/Dovry/dotfiles/master/.zshrc -P ~/ > /dev/null 2>&1
+  source ~/.zshrc
+else
+  wget https: //raw.githubusercontent.com/Dovry/dotfiles/master/.zshrc -P ~/ > /dev/null 2>&1
+  source ~/.zshrc
+}
+
+## checks if .tmux.conf exists, if it does it updates and sources it. If it doesn't exist
+## it gets the file from Dovry's GitHub repo and sources it so it takes effect
+newtmux () {
+if [[ -f ~/.tmux.conf ]] && [[ -d ~/.tmux/plugins/tpm ]]; then
+	mv ~/.tmux.conf ~/.backup/.tmux.conf.old
+	wget https: //raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/ > /dev/null 2>&1
+	tmux source-file ~/.tmux.conf && ~/.tmux/plugins/tpm/bin/update_plugins all
+else
+	wget https      : //raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/ > /dev/null 2>&1
+	git  clone https: //github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm > /dev/null 2>&1
+	tmux source-file ~/.tmux.conf && ~/.tmux/plugins/tpm/bin/install_plugins
+fi
+}
+
+## checks if .vimrc exists, if it does it updates and sources it. If it doesn't exist
+## it gets the file that installs and configures it from Dovry's GitHub repo
+newvim () {
+if [[ -f ~/.vimrc ]]; then
+	mv ~/.vimrc ~/.backup/.vimrc.old
+	wget https: //raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/ > /dev/null 2>&1
+else
+	mkdir -p ~/.vim/autoload/
+	wget https: //raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -P ~/.vim/autoload/ > /dev/null 2>&1
+	wget https: //raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/ > /dev/null 2>&1
+fi
+}
+
+#moves old config files, and fetches new ones from GitHub
+newconf () { newzsh & newvim & newtmux & wait;}
+
+
+
 ## Updates & Upgrades
 alias       upd='sudo apt update'			#updates
 alias       upg='sudo apt dist-upgrade -y'		#upgrades
@@ -55,7 +96,7 @@ alias       aug='sudo apt upgrade'			#another version of 'upg'
 alias        aa='sudo apt autoremove'			#cleans unused packages
 alias        af='sudo apt install -f'			#fixes broken packages
 
-## Utility 
+## Utility
 alias               c='clear'						#clears the terminal, ctrl+L works as well
 alias               s='sudo'						#type 's' instead of 'sudo'
 alias               h='history'					#shows you all the entries of the session
@@ -67,27 +108,27 @@ alias            phug='tree -phug'					#Print filetype - Human readable size - U
 alias network-restart='sudo /etc/init.d/networking restart'
 alias        flushdns='sudo systemd-resolve --flush-caches'
 alias            vols='lvs -o +devices'				# lists volumes and where they're mounted
-alias           pubip='dig +short myip.opendns.com @resolver1.opendns.com' # gets your public ip
-alias             opo='sudo netstat -tulpn | grep LISTEN' 		# *OP*en *P*orts
-alias              la='ls -lAh --block-size=M --file-type'	#list all the things
-alias             lac='ls -laC --color'			#list things in columns
+alias pubip='dig +short myip.opendns.com @resolver1.opendns.com' # gets your public ip
+alias   opo='sudo netstat -tulpn | grep LISTEN' 		# *OP*en *P*orts
+alias    la='ls -lAh --block-size=M --file-type'	#list all the things
+alias   lac='ls -laC --color'			#list things in columns
 grope () { sudo touch "$1" && sudo $editor "$1"; }		# (forcibly) touch file, then (forcibly) edit
 mkcd () { mkdir "$1" && cd "$1"; }				#create directory, then change to that dir
 mpcd () { mkdir -p "$1" && cd "$1"; }			#create dir tree, then change to the deepest dir created
 
 # cd up N directories - 'cd 3' goes up ../../../
 function ..(){
-    if [ -n "$1" ]; then
-        NUM=$(grep -o '[0-9]\+' <<< "$1")
-        START=0
-        while [ "$START" -lt "$NUM" ]
-        do
-            \cd ..
-            START=$((START+1))
-        done
-    else
-        \cd ..
-    fi
+if [ -n "$1" ]; then
+  NUM=$(grep -o '[0-9]\+' <<< "$1")
+  START=0
+    while [ "$START" -lt "$NUM" ]
+    do
+      \cd ..
+      START=$((START+1))
+    done
+else
+  \cd ..
+fi
 }
 
 ## Docker
