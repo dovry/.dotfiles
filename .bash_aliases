@@ -14,10 +14,10 @@ editor=vim
 newalias () {
 if [ -f ~/.bash_aliases ]; then
 	mv ~/.bash_aliases ~/.backup/.bash_aliases.old
-	wget https: //raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/ > /dev/null 2>&1
+	wget -qc https: //raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/ > /dev/null 2>&1
 	source ~/.bashrc
 else
-	wget https: //raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/ > /dev/null 2>&1
+	wget -qc https: //raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/ > /dev/null 2>&1
 	source ~/.bashrc
 fi
 }
@@ -27,10 +27,10 @@ fi
 newtmux () {
 if [[ -f ~/.tmux.conf ]] && [[ -d ~/.tmux/plugins/tpm ]]; then
 	mv ~/.tmux.conf ~/.backup/.tmux.conf.old
-	wget https: //raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/ > /dev/null 2>&1
+	wget -qc https: //raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/ > /dev/null 2>&1
 	tmux source-file ~/.tmux.conf && ~/.tmux/plugins/tpm/bin/update_plugins all
 else
-	wget https      : //raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/ > /dev/null 2>&1
+	wget -qc https      : //raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/ > /dev/null 2>&1
 	git  clone https: //github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm > /dev/null 2>&1
 	tmux source-file ~/.tmux.conf && ~/.tmux/plugins/tpm/bin/install_plugins
 fi
@@ -41,11 +41,11 @@ fi
 newvim () {
 if [[ -f ~/.vimrc ]]; then
 	mv ~/.vimrc ~/.backup/.vimrc.old
-	wget https: //raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/ > /dev/null 2>&1
+	wget -qc https: //raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/ > /dev/null 2>&1
 else
 	mkdir -p ~/.vim/autoload/
-	wget https: //raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -P ~/.vim/autoload/ > /dev/null 2>&1
-	wget https: //raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/ > /dev/null 2>&1
+	wget -qc https: //raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -P ~/.vim/autoload/ > /dev/null 2>&1
+	wget -qc https: //raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/ > /dev/null 2>&1
 fi
 }
 
