@@ -1,4 +1,4 @@
-# version 5.26.37
+# version 5.26.38
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -13,7 +13,7 @@ editor=vim
 ## repo and sources it so it takes effect
 newalias () {
 if [ -f ~/.bash_aliases ]; then
-	mv ~/.bash_aliases ~/.backup/.bash_aliases.old
+	mv -f --backup=numbered  ~/.bash_aliases ~/.backup/
 	wget -qc https: //raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/ > /dev/null 2>&1
 	source ~/.bashrc
 else
@@ -26,7 +26,7 @@ fi
 ## it gets the file from Dovry's GitHub repo and sources it so it takes effect
 newtmux () {
 if [[ -f ~/.tmux.conf ]] && [[ -d ~/.tmux/plugins/tpm ]]; then
-	mv ~/.tmux.conf ~/.backup/.tmux.conf.old
+	mv -f --backup=numbered  ~/.tmux.conf ~/.backup/
 	wget -qc https: //raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/ > /dev/null 2>&1
 	tmux source-file ~/.tmux.conf && ~/.tmux/plugins/tpm/bin/update_plugins all
 else
@@ -40,7 +40,7 @@ fi
 ## it gets the file that installs and configures it from Dovry's GitHub repo
 newvim () {
 if [[ -f ~/.vimrc ]]; then
-	mv ~/.vimrc ~/.backup/.vimrc.old
+	mv -f --backup=numbered  ~/.vimrc ~/.backup/
 	wget -qc https: //raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/ > /dev/null 2>&1
 else
 	mkdir -p ~/.vim/autoload/

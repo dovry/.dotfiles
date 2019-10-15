@@ -1,4 +1,4 @@
-# version 1.2.0
+# version 1.2.1
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -40,7 +40,7 @@ fi
 
 newz () {
 if [ -f ~/.zshrc ]; then
-  mv ~/.zshrc ~/.backup/.zshrc.old
+  mv -f --backup=numbered ~/.zshrc ~/.backup/
   wget -qc https://raw.githubusercontent.com/Dovry/dotfiles/master/.zshrc -P ~/ > /dev/null 2>&1
   source ~/.zshrc
 else
@@ -53,11 +53,11 @@ fi
 ## it gets the file from Dovry's GitHub repo and sources it so it takes effect
 newtmux () {
 if [[ -f ~/.tmux.conf ]] && [[ -d ~/.tmux/plugins/tpm ]]; then
-	mv ~/.tmux.conf ~/.backup/.tmux.conf.old
-	wget -qc https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/ > /dev/null 2>&1
+	mv -f --backup=numbered  ~/.tmux.conf ~/.backup/
+	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/ > /dev/null 2>&1
 	tmux source-file ~/.tmux.conf && ~/.tmux/plugins/tpm/bin/update_plugins all
 else
-	wget -qc https      : //raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/ > /dev/null 2>&1
+	wget https      : //raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/ > /dev/null 2>&1
 	git  clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm > /dev/null 2>&1
 	tmux source-file ~/.tmux.conf && ~/.tmux/plugins/tpm/bin/install_plugins
 fi
@@ -67,12 +67,12 @@ fi
 ## it gets the file that installs and configures it from Dovry's GitHub repo
 newvim () {
 if [[ -f ~/.vimrc ]]; then
-	mv ~/.vimrc ~/.backup/.vimrc.old
-	wget -qc https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/ > /dev/null 2>&1
+	mv -f --backup=numbered  ~/.vimrc ~/.backup/
+	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/ > /dev/null 2>&1
 else
 	mkdir -p ~/.vim/autoload/
-	wget -qc https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -P ~/.vim/autoload/ > /dev/null 2>&1
-	wget -qc https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/ > /dev/null 2>&1
+	wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -P ~/.vim/autoload/ > /dev/null 2>&1
+	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/ > /dev/null 2>&1
 fi
 }
 
