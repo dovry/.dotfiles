@@ -1,4 +1,4 @@
-# version 1.1.0
+# version 1.2.0
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -41,10 +41,10 @@ fi
 newz () {
 if [ -f ~/.zshrc ]; then
   mv ~/.zshrc ~/.backup/.zshrc.old
-  wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.zshrc -P ~/ > /dev/null 2>&1
+  wget -qc https://raw.githubusercontent.com/Dovry/dotfiles/master/.zshrc -P ~/ > /dev/null 2>&1
   source ~/.zshrc
 else
-  wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.zshrc -P ~/ > /dev/null 2>&1
+  wget -qc https://raw.githubusercontent.com/Dovry/dotfiles/master/.zshrc -P ~/ > /dev/null 2>&1
   source ~/.zshrc
 fi
 }
