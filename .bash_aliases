@@ -134,6 +134,9 @@ alias   wd='watch docker ps'	  # live view of running docker containers
 alias  dps='docker ps'		  # list of running docker containers
 alias dcst='docker container stop' # stop container
 alias dcrm='docker container rm'  # remove container
+alias  dnp='docker network prune' # purges all unused networks
+alias  dip='docker image prune -a' # purges all unused images
+alias dspa='docker system prune -a' # purges all unused resources
 dcstrm () { docker container stop "$1" && docker container rm "$1"; }
 alias dils='docker image ls'	  # list of images stored locally
 alias dirm='docker image rm'	  # docker image remove

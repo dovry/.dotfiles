@@ -8,7 +8,7 @@ export ZSH="~/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 
 #ZSH_THEME="robbyrussell"
-ZSH_THEME                     ="spaceship"
+ZSH_THEME="spaceship"
 HYPHEN_INSENSITIVE            ="true"
 COMPLETION_WAITING_DOTS       ="true"
 DISABLE_UNTRACKED_FILES_DIRTY ="true"
