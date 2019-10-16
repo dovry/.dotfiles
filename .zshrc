@@ -107,7 +107,7 @@ alias       upg='sudo apt dist-upgrade -y'		# upgrades
 alias     updog='upd && upg && newconf && ver'	# the whole shebang
 alias   install='sudo apt install'		# type 'install' instead of 'sudo apt install'
 alias uninstall='sudo apt remove'		# type 'uninstal' instead of 'sudo apt remove'
-alias      aver='apt-cache madison'			# package version
+alias   madison='apt-cache madison'			# package version
 alias        as='apt-cache search'			# package search
 alias        ai='sudo apt install'			# another version of 'install'
 alias        ar='sudo apt remove'			# another version of 'uninstall'
@@ -174,16 +174,19 @@ alias   dcd='docker-compose down'   # brings down the environment gracefully
 alias   dcu='docker-compose up -d'  # brings up the environment
 alias   dcp='docker-compose pull'   # pulls all images listed in the docker-compose file
 alias dcdpu='dcd && dcp && dcu'   # oneline for the previous three commands
+alias dver='docker --version'
 
 ## Vagrant
 alias vup='vagrant up'		  # start vm from vagrant file
 alias  vs='vagrant ssh'		  # ssh into the vagrant vm
 alias vde='vagrant destroy'	  # destroy the vagrant vm
+alias vver='vagrant --version' # print vagrant version
 
 ## Ansible
 alias  ap='ansible-playbook'   # run playbooks
 alias ave='ansible-vault edit' # modify vault-encrypted files
 alias ams='ansible -m setup' # run facts-gathering on a target host
+alias aver='ansible --version'
 
 ## Terraform
 alias    tf='terraform'
