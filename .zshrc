@@ -1,4 +1,4 @@
-# version 1.2.1
+# version 1.3.1
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -223,5 +223,9 @@ alias gpo='git push origin'
 alias gpom='git push origin master'
 
 alias gs='git status'
+
+
+# git clone https://github.com/pindexis/qfc $HOME/.qfc
+[[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
 
 source $ZSH/oh-my-zsh.sh
