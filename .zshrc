@@ -1,4 +1,4 @@
-# version 1.5.1
+# version 1.6.1
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -233,5 +233,8 @@ alias gs='git status'
 
 # git clone https://github.com/pindexis/qfc $HOME/.qfc
 [[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
+
+qfc_quick_command 'cd' '\C-b' 'cd $0'
+qfc_quick_command 'vim' '\C-p' 'vim $0'
 
 source $ZSH/oh-my-zsh.sh
