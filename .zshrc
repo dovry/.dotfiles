@@ -1,4 +1,4 @@
-# version 1.6.2
+# version 1.6.3
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -14,7 +14,6 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 plugins=(
   ansible
-  autojump
   command-not-found
   common-aliases
   copyfile
