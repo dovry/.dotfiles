@@ -79,6 +79,9 @@ fi
 # moves old config files, and fetches new ones from GitHub
 newconf () { newz & newvim & newtmux & wait;}
 
+# print file versions
+alias ver='head -qn 1 ~/.vimrc ~/.tmux.conf ~/.zshrc'
+
 # modify zshrc
 alias zconf='"$editor" ~/.zshrc'
 alias rlz='source ~/.zshrc'
