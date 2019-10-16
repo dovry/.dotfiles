@@ -125,9 +125,7 @@ alias             rwx='stat -c %a'					# shows you the RWX rights on a file (rwx
 alias          please='sudo $(history -p !!)'			# rerun last command as sudo
 alias             ffs='sudo $(history -p !!)'			# rerun last command as sudo
 alias            phug='tree -phug'					# Print filetype - Human readable size - Username - Groupname
-function what () { 
-  grep $1 ~/.zshrc | column -t
-}
+function what () { grep $1 ~/.zshrc | column -t; } # grep the alias file
 alias network-restart='sudo /etc/init.d/networking restart'
 alias        flushdns='sudo systemd-resolve --flush-caches'
 alias            vols='lvs -o +devices'				# lists volumes and where they're mounted
