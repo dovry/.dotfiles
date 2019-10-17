@@ -1,4 +1,4 @@
-" version 2.5.8
+" version 2.5.9
 " X.0.0 major 	- the file is overhauled
 " 0.X.0 minor	- commands are added or removed
 " 0.0.X fix 	- the file is improved in any other way
@@ -10,13 +10,14 @@ set ignorecase      " http://vim.wikia.com/wiki/Searching
 set smartcase       " ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 call plug#begin('~/.vim/plugged')
-Plug 'ervandew/supertab'                 " tab completion
-Plug 'scrooloose/nerdtree'               " file explorer in vim 
-Plug 'kien/ctrlp.vim'                    " C-p to open up files from within Vim
-Plug 'tomtom/tcomment_vim'               " smart commenting
-Plug 'easymotion/vim-easymotion'         " jump around with <leader><leader> for[W]ard, [B]ackward or [S]earch
-Plug 'nathanaelkane/vim-indent-guides'   " display indent levels
-Plug 'tpope/vim-surround'                " edit/close surrounding symbols such as brackets or quotes
+Plug 'ervandew/supertab'                " tab completion
+Plug 'scrooloose/nerdtree'              " file explorer in vim 
+Plug 'kien/ctrlp.vim'                   " C-p to open up files from within Vim
+Plug 'tomtom/tcomment_vim'              " smart commenting
+Plug 'easymotion/vim-easymotion'        " jump around with <leader><leader> for[W]ard, [B]ackward or [S]earch
+Plug 'nathanaelkane/vim-indent-guides'  " display indent levels
+Plug 'tpope/vim-surround'               " edit/close surrounding symbols such as brackets or quotes
+Plug 'pearofducks/ansible-vim'          " YAML/Ansible syntax 
 
 " # Python plugins
 "Plug 'davidhalter/jedi-vim'             " python autocompletion - uses jedi
@@ -85,3 +86,10 @@ inoreabbrev <expr> __
 let g:indent_guides_guide_size = 1
 let g:indent_guides_color_change_percent = 3
 let g:indent_guides_enable_on_vim_startup = 1
+
+" ansible-vim config
+let g:ansible_unindent_after_newline = 1
+let g:ansible_attribute_highlight = "ob"
+let g:ansible_name_highlight = 'b'
+let g:ansible_extra_keywords_highlight = 1
+let g:ansible_with_keywords_highlight = 'Constant'
