@@ -1,4 +1,4 @@
-# version 5.26.38
+# version 5.26.39
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -30,7 +30,7 @@ if [[ -f ~/.tmux.conf ]] && [[ -d ~/.tmux/plugins/tpm ]]; then
 	wget -bqc https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/ > /dev/null 2>&1
 	tmux source-file ~/.tmux.conf && ~/.tmux/plugins/tpm/bin/update_plugins all
 else
-	wget -bqc https      : //raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/ > /dev/null 2>&1
+	wget -bqc https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/ > /dev/null 2>&1
 	git  clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm > /dev/null 2>&1
 	tmux source-file ~/.tmux.conf && ~/.tmux/plugins/tpm/bin/install_plugins
 fi
