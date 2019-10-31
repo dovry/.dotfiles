@@ -1,4 +1,4 @@
-# version 5.26.39
+# version 5.26.40
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -122,6 +122,8 @@ mpcd () { mkdir -p "$1" && cd "$1"; }			# create dir tree, then change to the de
 # ls
 alias    la='ls -lAh --block-size=M --file-type'	# list all the things
 alias   lac='ls -laC --color'			# list things in columns
+
+alias cdd='cd -' # jump back and forth between directories
 
 # cd up N directories - cd 3 goes up 3
 function ..(){
