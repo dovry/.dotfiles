@@ -1,4 +1,4 @@
-# version 5.26.40
+# version 5.27.40
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -144,13 +144,13 @@ function ..(){
 alias   wd='watch docker ps'	  # live view of running docker containers
 alias  dps='docker ps'		  # list of running docker containers
 alias dcst='docker container stop' # stop container
-alias dcrm='docker container rm'  # remove container
+alias dils='docker image ls'	  # list of images stored locally
+alias dirm='docker image rm'	  # docker image remove
 alias  dnp='docker network prune' # purges all unused networks
 alias  dip='docker image prune -a' # purges all unused images
 alias dspa='docker system prune -a' # purges all unused resources
-dcstrm () { docker container stop "$1" && docker container rm "$1"; }
-alias dils='docker image ls'	  # list of images stored locally
-alias dirm='docker image rm'	  # docker image remove
+alias dcrm='docker container rm'  # remove container
+drm () { docker container stop "$1" && docker container rm "$1"; }
 
 ## Docker-compose
 alias    dc='docker-compose'         # shortcut for docker-compose
@@ -158,6 +158,7 @@ alias   dcd='docker-compose down'   # brings down the environment gracefully
 alias   dcu='docker-compose up -d'  # brings up the environment
 alias   dcp='docker-compose pull'   # pulls all images listed in the docker-compose file
 alias dcdpu='dcd && dcp && dcu'   # oneline for the previous three commands
+alias dver='docker --version'
 
 ## Vagrant
 alias vup='vagrant up'		  # start vm from vagrant file

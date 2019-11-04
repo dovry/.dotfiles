@@ -163,7 +163,7 @@ alias  dnp='docker network prune' # purges all unused networks
 alias  dip='docker image prune -a' # purges all unused images
 alias dspa='docker system prune -a' # purges all unused resources
 alias dcrm='docker container rm'  # remove container
-dcstrm () { docker container stop "$1" && docker container rm "$1"; }
+drm () { docker container stop "$1" && docker container rm "$1"; }
 
 ## Docker-compose
 alias    dc='docker-compose'         # shortcut for docker-compose
