@@ -1,4 +1,4 @@
-# version 1.6.4
+# version 1.7.4
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -40,10 +40,10 @@ fi
 newz () {
 if [ -f ~/.zshrc ]; then
   mv -f --backup=numbered ~/.zshrc ~/.backup/
-  wget -bqc https://raw.githubusercontent.com/Dovry/dotfiles/master/.zshrc -P ~/ > /dev/null 2>&1
+  wget -bqc --no-cache --no-cookies https://raw.githubusercontent.com/Dovry/dotfiles/master/.zshrc -P ~/ > /dev/null 2>&1
   source ~/.zshrc
 else
-  wget -bqc https://raw.githubusercontent.com/Dovry/dotfiles/master/.zshrc -P ~/ > /dev/null 2>&1
+  wget -bqc --no-cache --no-cookies https://raw.githubusercontent.com/Dovry/dotfiles/master/.zshrc -P ~/ > /dev/null 2>&1
   source ~/.zshrc
 fi
 }
@@ -53,10 +53,10 @@ fi
 newtmux () {
 if [[ -f ~/.tmux.conf ]] && [[ -d ~/.tmux/plugins/tpm ]]; then
 	mv -f --backup=numbered  ~/.tmux.conf ~/.backup/
-	wget -bqc https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/ > /dev/null 2>&1
+	wget -bqc --no-cache --no-cookies https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/ > /dev/null 2>&1
 	tmux source-file ~/.tmux.conf && ~/.tmux/plugins/tpm/bin/update_plugins all
 else
-	wget -bqc https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/ > /dev/null 2>&1
+	wget -bqc --no-cache --no-cookies https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/ > /dev/null 2>&1
 	git  clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm > /dev/null 2>&1
 	tmux source-file ~/.tmux.conf && ~/.tmux/plugins/tpm/bin/install_plugins
 fi
@@ -67,11 +67,11 @@ fi
 newvim () {
 if [[ -f ~/.vimrc ]]; then
 	mv -f --backup=numbered  ~/.vimrc ~/.backup/
-	wget -bqc https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/ > /dev/null 2>&1
+	wget -bqc --no-cache --no-cookies https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/ > /dev/null 2>&1
 else
 	mkdir -p ~/.vim/autoload/
-	wget -bqc https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -P ~/.vim/autoload/ > /dev/null 2>&1
-	wget -bqc https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/ > /dev/null 2>&1
+	wget -bqc --no-cache --no-cookies https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -P ~/.vim/autoload/ > /dev/null 2>&1
+	wget -bqc --no-cache --no-cookies https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/ > /dev/null 2>&1
 fi
 }
 
