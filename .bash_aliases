@@ -1,4 +1,4 @@
-# version 5.28.40
+# version 5.29.40
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -104,6 +104,7 @@ alias             rwx='stat -c %a'					# shows you the RWX rights on a file (rwx
 alias          please='sudo $(history -p !!)'			# rerun last command as sudo
 alias             ffs='sudo $(history -p !!)'			# rerun last command as sudo
 alias            phug='tree -phug'					# Print filetype - Human readable size - Username - Groupname
+alias paste='xclip -selection clipboard -o' # paste the content of clipboard, can be used to dump to file with 'paste > file.txt'
 
 # look up aliases
 function what () { 
