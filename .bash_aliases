@@ -1,4 +1,4 @@
-# version 5.29.40
+# version 5.30.40
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -119,6 +119,7 @@ alias   opo='sudo netstat -tulpn | grep LISTEN' 		# *OP*en *P*orts
 grope () { sudo touch "$1" && sudo $editor "$1"; }		# (forcibly) touch file, then (forcibly) edit
 mkcd () { mkdir "$1" && cd "$1"; }				# create directory, then change to that dir
 mpcd () { mkdir -p "$1" && cd "$1"; }			# create dir tree, then change to the deepest dir created
+alias cdd='cd -'
 
 # ls
 alias    la='ls -lAh --block-size=M --file-type'	# list all the things
