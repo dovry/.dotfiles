@@ -1,4 +1,4 @@
-# version 1.9.4
+# version 1.10.4
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -223,6 +223,7 @@ alias gds='git diff --staged'
 alias gdt='git difftool'
 
 alias gp='git push'
+alias gpa='git remote | xargs -L1 git push -all'
 alias gpl='git pull'
 alias gpo='git push origin'
 alias gpom='git push origin master'

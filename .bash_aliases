@@ -1,4 +1,4 @@
-# version 5.30.40
+# version 5.31.40
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -195,7 +195,7 @@ alias gba='git branch --all'
 alias gc='git commit'
 alias gca='git commit --add'
 alias gcam='git commit --add --message'
-alias gcm='git commit --message'
+alias gcm='git commit -m'
 
 alias gch='git checkout'
 alias gchb='git checkout -b'
@@ -207,6 +207,7 @@ alias gds='git diff --staged'
 alias gdt='git difftool'
 
 alias gp='git push'
+alias gpa='git remote | xargs -L1 git push -all'
 alias gpl='git pull'
 alias gpo='git push origin'
 alias gpom='git push origin master'
