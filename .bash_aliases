@@ -1,12 +1,10 @@
-# version 5.27.38
+# version 5.33.38
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
 
 ### Variables
 editor=vim
-
-### Aliases and functions
 
 ## checks if .bash_aliases exists, if it does it updates and sources it.
 ## if it doesn't exist it gets the file from Dovry's GitHub
@@ -53,9 +51,14 @@ fi
 newconf () { newalias & newvim & newtmux & wait;}
 
 # Make folder colors readable on WSL
-if grep -qPo "(Microsoft|WSL)" /proc/version; then
-  LS_COLORS="ow=01;36;40" && export LS_COLORS
-fi
+wsldir () {
+ if ! $(grep -q "WSL" ~/.bashrc) && $(grep -qP "(Microsoft|WSL)" /proc/version) ; then
+  printf "\n\n# WSL dir colors\nLS_COLORS=\"ow=01;36;40\" && export LS_COLORS" >> ~/.bashrc
+  source ~/.bashrc
+  else
+  printf "\n~/.bashrc already contains WSL dir colors\n"
+ fi
+}
 
 # tells you what versions of the files you currently have
 alias ver='head -qn 1 ~/.vimrc ~/.tmux.conf ~/.bash_aliases'
@@ -111,7 +114,7 @@ alias             ffs='sudo $(history -p !!)'			# rerun last command as sudo
 alias            phug='tree -phug'					# Print filetype - Human readable size - Username - Groupname
 
 # look up aliases
-function what () { 
+what () { 
   grep $1 ~/.bash_aliases | column -t
 }
 alias network-restart='sudo /etc/init.d/networking restart'

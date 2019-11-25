@@ -78,10 +78,6 @@ fi
 # moves old config files, and fetches new ones from GitHub
 newconf () { newz & newvim & newtmux & wait;}
 
-# Make folder colors readable on WSL
-if grep -qPo "(Microsoft|WSL)" /proc/version; then
-  LS_COLORS="ow=01;36;40" && export LS_COLORS
-fi
 
 # print file versions
 alias ver='head -qn 1 ~/.vimrc ~/.tmux.conf ~/.zshrc'
