@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # version 1.7.3
+=======
+# version 1.10.4
+>>>>>>> d83ee96510cd0cd65e071819fa00f8b658842dec
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -7,7 +11,11 @@
 export ZSH=$HOME/.oh-my-zsh
 editor="vim"
 
+<<<<<<< HEAD
 ZSH_THEME="wezm"  #"spaceship"
+=======
+ZSH_THEME="spaceship"
+>>>>>>> d83ee96510cd0cd65e071819fa00f8b658842dec
 HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
@@ -23,12 +31,20 @@ plugins=(
   extract
   git
   git-extras
+<<<<<<< HEAD
 #  kubectl
+=======
+  kubectl
+>>>>>>> d83ee96510cd0cd65e071819fa00f8b658842dec
   perms
   sudo
   tmux
   vagrant
   vscode
+<<<<<<< HEAD
+=======
+  web-search
+>>>>>>> d83ee96510cd0cd65e071819fa00f8b658842dec
 )
 
 # Preferred editor for local and remote sessions
@@ -39,10 +55,17 @@ fi
 newz () {
 if [ -f ~/.zshrc ]; then
   mv -f --backup=numbered ~/.zshrc ~/.backup/
+<<<<<<< HEAD
   wget -qc https://raw.githubusercontent.com/Dovry/dotfiles/master/.zshrc -P ~/ > /dev/null 2>&1
   source ~/.zshrc
 else
   wget -qc https://raw.githubusercontent.com/Dovry/dotfiles/master/.zshrc -P ~/ > /dev/null 2>&1
+=======
+  wget -bqc --no-cache --no-cookies https://raw.githubusercontent.com/Dovry/dotfiles/master/.zshrc -P ~/ > /dev/null 2>&1
+  source ~/.zshrc
+else
+  wget -bqc --no-cache --no-cookies https://raw.githubusercontent.com/Dovry/dotfiles/master/.zshrc -P ~/ > /dev/null 2>&1
+>>>>>>> d83ee96510cd0cd65e071819fa00f8b658842dec
   source ~/.zshrc
 fi
 }
@@ -52,10 +75,17 @@ fi
 newtmux () {
 if [[ -f ~/.tmux.conf ]] && [[ -d ~/.tmux/plugins/tpm ]]; then
 	mv -f --backup=numbered  ~/.tmux.conf ~/.backup/
+<<<<<<< HEAD
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/ > /dev/null 2>&1
 	tmux source-file ~/.tmux.conf && ~/.tmux/plugins/tpm/bin/update_plugins all
 else
 	wget https      : //raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/ > /dev/null 2>&1
+=======
+	wget -bqc --no-cache --no-cookies https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/ > /dev/null 2>&1
+	tmux source-file ~/.tmux.conf && ~/.tmux/plugins/tpm/bin/update_plugins all
+else
+	wget -bqc --no-cache --no-cookies https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/ > /dev/null 2>&1
+>>>>>>> d83ee96510cd0cd65e071819fa00f8b658842dec
 	git  clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm > /dev/null 2>&1
 	tmux source-file ~/.tmux.conf && ~/.tmux/plugins/tpm/bin/install_plugins
 fi
@@ -66,22 +96,33 @@ fi
 newvim () {
 if [[ -f ~/.vimrc ]]; then
 	mv -f --backup=numbered  ~/.vimrc ~/.backup/
+<<<<<<< HEAD
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/ > /dev/null 2>&1
 else
 	mkdir -p ~/.vim/autoload/
 	wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -P ~/.vim/autoload/ > /dev/null 2>&1
 	wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/ > /dev/null 2>&1
+=======
+	wget -bqc --no-cache --no-cookies https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/ > /dev/null 2>&1
+else
+	mkdir -p ~/.vim/autoload/
+	wget -bqc --no-cache --no-cookies https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -P ~/.vim/autoload/ > /dev/null 2>&1
+	wget -bqc --no-cache --no-cookies https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/ > /dev/null 2>&1
+>>>>>>> d83ee96510cd0cd65e071819fa00f8b658842dec
 fi
 }
 
 # moves old config files, and fetches new ones from GitHub
 newconf () { newz & newvim & newtmux & wait;}
 
+<<<<<<< HEAD
 # Make folder colors readable on WSL
 if grep -qPo "(Microsoft|WSL)" /proc/version; then
   LS_COLORS="ow=01;36;40" && export LS_COLORS
 fi
 
+=======
+>>>>>>> d83ee96510cd0cd65e071819fa00f8b658842dec
 # print file versions
 alias ver='head -qn 1 ~/.vimrc ~/.tmux.conf ~/.zshrc'
 
@@ -137,6 +178,11 @@ alias   opo='sudo netstat -tulpn | grep LISTEN' 		# *OP*en *P*orts
 grope () { sudo touch "$1" && sudo $editor "$1"; }		# (forcibly) touch file, then (forcibly) edit
 mkcd () { mkdir "$1" && cd "$1"; }				# create directory, then change to that dir
 mpcd () { mkdir -p "$1" && cd "$1"; }			# create dir tree, then change to the deepest dir created
+<<<<<<< HEAD
+=======
+alias cdd='cd -'
+alias paste='xclip -selection clipboard -o' # paste the content of clipboard, can be used to dump to file with 'paste > file.txt'
+>>>>>>> d83ee96510cd0cd65e071819fa00f8b658842dec
 
 ## ls
 alias    la='ls -lAh --block-size=M --file-type'	# list all the things
@@ -167,7 +213,11 @@ alias  dnp='docker network prune' # purges all unused networks
 alias  dip='docker image prune -a' # purges all unused images
 alias dspa='docker system prune -a' # purges all unused resources
 alias dcrm='docker container rm'  # remove container
+<<<<<<< HEAD
 dcstrm () { docker container stop "$1" && docker container rm "$1"; }
+=======
+drm () { docker container stop "$1" && docker container rm "$1"; }
+>>>>>>> d83ee96510cd0cd65e071819fa00f8b658842dec
 
 ## Docker-compose
 alias    dc='docker-compose'         # shortcut for docker-compose
@@ -225,6 +275,10 @@ alias gds='git diff --staged'
 alias gdt='git difftool'
 
 alias gp='git push'
+<<<<<<< HEAD
+=======
+alias gpa='git remote | xargs -L1 git push -all'
+>>>>>>> d83ee96510cd0cd65e071819fa00f8b658842dec
 alias gpl='git pull'
 alias gpo='git push origin'
 alias gpom='git push origin master'
