@@ -1,4 +1,4 @@
-# version 5.26.38
+# version 5.27.38
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -51,6 +51,11 @@ fi
 
 # moves old config files, and fetches new ones from GitHub
 newconf () { newalias & newvim & newtmux & wait;}
+
+# Make folder colors readable on WSL
+if grep -qPo "(Microsoft|WSL)" /proc/version; then
+  LS_COLORS="ow=01;36;40" && export LS_COLORS
+fi
 
 # tells you what versions of the files you currently have
 alias ver='head -qn 1 ~/.vimrc ~/.tmux.conf ~/.bash_aliases'

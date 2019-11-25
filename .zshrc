@@ -1,4 +1,4 @@
-# version 1.6.3
+# version 1.7.3
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -7,7 +7,7 @@
 export ZSH=$HOME/.oh-my-zsh
 editor="vim"
 
-ZSH_THEME="spaceship"
+ZSH_THEME="wezm"  #"spaceship"
 HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
@@ -23,13 +23,12 @@ plugins=(
   extract
   git
   git-extras
-  kubectl
+#  kubectl
   perms
   sudo
   tmux
   vagrant
   vscode
-  web-search
 )
 
 # Preferred editor for local and remote sessions
@@ -77,6 +76,11 @@ fi
 
 # moves old config files, and fetches new ones from GitHub
 newconf () { newz & newvim & newtmux & wait;}
+
+# Make folder colors readable on WSL
+if grep -qPo "(Microsoft|WSL)" /proc/version; then
+  LS_COLORS="ow=01;36;40" && export LS_COLORS
+fi
 
 # print file versions
 alias ver='head -qn 1 ~/.vimrc ~/.tmux.conf ~/.zshrc'
