@@ -6,60 +6,6 @@
 ### Variables
 editor=vim
 
-## checks if .bash_aliases exists, if it does it updates and sources it.
-## if it doesn't exist it gets the file from Dovry's GitHub
-## repo and sources it so it takes effect
-newalias () {
-if [ -f ~/.bash_aliases ]; then
-	mv -f --backup=numbered  ~/.bash_aliases ~/.backup/
-	wget -qc https: //raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/ > /dev/null 2>&1
-	source ~/.bashrc
-else
-	wget -qc https: //raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/ > /dev/null 2>&1
-	source ~/.bashrc
-fi
-}
-
-## checks if .tmux.conf exists, if it does it updates and sources it. If it doesn't exist
-## it gets the file from Dovry's GitHub repo and sources it so it takes effect
-newtmux () {
-if [[ -f ~/.tmux.conf ]] && [[ -d ~/.tmux/plugins/tpm ]]; then
-	mv -f --backup=numbered  ~/.tmux.conf ~/.backup/
-	wget -qc https: //raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/ > /dev/null 2>&1
-	tmux source-file ~/.tmux.conf && ~/.tmux/plugins/tpm/bin/update_plugins all
-else
-	wget -qc https      : //raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/ > /dev/null 2>&1
-	git  clone https: //github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm > /dev/null 2>&1
-	tmux source-file ~/.tmux.conf && ~/.tmux/plugins/tpm/bin/install_plugins
-fi
-}
-
-## checks if .vimrc exists, if it does it updates and sources it. If it doesn't exist
-## it gets the file that installs and configures it from Dovry's GitHub repo
-newvim () {
-if [[ -f ~/.vimrc ]]; then
-	mv -f --backup=numbered  ~/.vimrc ~/.backup/
-	wget -qc https: //raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/ > /dev/null 2>&1
-else
-	mkdir -p ~/.vim/autoload/
-	wget -qc https: //raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -P ~/.vim/autoload/ > /dev/null 2>&1
-	wget -qc https: //raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/ > /dev/null 2>&1
-fi
-}
-
-# moves old config files, and fetches new ones from GitHub
-newconf () { newalias & newvim & newtmux & wait;}
-
-# Make folder colors readable on WSL
-wsldir () {
- if ! $(grep -q "WSL" ~/.bashrc) && $(grep -qP "(Microsoft|WSL)" /proc/version) ; then
-  printf "\n\n# WSL dir colors\nLS_COLORS=\"ow=01;36;40\" && export LS_COLORS" >> ~/.bashrc
-  source ~/.bashrc
-  else
-  printf "\n~/.bashrc already contains WSL dir colors\n"
- fi
-}
-
 # tells you what versions of the files you currently have
 alias ver='head -qn 1 ~/.vimrc ~/.tmux.conf ~/.bash_aliases'
 
@@ -80,7 +26,6 @@ alias   vimrc='$editor ~/.vimrc'				# edit .vimrc
 alias vimconf='$editor ~/.vimrc'			# edits the .vimrc with your preferred editor
 alias   vimcp='cp ~/.vimrc ~/.backup/.vimrc.old'		# creates a copy of the .vimrc file
 alias   rlvim='echo | vim +"so %"  '			# sources .vimrc from shell
-cprlvim () { vimcp && echo | vim +"so %"; }		# backup .vimrc, then sources it
 
 ## Updates & Upgrades
 alias       upd='sudo apt update'			# updates
@@ -114,37 +59,16 @@ alias             ffs='sudo $(history -p !!)'			# rerun last command as sudo
 alias            phug='tree -phug'					# Print filetype - Human readable size - Username - Groupname
 
 # look up aliases
-what () { 
-  grep $1 ~/.bash_aliases | column -t
-}
 alias network-restart='sudo /etc/init.d/networking restart'
 alias        flushdns='sudo systemd-resolve --flush-caches'
 alias            vols='lvs -o +devices'				# lists volumes and where they're mounted
 alias pubip='dig +short myip.opendns.com @resolver1.opendns.com' # gets your public ip
 alias   opo='sudo netstat -tulpn | grep LISTEN' 		# *OP*en *P*orts
 
-grope () { sudo touch "$1" && sudo $editor "$1"; }		# (forcibly) touch file, then (forcibly) edit
-mkcd () { mkdir "$1" && cd "$1"; }				# create directory, then change to that dir
-mpcd () { mkdir -p "$1" && cd "$1"; }			# create dir tree, then change to the deepest dir created
 
 # ls
 alias    la='ls -lAh --block-size=M --file-type'	# list all the things
 alias   lac='ls -laC --color'			# list things in columns
-
-# cd up N directories - cd 3 goes up 3
-function ..(){
-    if [ -n "$1" ]; then
-          NUM=$(grep -o '[0-9]\+' <<< "$1")
-        START=0
-        while [ "$START" -lt "$NUM" ]
-        do
-            \cd ..
-            START=$((START+1))
-        done
-    else
-        \cd ..
-    fi
-}
 
 ## Docker
 alias   wd='watch docker ps'	  # live view of running docker containers
@@ -154,7 +78,6 @@ alias dcrm='docker container rm'  # remove container
 alias  dnp='docker network prune' # purges all unused networks
 alias  dip='docker image prune -a' # purges all unused images
 alias dspa='docker system prune -a' # purges all unused resources
-dcstrm () { docker container stop "$1" && docker container rm "$1"; }
 alias dils='docker image ls'	  # list of images stored locally
 alias dirm='docker image rm'	  # docker image remove
 
@@ -173,6 +96,7 @@ alias vde='vagrant destroy'	  # destroy the vagrant vm
 ## Ansible
 alias  ap='ansible-playbook'   # run playbooks
 alias ave='ansible-vault edit' # modify vault-encrypted files
+alias aver='ansible --version' # check ansible version
 alias ams='ansible -m setup' # run facts-gathering on a target host
 
 ## Terraform
@@ -213,3 +137,6 @@ alias gp='git push'
 alias gpl='git pull'
 alias gpo='git push origin'
 alias gpom='git push origin master'
+
+alias grm='git rm'
+alias grmr='git rm -r'

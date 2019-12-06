@@ -1,0 +1,33 @@
+# Make folder colors readable on WSL
+wsldir () {
+ if ! $(grep -q "WSL" ~/.bashrc) && $(grep -qP "(Microsoft|WSL)" /proc/version) ; then
+  printf "\n\n# WSL dir colors\nLS_COLORS=\"ow=01;36;40\" && export LS_COLORS" >> ~/.bashrc
+  source ~/.bashrc
+  else
+  printf "\n~/.bashrc already contains WSL dir colors\n"
+ fi
+}
+
+what () { grep $1 ~/.bash_aliases; }
+
+grope () { sudo touch "$1" && sudo $editor "$1"; }		# (forcibly) touch file, then (forcibly) edit
+
+mkcd () { mkdir "$1" && cd "$1"; }				# create directory, then change to that dir
+
+mpcd () { mkdir -p "$1" && cd "$1"; }			# create dir tree, then change to the deepest dir created
+
+dcstrm () { docker container stop "$1" && docker container rm "$1"; }
+
+# cd up N directories - cd 3 goes up 3
+.. () {
+  if [ -n "$1" ]; then
+    NUM=$(grep -o '[0-9]\+' <<< "$1")
+    START=0
+    while [ "$START" -lt "$NUM" ]; do
+        \cd ..
+        START=$((START+1))
+    done
+  else
+    \cd ..
+  fi
+}
