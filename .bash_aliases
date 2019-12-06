@@ -1,4 +1,4 @@
-# version 5.31.40
+# version 5.33.38
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
@@ -6,18 +6,16 @@
 ### Variables
 editor=vim
 
-### Aliases and functions
-
 ## checks if .bash_aliases exists, if it does it updates and sources it.
 ## if it doesn't exist it gets the file from Dovry's GitHub
 ## repo and sources it so it takes effect
 newalias () {
 if [ -f ~/.bash_aliases ]; then
 	mv -f --backup=numbered  ~/.bash_aliases ~/.backup/
-	wget -bqc --no-cache --no-cookies https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/ > /dev/null 2>&1
+	wget -qc https: //raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/ > /dev/null 2>&1
 	source ~/.bashrc
 else
-	wget -bqc --no-cache --no-cookies https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/ > /dev/null 2>&1
+	wget -qc https: //raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P ~/ > /dev/null 2>&1
 	source ~/.bashrc
 fi
 }
@@ -27,11 +25,11 @@ fi
 newtmux () {
 if [[ -f ~/.tmux.conf ]] && [[ -d ~/.tmux/plugins/tpm ]]; then
 	mv -f --backup=numbered  ~/.tmux.conf ~/.backup/
-	wget -bqc --no-cache --no-cookies https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/ > /dev/null 2>&1
+	wget -qc https: //raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/ > /dev/null 2>&1
 	tmux source-file ~/.tmux.conf && ~/.tmux/plugins/tpm/bin/update_plugins all
 else
-	wget -bqc --no-cache --no-cookies https://raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/ > /dev/null 2>&1
-	git  clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm > /dev/null 2>&1
+	wget -qc https      : //raw.githubusercontent.com/Dovry/dotfiles/master/.tmux.conf -P ~/ > /dev/null 2>&1
+	git  clone https: //github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm > /dev/null 2>&1
 	tmux source-file ~/.tmux.conf && ~/.tmux/plugins/tpm/bin/install_plugins
 fi
 }
@@ -41,16 +39,26 @@ fi
 newvim () {
 if [[ -f ~/.vimrc ]]; then
 	mv -f --backup=numbered  ~/.vimrc ~/.backup/
-	wget -bqc --no-cache --no-cookies https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/ > /dev/null 2>&1
+	wget -qc https: //raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/ > /dev/null 2>&1
 else
 	mkdir -p ~/.vim/autoload/
-	wget -bqc --no-cache --no-cookies https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -P ~/.vim/autoload/ > /dev/null 2>&1
-	wget -bqc --no-cache --no-cookies https://raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/ > /dev/null 2>&1
+	wget -qc https: //raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -P ~/.vim/autoload/ > /dev/null 2>&1
+	wget -qc https: //raw.githubusercontent.com/Dovry/dotfiles/master/.vimrc -P ~/ > /dev/null 2>&1
 fi
 }
 
 # moves old config files, and fetches new ones from GitHub
 newconf () { newalias & newvim & newtmux & wait;}
+
+# Make folder colors readable on WSL
+wsldir () {
+ if ! $(grep -q "WSL" ~/.bashrc) && $(grep -qP "(Microsoft|WSL)" /proc/version) ; then
+  printf "\n\n# WSL dir colors\nLS_COLORS=\"ow=01;36;40\" && export LS_COLORS" >> ~/.bashrc
+  source ~/.bashrc
+  else
+  printf "\n~/.bashrc already contains WSL dir colors\n"
+ fi
+}
 
 # tells you what versions of the files you currently have
 alias ver='head -qn 1 ~/.vimrc ~/.tmux.conf ~/.bash_aliases'
@@ -104,10 +112,9 @@ alias             rwx='stat -c %a'					# shows you the RWX rights on a file (rwx
 alias          please='sudo $(history -p !!)'			# rerun last command as sudo
 alias             ffs='sudo $(history -p !!)'			# rerun last command as sudo
 alias            phug='tree -phug'					# Print filetype - Human readable size - Username - Groupname
-alias paste='xclip -selection clipboard -o' # paste the content of clipboard, can be used to dump to file with 'paste > file.txt'
 
 # look up aliases
-function what () { 
+what () { 
   grep $1 ~/.bash_aliases | column -t
 }
 alias network-restart='sudo /etc/init.d/networking restart'
@@ -119,13 +126,10 @@ alias   opo='sudo netstat -tulpn | grep LISTEN' 		# *OP*en *P*orts
 grope () { sudo touch "$1" && sudo $editor "$1"; }		# (forcibly) touch file, then (forcibly) edit
 mkcd () { mkdir "$1" && cd "$1"; }				# create directory, then change to that dir
 mpcd () { mkdir -p "$1" && cd "$1"; }			# create dir tree, then change to the deepest dir created
-alias cdd='cd -'
 
 # ls
 alias    la='ls -lAh --block-size=M --file-type'	# list all the things
 alias   lac='ls -laC --color'			# list things in columns
-
-alias cdd='cd -' # jump back and forth between directories
 
 # cd up N directories - cd 3 goes up 3
 function ..(){
@@ -146,13 +150,13 @@ function ..(){
 alias   wd='watch docker ps'	  # live view of running docker containers
 alias  dps='docker ps'		  # list of running docker containers
 alias dcst='docker container stop' # stop container
-alias dils='docker image ls'	  # list of images stored locally
-alias dirm='docker image rm'	  # docker image remove
+alias dcrm='docker container rm'  # remove container
 alias  dnp='docker network prune' # purges all unused networks
 alias  dip='docker image prune -a' # purges all unused images
 alias dspa='docker system prune -a' # purges all unused resources
-alias dcrm='docker container rm'  # remove container
-drm () { docker container stop "$1" && docker container rm "$1"; }
+dcstrm () { docker container stop "$1" && docker container rm "$1"; }
+alias dils='docker image ls'	  # list of images stored locally
+alias dirm='docker image rm'	  # docker image remove
 
 ## Docker-compose
 alias    dc='docker-compose'         # shortcut for docker-compose
@@ -160,7 +164,6 @@ alias   dcd='docker-compose down'   # brings down the environment gracefully
 alias   dcu='docker-compose up -d'  # brings up the environment
 alias   dcp='docker-compose pull'   # pulls all images listed in the docker-compose file
 alias dcdpu='dcd && dcp && dcu'   # oneline for the previous three commands
-alias dver='docker --version'
 
 ## Vagrant
 alias vup='vagrant up'		  # start vm from vagrant file
@@ -195,7 +198,7 @@ alias gba='git branch --all'
 alias gc='git commit'
 alias gca='git commit --add'
 alias gcam='git commit --add --message'
-alias gcm='git commit -m'
+alias gcm='git commit --message'
 
 alias gch='git checkout'
 alias gchb='git checkout -b'
@@ -207,9 +210,6 @@ alias gds='git diff --staged'
 alias gdt='git difftool'
 
 alias gp='git push'
-alias gpa='git remote | xargs -L1 git push -all'
 alias gpl='git pull'
 alias gpo='git push origin'
 alias gpom='git push origin master'
-
-alias gs='git status'

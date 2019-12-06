@@ -1,3 +1,4 @@
+
 # version 1.10.4
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
@@ -7,7 +8,7 @@
 export ZSH=$HOME/.oh-my-zsh
 editor="vim"
 
-ZSH_THEME="spaceship"
+ZSH_THEME="wezm"  #"spaceship"
 HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
@@ -29,7 +30,6 @@ plugins=(
   tmux
   vagrant
   vscode
-  web-search
 )
 
 # Preferred editor for local and remote sessions
@@ -77,6 +77,7 @@ fi
 
 # moves old config files, and fetches new ones from GitHub
 newconf () { newz & newvim & newtmux & wait;}
+
 
 # print file versions
 alias ver='head -qn 1 ~/.vimrc ~/.tmux.conf ~/.zshrc'
@@ -133,6 +134,7 @@ alias   opo='sudo netstat -tulpn | grep LISTEN' 		# *OP*en *P*orts
 grope () { sudo touch "$1" && sudo $editor "$1"; }		# (forcibly) touch file, then (forcibly) edit
 mkcd () { mkdir "$1" && cd "$1"; }				# create directory, then change to that dir
 mpcd () { mkdir -p "$1" && cd "$1"; }			# create dir tree, then change to the deepest dir created
+
 alias cdd='cd -'
 alias paste='xclip -selection clipboard -o' # paste the content of clipboard, can be used to dump to file with 'paste > file.txt'
 
@@ -223,13 +225,13 @@ alias gds='git diff --staged'
 alias gdt='git difftool'
 
 alias gp='git push'
+
 alias gpa='git remote | xargs -L1 git push -all'
 alias gpl='git pull'
 alias gpo='git push origin'
 alias gpom='git push origin master'
 
 alias gs='git status'
-
 
 # git clone https://github.com/pindexis/qfc $HOME/.qfc
 [[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
