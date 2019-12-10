@@ -8,7 +8,6 @@ alias ver='version | column -t'
 
 # modify bashrc
 alias bashrc='$editor ~/.bashrc'
-alias rcconf='$editor ~/.bash_aliases'
 alias rlrc='source ~/.bashrc'
 
 # modify zshrc

@@ -15,7 +15,6 @@ shell_aliases\
 done
 }
 
-
 # Make folder colors readable on WSL
 function wsldir {
   if ! $(grep -q "WSL" ~/.bashrc) && $(grep -qP "(Microsoft|WSL)" /proc/version) ; then

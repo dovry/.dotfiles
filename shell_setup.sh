@@ -1,11 +1,29 @@
+#!/bin/bash
+#set -x
+#HOMEFOLDER=
+BASHRC="~/.bashrc"
+LEAD="### MANAGED BY DOTFILES"
+TAIL="### END MANAGED BY DOTFILES"
+
 # set $current_shell
 # ps -p $$ | awk '{if (NR!=1) {print $4}}'
 
+#if ! grep -Po "$LEAD" "$BASHRC" ; then
+#cat << 'EOF' >> "$BASHRC"
 
-# print this into .bashrc files to source all functions
+#sed -i "/$LEAD/,/$TAIL/ c\
+#$LEAD\
+#\n\n\
+#. /usr/share/autojump/autojump.sh\n\
+#. ~/.dotfiles/.shell_aliases\n\
+#. ~/.dotfiles/.shell_functions\n\
+#\n\
+#$TAIL
+#" $BASHRC
 
-# source ~/.dotfiles/.shell_functions
-# for function in $(grep -Po "\w+ \(\)" ~/.dotfiles/.shell_functions | awk '{ print $1 }'); do
-#  export -f $function
-# done
+var="\
+string one
+string two
+string three"
 
+echo "$var"

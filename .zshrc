@@ -14,6 +14,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 plugins=(
   ansible
+  autojump
   command-not-found
   copyfile
   dircycle
