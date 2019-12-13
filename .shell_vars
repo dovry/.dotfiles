@@ -1,0 +1,17 @@
+EDITOR=vim
+
+USERNAME=$(logname)
+
+BASHRC="~/.bashrc"
+LEAD="### MANAGED BY DOTFILES"
+TAIL="### END MANAGED BY DOTFILES"
+
+DOTFILES="\
+\n\
+. ~/.dotfiles/.shell_vars\
+\n\
+. ~/.dotfiles/.shell_aliases\
+\n\
+. ~/.dotfiles/.shell_functions\
+"
+

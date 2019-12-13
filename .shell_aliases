@@ -7,28 +7,28 @@
 alias ver='version | column -t'
 
 # modify bashrc
-alias bashrc='$editor ~/.bashrc'
+alias bashrc='$EDITOR ~/.bashrc'
 alias rlrc='source ~/.bashrc'
 
 # modify zshrc
-alias zshrc='$editor ~/.zshrc'
-alias zconf='"$editor" ~/.zshrc'
+alias zshrc='$EDITOR ~/.zshrc'
+alias zconf='"$EDITOR" ~/.zshrc'
 alias rlz='source ~/.zshrc'
 
 # modify shell_aliases
-alias alconf='$editor ~/.dotfiles/.shell_aliases'
+alias alconf='$EDITOR ~/.dotfiles/.shell_aliases'
 
 # modify shell_functions
-alias fuconf="$editor ~/.dotfiles/.shell_functions"
+alias fuconf="$EDITOR ~/.dotfiles/.shell_functions"
 
 # modify tmux
-alias tmconf='$editor ~/.tmux.conf' # edit .tmux.conf
-alias rltm='tmux source-file ~/.tmux.conf' # reload .tmux.conf
+alias tmconf='$EDITOR ~/.tmux.conf'
+alias rltm='tmux source-file ~/.tmux.conf'
 
 # modify vim
-alias vimrc='$editor ~/.vimrc' # edit .vimrc
-alias vimconf='$editor ~/.vimrc' # edits the .vimrc with your preferred editor
-alias rlvim='echo | vim +"so %" ' # sources .vimrc from shell
+alias vimrc='$EDITOR ~/.vimrc'
+alias vimconf='$EDITOR ~/.vimrc' 
+alias rlvim='echo | vim +"so %" '
 
 ## apt
 alias upd='sudo apt update'

@@ -33,7 +33,7 @@ function updog {
 && ver
 }
 
-function what { grep "$1" ~/.bash_aliases; }
+function what { grep "$1" ~/.dotfiles/.shell_aliases; }
 
 function grope { sudo touch "$1" && sudo $editor "$1"; }		# (forcibly) touch file, then (forcibly) edit
 
@@ -41,7 +41,7 @@ function mkcd { mkdir -p "$1" && cd "$1"; }				# create directory, then change t
 
 function dcstrm { docker container stop "$1" && docker container rm "$1"; }
 
-# cd up N directories - cd 3 goes up 3
+# cd up N directories - ".. 3" goes up 3
 function .. {
   if [ -n "$1" ]; then
     NUM=$(grep -o '[0-9]\+' <<< "$1")

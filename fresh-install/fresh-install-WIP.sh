@@ -1,8 +1,6 @@
 #!/bin/bash
 set -e
 
-username=$(logname)
-
 wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P /home/$username
 
 
