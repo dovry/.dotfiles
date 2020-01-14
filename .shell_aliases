@@ -151,3 +151,8 @@ alias grm='git rm'
 alias grmr='git rm -r'
 
 alias gs='git status'
+
+alias gst='git stash'
+alias gsta='git stash apply'
+alias gstd='git stash drop'
+alias gstp='git stash pop'
