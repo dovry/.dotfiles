@@ -1,4 +1,4 @@
-" vimrc - 2.5.9
+" 2.5.9 - vimrc
 " X.0.0 major 	- the file is overhauled
 " 0.X.0 minor	- commands are added or removed
 " 0.0.X fix 	- the file is improved in any other way

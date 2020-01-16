@@ -1,47 +1,43 @@
-# aliases - 1.0.0
+# 1.0.0 - aliases
 # X.0.0 major 		- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
 
 # prints dotfile versions neatly - see .shell_functions
-alias ver='version | column -t'
+alias ver='version'
 
 # modify bashrc
-alias bashrc='$EDITOR ~/.bashrc'
-alias rlrc='source ~/.bashrc'
+alias bashrc="$EDITOR ~/.bashrc"
 
 # modify zshrc
-alias zshrc='$EDITOR ~/.zshrc'
-alias zconf='"$EDITOR" ~/.zshrc'
-alias rlz='source ~/.zshrc'
+alias zshrc="$EDITOR ~/.zshrc"
+alias zconf="$EDITOR ~/.zshrc"
 
 # modify shell_aliases
-alias alconf='$EDITOR ~/.dotfiles/.shell_aliases'
+alias alconf="$EDITOR $DOT_LOC/.shell_aliases"
 
 # modify shell_functions
-alias fuconf="$EDITOR ~/.dotfiles/.shell_functions"
+alias fuconf="$EDITOR $DOT_LOC/.shell_functions"
 
-# modify tmux
-alias tmconf='$EDITOR ~/.tmux.conf'
-alias rltm='tmux source-file ~/.tmux.conf'
+# modify tmuxF
+alias tmconf="$EDITOR ~/.tmux.conf"
 
 # modify vim
-alias vimrc='$EDITOR ~/.vimrc'
-alias vimconf='$EDITOR ~/.vimrc' 
-alias rlvim='echo | vim +"so %" '
+alias vimrc="$EDITOR ~/.vimrc"
+alias vimconf="$EDITOR ~/.vimrc"
 
 ## apt
-alias upd='sudo apt update'
-alias upg='sudo apt dist-upgrade -y'
-alias install='sudo apt install'
-alias reinstall='sudo apt --reinstall install'
-alias uninstall='sudo apt remove'
+alias upd='apt update'
+alias upg='apt dist-upgrade -y'
+alias install='apt install'
+alias reinstall='apt --reinstall install'
+alias uninstall='apt remove'
 alias madison='apt-cache madison'
 alias search='apt-cache search'
-alias aa='sudo apt autoremove'
-alias af='sudo apt install -f'
-alias ac='sudo apt clean'
-alias aac='sudo apt autoclean'
+alias aa='apt autoremove'
+alias af='apt install -f'
+alias ac='apt clean'
+alias aac='apt autoclean'
 
 ## Tmux
 alias ta='tmux attach -t'
@@ -51,22 +47,19 @@ alias tk='tmux kill-session -t'
 
 ## Utility
 alias cdd='cd -' # jump between two dirs
-alias paste='xclip -selection clipboard -o' # paste clipboard
 alias c='clear'
 alias s='sudo'
 alias h='history'
 alias v='vim'
 alias rwx='stat -c %a' # shows you the RWX rights on a file (rwx .bash_aliases should return 664)
-alias please='sudo $(history -p !!)' # rerun last command as sudo
-alias ffs='sudo $(history -p !!)' # rerun last command as sudo
+alias please='$(history -p !!)' # rerun last command
+alias ffs='$(history -p !!)' # rerun last command
 alias phug='tree -phug' # Print filetype - Human readable size - Username - Groupname
-alias flushdns='sudo systemd-resolve --flush-caches'
-alias network-restart='sudo /etc/init.d/networking restart'
 
 # 'look up' aliases
 alias vols='lvs -o +devices' # lists volumes and where they're mounted
 alias pubip='dig +short myip.opendns.com @resolver1.opendns.com' # gets your public ip
-alias opo='sudo netstat -tulpn | grep LISTEN' # *OP*en *P*orts
+alias opo='netstat -tulpn | grep LISTEN' # *OP*en *P*orts
 
 # ls
 alias la='ls -lAh --block-size=M --file-type'

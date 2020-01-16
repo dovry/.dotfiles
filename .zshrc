@@ -1,4 +1,4 @@
-# zshrc - 2.0.0
+# 2.0.0 - zshrc
 # X.0.0 major 	- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way

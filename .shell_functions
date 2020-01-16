@@ -1,17 +1,17 @@
-# functions - 1.0.0
+# 1.0.0 - functions
 # X.0.0 major 	- the file is overhauled
 # 0.X.0 minor		- commands are added or removed
 # 0.0.X fix 		- the file is improved in any other way
 
 function version {
-  for version in ~/.dotfiles/.{\
+  for DOTFILE_VER in "$DOT_LOC"/.{\
 shell_aliases\
 ,shell_functions\
 ,zshrc\
 ,vimrc\
 ,tmux.conf\
 }; do
-  awk 'NR==1' $version
+  awk 'NR==1' $DOTFILE_VER
 done
 }
 
@@ -25,7 +25,7 @@ function wsldir {
   fi
 }
 
-function updog {
+function supdog {
    sudo apt -qq update \
 && sudo apt -y dist-upgrade \
 && sudo apt -y autoremove \
@@ -33,13 +33,13 @@ function updog {
 && ver
 }
 
-function what { grep "$1" ~/.dotfiles/.shell_aliases; }
-
-function grope { sudo touch "$1" && sudo $editor "$1"; }		# (forcibly) touch file, then (forcibly) edit
-
-function mkcd { mkdir -p "$1" && cd "$1"; }				# create directory, then change to that dir
-
-function dcstrm { docker container stop "$1" && docker container rm "$1"; }
+function updog {
+   apt -qq update \
+&& apt -y dist-upgrade \
+&& apt -y autoremove \
+&& apt -y autoclean \
+&& ver
+}
 
 # cd up N directories - ".. 3" goes up 3
 function .. {
@@ -66,3 +66,25 @@ else
 && docker-compose -f $1 up -d
 fi
 }
+
+### Oneliners
+
+function dcstrm { docker container stop "$1" && docker container rm "$1"; }
+
+function what { grep "$1" "$DOT_LOC"/.shell_{aliases,functions}; }
+
+function grope { sudo touch "$1" && sudo $editor "$1"; }		# (forcibly) touch file, then (forcibly) edit
+
+function mkcd { mkdir -p "$1" && cd "$1"; }				# create directory, then change to that dir
+
+function rlvim { echo | vim +"so %"; }  # reload vim configuration
+
+function rltm { tmux source-file ~/.tmux.conf; }  # reload tmux configuration
+
+function rlrc { source ~/.bashrc; } # reload bashrc
+
+function rlz { source ~/.zshrc; } # reload zshrc
+
+function flushdns { systemd-resolve --flush-caches; }
+
+function network-restart { /etc/init.d/networking restart; }
