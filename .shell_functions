@@ -15,16 +15,6 @@ shell_aliases\
 done
 }
 
-# Make folder colors readable on WSL
-function wsldir {
-  if ! $(grep -q "WSL" ~/.bashrc) && $(grep -qP "(Microsoft|WSL)" /proc/version) ; then
-   printf "\n\n# WSL dir colors\nLS_COLORS=\"ow=01;36;40\" && export LS_COLORS" >> ~/.bashrc
-   source ~/.bashrc
-   else
-   printf "\n~/.bashrc already contains WSL dir colors\n"
-  fi
-}
-
 function supdog {
    sudo apt -qq update \
 && sudo apt -y dist-upgrade \
@@ -55,6 +45,7 @@ function .. {
   fi
 }
 
+# bring down either the current dir's docker-compose.yml's container stack, or a specified file, with "dcre ~/.docker/stack1/prod-compose.yml"
 function dcre {
 if [ $# -eq 0 ]; then
    docker-compose down \
@@ -69,6 +60,8 @@ fi
 
 ### Oneliners
 
+function dotsetup { bash "$DOC_LOC"shell_setup.sh; }
+
 function dcstrm { docker container stop "$1" && docker container rm "$1"; }
 
 function what { grep "$1" "$DOT_LOC"/.shell_{aliases,functions}; }
@@ -77,13 +70,13 @@ function grope { sudo touch "$1" && sudo $editor "$1"; }		# (forcibly) touch fil
 
 function mkcd { mkdir -p "$1" && cd "$1"; }				# create directory, then change to that dir
 
-function rlvim { echo | vim +"so %"; }  # reload vim configuration
+function source_vim { echo | vim +"so %"; }  # reload vim configuration
 
-function rltm { tmux source-file ~/.tmux.conf; }  # reload tmux configuration
+function source_tmux { tmux source-file ~/.tmux.conf; }  # reload tmux configuration
 
-function rlrc { source ~/.bashrc; } # reload bashrc
+function source_bashrc { source ~/.bashrc; } # reload bashrc
 
-function rlz { source ~/.zshrc; } # reload zshrc
+function source_zshrc { source ~/.zshrc; } # reload zshrc
 
 function flushdns { systemd-resolve --flush-caches; }
 

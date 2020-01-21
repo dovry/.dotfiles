@@ -3,8 +3,9 @@ EDITOR=vim
 USERNAME=$(whoami)
 
 CURRENT_SHELL="$(getent passwd $(whoami) | awk -F: '{print $NF}' | sed -n -e "s/^.*bin\///p")"
-BASHRC="/home/"$USERNAME"/.bashrc"
-ZSHRC="/home/"$USERNAME"/.zshrc"
+SUPPORTED_SHELLS="bash and zsh"
+BASHRC="/home/$USERNAME/.bashrc"
+ZSHRC="/home/$USERNAME/.zshrc"
 
 DOT_LOC="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
@@ -12,10 +13,9 @@ LEAD="### MANAGED BY DOTFILES"
 TAIL="### END MANAGED BY DOTFILES"
 
 DOTFILES="\
+. $DOT_LOC/.shell_vars\
 \n\
-. ~/.dotfiles/.shell_vars\
+. $DOT_LOC/.shell_aliases\
 \n\
-. ~/.dotfiles/.shell_aliases\
-\n\
-. ~/.dotfiles/.shell_functions\
+. $DOT_LOC/.shell_functions\
 "

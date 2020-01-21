@@ -9,6 +9,13 @@ set relativenumber  " line numbers, but RELATIVE!
 set ignorecase      " http://vim.wikia.com/wiki/Searching
 set smartcase       " ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+" Automatic vim-plug installation
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
 Plug 'ervandew/supertab'                " tab completion
 Plug 'scrooloose/nerdtree'              " file explorer in vim 
@@ -18,16 +25,9 @@ Plug 'easymotion/vim-easymotion'        " jump around with <leader><leader> for[
 Plug 'nathanaelkane/vim-indent-guides'  " display indent levels
 Plug 'tpope/vim-surround'               " edit/close surrounding symbols such as brackets or quotes
 Plug 'pearofducks/ansible-vim'          " YAML/Ansible syntax 
-
-" # Python plugins
-"Plug 'davidhalter/jedi-vim'             " python autocompletion - uses jedi
-
-" # Git plugins
-Plug 'airblade/vim-gitgutter'            " shows diff in sidebar
-"Plug 'sjl/gundo.vim'                    " visualise git undo tree
+Plug 'airblade/vim-gitgutter'           " shows diff in sidebar
 
 " Themes
-Plug 'cocopon/iceberg.vim'               " dark blue & grey theme
 Plug 'TroyFletcher/vim-colors-synthwave' " A E S T H E T I C
 
 " to install the newest (versions) plugins, run
