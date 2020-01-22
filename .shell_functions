@@ -4,7 +4,7 @@
 # 0.0.X fix 		- the file is improved in any other way
 
 function version {
-  for DOTFILE_VER in "$DOT_LOC"/.{\
+  for DOTFILE_VER in ./.{\
 shell_aliases\
 ,shell_functions\
 ,zshrc\
@@ -60,11 +60,11 @@ fi
 
 ### Oneliners
 
-function dotsetup { bash "$DOC_LOC"shell_setup.sh; }
+function dotsetup { bash ./shell_setup.sh; }
 
 function dcstrm { docker container stop "$1" && docker container rm "$1"; }
 
-function what { grep "$1" "$DOT_LOC"/.shell_{aliases,functions}; }
+function what { grep "$1" ./.shell_{aliases,functions}; }
 
 function grope { sudo touch "$1" && sudo $editor "$1"; }		# (forcibly) touch file, then (forcibly) edit
 

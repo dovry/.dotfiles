@@ -30,7 +30,9 @@ $LEAD\\
 $WSL_DIR_COL\
 $AUTOJUMP\
 $DOTFILES\
-\n\n\
+\n\
+$PS1\
+\n\
 $TAIL" "$BASHRC"
 
 elif [ "$CURRENT_SHELL" = zsh ]; then
@@ -39,7 +41,7 @@ elif [ ! "$CURRENT_SHELL" = zsh ] || [ ! "$CURRENT_SHELL" = bash ]; then
   printf "\nCurrent shell is %s\nAliases and functions only work with %s\n\n" "$CURRENT_SHELL" "$SUPPORTED_SHELLS"
 fi
 
-# Link files to ~/
+# Link files to ~/ for bash - link to ~/.dotfiles/ for zsh
 for file in "$DOT_LOC"/.{vimrc,tmux.conf}; do
 ln -sf "$file" "/home/$USERNAME/"
 done

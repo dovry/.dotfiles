@@ -5,8 +5,14 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-editor="vim"
 
+# zshrc location and source the dotfiles
+Z_LOC="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+source $Z_LOC/.shell_vars
+source $Z_LOC/.shell_aliases
+source $Z_LOC/.shell_functions
+
+editor="vim"
 ZSH_THEME="wezm"
 HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
@@ -40,10 +46,9 @@ fi
 qfc_quick_command 'cd' '\C-b' 'cd $0'
 qfc_quick_command 'vim' '\C-p' 'vim $0'
 
-source ~/.dotfiles/.shell_aliases
-source ~/.dotfiles/.shell_functions
 # Export functions
 for i in $(grep -Po "\w+ \(\)" ~/.dotfiles/.shell_functions | awk '{ print $1 }'); do
  export -f $i
 done
+
 source $ZSH/oh-my-zsh.sh
