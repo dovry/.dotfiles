@@ -64,7 +64,7 @@ function dotsetup { bash ./shell_setup.sh; }
 
 function dcstrm { docker container stop "$1" && docker container rm "$1"; }
 
-function what { grep "$1" ./.shell_{aliases,functions}; }
+function what { grep "$1" ./.shell_{aliases,functions,vars}; }
 
 function grope { sudo touch "$1" && sudo $editor "$1"; }		# (forcibly) touch file, then (forcibly) edit
 

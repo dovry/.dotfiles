@@ -12,7 +12,6 @@ source $Z_LOC/.shell_vars
 source $Z_LOC/.shell_aliases
 source $Z_LOC/.shell_functions
 
-editor="vim"
 ZSH_THEME="wezm"
 HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
