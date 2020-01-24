@@ -24,11 +24,19 @@ if [ "$CURRENT_SHELL" = bash ]; then
     AUTOJUMP=". /usr/share/autojump/autojump.sh"
   fi
 
+  if [ -f "$HOME/.qfc/README.md" ]; then
+    QFC="\
+    [[ -s \"$HOME/.config/.qfc/bin/qfc.sh\" ]] && source \"$HOME/.config/.qfc/bin/qfc.sh\"\n"
+    else
+    QFC=
+  fi
+
 sed -i "/$LEAD/,/$TAIL/ c\
 $LEAD\\
 \n\
 $WSL_DIR_COL\
 $AUTOJUMP\
+$QFC\
 $DOTFILES\
 \n\
 $PS1\

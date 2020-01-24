@@ -7,10 +7,11 @@
 export ZSH=$HOME/.oh-my-zsh
 
 # zshrc location and source the dotfiles
-Z_LOC="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-source $Z_LOC/.shell_vars
-source $Z_LOC/.shell_aliases
-source $Z_LOC/.shell_functions
+#Z_LOC="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+Z_LOC="$(dirname "$(readlink -f "$0")")"
+source "$Z_LOC"/.shell_vars
+source "$Z_LOC"/.shell_aliases
+source "$Z_LOC"/.shell_functions
 
 ZSH_THEME="wezm"
 HYPHEN_INSENSITIVE="true"

@@ -31,6 +31,13 @@ function updog {
 && ver
 }
 
+function what {
+#   LOCATION="$(dirname $(readlink -f $0))" \
+#&& echo $LOCATION 
+#&& . "$LOCATION"/.shell_vars \
+#&& grep "$1" ./.shell_{aliases,functions,vars}
+}
+
 # cd up N directories - ".. 3" goes up 3
 function .. {
   if [ -n "$1" ]; then
@@ -60,11 +67,9 @@ fi
 
 ### Oneliners
 
-function dotsetup { bash ./shell_setup.sh; }
+function dotsetup { bash ./shell_setup.sh && clear && printf "\nDone\n\n"; }
 
 function dcstrm { docker container stop "$1" && docker container rm "$1"; }
-
-function what { grep "$1" ./.shell_{aliases,functions,vars}; }
 
 function grope { sudo touch "$1" && sudo $editor "$1"; }		# (forcibly) touch file, then (forcibly) edit
 
