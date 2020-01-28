@@ -31,12 +31,7 @@ function updog {
 && ver
 }
 
-function what {
-#   LOCATION="$(dirname $(readlink -f $0))" \
-#&& echo $LOCATION 
-#&& . "$LOCATION"/.shell_vars \
-#&& grep "$1" ./.shell_{aliases,functions,vars}
-}
+function what { grep "$1" ./.shell_{aliases,functions,vars}; }
 
 # cd up N directories - ".. 3" goes up 3
 function .. {
