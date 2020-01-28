@@ -1,0 +1,80 @@
+# 1.0.0 - functions
+
+function version {
+  for DOTFILE_VER in ./.{\
+shell_aliases\
+,shell_functions\
+,zshrc\
+,vimrc\
+,tmux.conf\
+}; do
+  awk 'NR==1' $DOTFILE_VER
+done
+}
+
+function supdog {
+   sudo apt -qq update \
+&& sudo apt -y dist-upgrade \
+&& sudo apt -y autoremove \
+&& sudo apt -y autoclean \
+&& ver
+}
+
+function updog {
+   apt -qq update \
+&& apt -y dist-upgrade \
+&& apt -y autoremove \
+&& apt -y autoclean \
+&& ver
+}
+
+function what { grep "$1" ./.shell_{aliases,functions,vars}; }
+
+# cd up N directories - ".. 3" goes up 3
+function .. {
+  if [ -n "$1" ]; then
+    NUM=$(grep -o '[0-9]\+' <<< "$1")
+    START=0
+    while [ "$START" -lt "$NUM" ]; do
+        \cd ..
+        START=$((START+1))
+    done
+  else
+    \cd ..
+  fi
+}
+
+# bring down either the current dir's docker-compose.yml's container stack, or a specified file, with "dcre ~/.docker/stack1/prod-compose.yml"
+function dcre {
+if [ $# -eq 0 ]; then
+   docker-compose down \
+&& docker-compose pull \
+&& docker-compose up -d
+else
+   docker-compose -f $1 down \
+&& docker-compose -f $1 pull \
+&& docker-compose -f $1 up -d
+fi
+}
+
+### Oneliners
+
+function dotsetup { bash ./shell_setup.sh && clear && printf "\nDone\n\n"; }
+
+function dcstrm { docker container stop "$1" && docker container rm "$1"; }
+
+function grope { sudo touch "$1" && sudo $editor "$1"; }		# (forcibly) touch file, then (forcibly) edit
+
+function mkcd { mkdir -p "$1" && cd "$1"; }				# create directory, then change to that dir
+
+function source_vim { echo | vim +"so %"; }  # reload vim configuration
+
+function source_tmux { tmux source-file ~/.tmux.conf; }  # reload tmux configuration
+
+function source_bashrc { source ~/.bashrc; } # reload bashrc
+
+function source_zshrc { source ~/.zshrc; } # reload zshrc
+
+function flushdns { systemd-resolve --flush-caches; }
+
+function network-restart { /etc/init.d/networking restart; }
