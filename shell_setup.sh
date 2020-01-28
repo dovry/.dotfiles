@@ -11,7 +11,7 @@ if [[ "$CURRENT_SHELL" = zsh || "$CURRENT_SHELL" = bash ]]; then
       :
     else
       cp ~/.zshrc ~/.zshrc.orig
-      printf "# your original file was backed up to ~/.zshrc.orig" > ~/.zshrc
+      printf "${ZSH_VER}\n# your original file was backed up to ~/.zshrc.orig" > ~/.zshrc
     fi
     printf "\n\n\n%s\n\n%s" "$LEAD" "$TAIL" >> "$RC"
   fi

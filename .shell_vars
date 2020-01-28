@@ -19,6 +19,8 @@ ZSH_SOURCE=". ${HOME}/.oh-my-zsh/oh-my-zsh.sh"
 
 ZSH_RC=". ${DOT_LOC}/.zshrc"
 
+ZSH_VER="1.0.0"
+
 DOTFILES="\
 . ${DOT_LOC}/.shell_vars\
 \n\
