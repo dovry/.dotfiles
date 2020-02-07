@@ -1,5 +1,3 @@
-" 2.5.9 - vimrc
-
 " general config / utility
 set nocompatible    " be iMproved, required
 set relativenumber  " line numbers, but RELATIVE!

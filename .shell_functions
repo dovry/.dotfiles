@@ -1,17 +1,3 @@
-# 1.0.0 - functions
-
-function version {
-  for DOTFILE_VER in ${DOT_LOC}/dotfiles/.{\
-shell_aliases\
-,shell_functions\
-,zshrc\
-,vimrc\
-,tmux.conf\
-}; do
-  awk 'NR==1' $DOTFILE_VER
-done
-}
-
 function supdog {
    printf "\nUpdating...\n" \
 && sudo apt -qq update \
