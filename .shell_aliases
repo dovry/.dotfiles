@@ -1,7 +1,5 @@
-# 1.0.0 - aliases
-
 # prints dotfile versions neatly - see .shell_functions
-alias ver='version'
+alias ver='cat $DOT_LOC/.versions'
 
 ### Dotfile management
 
@@ -84,7 +82,7 @@ alias lac='ls -laC --color'
 alias dver='docker --version'
 alias wd='watch -n 0.5 docker ps' # live view of running docker containers
 alias dps='docker ps' # list of running docker containers
-alias dcst='docker container stop' # stop container
+alias dcs='docker container stop' # stop container
 alias dcrm='docker container rm' # remove container
 alias dnp='docker network prune' # purges all unused networks
 alias dip='docker image prune -a' # purges all unused images
@@ -110,6 +108,8 @@ alias aver='ansible --version'
 alias ap='ansible-playbook'
 alias ave='ansible-vault edit'
 alias ams='ansible -m setup'
+alias agi='ansible-galaxy install'
+alias ad='ansible-doc'
 
 # Molecule
 alias mt='molecule test'

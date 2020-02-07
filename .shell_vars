@@ -12,14 +12,13 @@ DOT_LOC="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 #DOT_LOC="$(readlink -f "$0")"
 
 LEAD="### MANAGED BY DOTFILES"
+
 TAIL="### END MANAGED BY DOTFILES"
 
 # zsh source
 ZSH_SOURCE=". ${HOME}/.oh-my-zsh/oh-my-zsh.sh"
 
 ZSH_RC=". ${DOT_LOC}/.zshrc"
-
-ZSH_VER="1.0.0"
 
 DOTFILES="\
 . ${DOT_LOC}/.shell_vars\
