@@ -1,7 +1,7 @@
 # 1.0.0 - functions
 
 function version {
-  for DOTFILE_VER in ./.{\
+  for DOTFILE_VER in ${DOT_LOC}/dotfiles/.{\
 shell_aliases\
 ,shell_functions\
 ,zshrc\
@@ -13,7 +13,8 @@ done
 }
 
 function supdog {
-   sudo apt -qq update \
+   printf "\nUpdating...\n" \
+&& sudo apt -qq update \
 && sudo apt -y dist-upgrade \
 && sudo apt -y autoremove \
 && sudo apt -y autoclean \
@@ -21,14 +22,15 @@ function supdog {
 }
 
 function updog {
-   apt -qq update \
+   printf "\nUpdating...\n" \
+&& apt -qq update \
 && apt -y dist-upgrade \
 && apt -y autoremove \
 && apt -y autoclean \
 && ver
 }
 
-function what { grep "$1" ./.shell_{aliases,functions,vars}; }
+function what { grep -niT "$1" "${DOT_LOC}"/.shell_{aliases,functions,vars}; }
 
 # cd up N directories - ".. 3" goes up 3
 function .. {
