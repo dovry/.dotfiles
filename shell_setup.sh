@@ -35,8 +35,7 @@ if [[ "$CURRENT_SHELL" = zsh || "$CURRENT_SHELL" = bash ]]; then
   fi
 
   if [ -f "$HOME/.qfc/README.md" ]; then
-    QFC="\
-    [[ -s \"$HOME/.config/.qfc/bin/qfc.sh\" ]] && source \"$HOME/.config/.qfc/bin/qfc.sh\"\n"
+    QFC="[[ -s \"$HOME/.config/.qfc/bin/qfc.sh\" ]] && source \"$HOME/.config/.qfc/bin/qfc.sh\"\n"
     else
     QFC=
   fi
