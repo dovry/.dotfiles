@@ -14,13 +14,13 @@ plugins=(
   dircycle
   dirhistory
   docker
+  docker-compose
   git
   git-extras
   perms
   sudo
   tmux
   vagrant
-  vscode
 )
 
 # Preferred editor for local and remote sessions

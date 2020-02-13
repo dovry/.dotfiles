@@ -1,4 +1,4 @@
-function supdog {
+function updog {
    printf "\nUpdating...\n" \
 && sudo apt -qq update \
 && sudo apt -y dist-upgrade \
@@ -6,17 +6,6 @@ function supdog {
 && sudo apt -y autoclean \
 && ver
 }
-
-function updog {
-   printf "\nUpdating...\n" \
-&& apt -qq update \
-&& apt -y dist-upgrade \
-&& apt -y autoremove \
-&& apt -y autoclean \
-&& ver
-}
-
-function what { grep -niT "$1" "${DOT_LOC}"/.shell_{aliases,functions,vars}; }
 
 # cd up N directories - ".. 3" goes up 3
 function .. {

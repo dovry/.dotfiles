@@ -28,7 +28,7 @@ if [[ "$CURRENT_SHELL" = zsh || "$CURRENT_SHELL" = bash ]]; then
     WSL_DIR_COL=""
   fi
 
-  if which autojump; then
+  if [ -f /usr/share/autojump/autojump.sh ]; then
     AUTOJUMP=". /usr/share/autojump/autojump.sh"
     else
     AUTOJUMP=
@@ -46,8 +46,11 @@ $LEAD\\
 \n\
 $WSL_DIR_COL\
 $AUTOJUMP\
+\n\
 $QFC\
 $DOTFILES\
+\n\
+$WHAT\
 \n\
 $PS1\
 \n\
