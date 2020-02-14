@@ -42,21 +42,15 @@ if [[ "$CURRENT_SHELL" = zsh || "$CURRENT_SHELL" = bash ]]; then
 
 sed -i "/$LEAD/,/$TAIL/ c\
 $LEAD\\
-\n\
-$WSL_DIR_COL\
-$AUTOJUMP\
-\n\
-$QFC\
-$DOTFILES\
-\n\
-$WHAT\
-\n\
-$PS1\
-\n\
-$ZSH_RC\
-\n\
-$ZSH_SOURCE\
-\n\n\
+$WSL_DIR_COL\\
+$QFC\\
+$WHAT\\
+alias dotloc=\"cd $DOT_LOC\"\\
+$AUTOJUMP\\
+$DOTFILES\\
+$PS1\\
+$ZSH_RC\\
+$ZSH_SOURCE\n\\
 $TAIL" "$RC"
 
 else
@@ -64,7 +58,7 @@ else
 fi
 
 # Link files to ~/ for bash - link to ~/.dotfiles/ for zsh
-for file in "$DOT_LOC"/.{vimrc,tmux.conf}; do
+for file in "$DOT_LOC"/.{vimrc,tmux.conf,versions}; do
 ln -sf "$file" "/home/$USERNAME/"
 done
 
