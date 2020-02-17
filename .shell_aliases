@@ -87,6 +87,7 @@ alias dcrm='docker container rm' # remove container
 alias dnp='docker network prune' # purges all unused networks
 alias dip='docker image prune -a' # purges all unused images
 alias dspa='docker system prune -a' # purges all unused resources
+alias dspaf='docker system prune -af' # force-purges all unused resources
 alias dils='docker image ls' # list of images stored locally
 alias dirm='docker image rm' # docker image remove
 
