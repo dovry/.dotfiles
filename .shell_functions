@@ -55,3 +55,5 @@ function source_zshrc { source ~/.zshrc; } # reload zshrc
 function flushdns { systemd-resolve --flush-caches; }
 
 function network-restart { /etc/init.d/networking restart; }
+
+function bak { cp "$1"{,.bak}; }
