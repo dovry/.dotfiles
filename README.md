@@ -2,7 +2,7 @@
 
 ## Setup
 
-[shell_setup.sh](shell_setup.sh) is a script that adds a few lines of text to the `.bashrc` so it can source the aliases and functions. If there exists a `~/.zshrc` then it is moved, and a dummy file that sources everything required is created instead. It also symlinks `.vimrc` and `.tmux.conf` to `~/`
+[shell_setup.sh](shell_setup.sh) is a script that adds a few lines of text to the current shell's .rc file so it can source the aliases and functions. If a .rc file exists, then it is moved, and a dummy file that sources everything required is created instead. It also symlinks `.vimrc`, `.tmux.conf` and `.versions` to `~/`
 
 ## Version numbering
 
