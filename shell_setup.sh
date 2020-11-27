@@ -4,14 +4,15 @@
 
 # Check which shell, then run config
 if [[ "$CURRENT_SHELL" = zsh || "$CURRENT_SHELL" = bash ]]; then
+  # look for 'managed by dotfiles' marker, if present, ignore, if not, backup file and run script
   if grep -qo "$LEAD" "$RC"; then
     :
   else
-    if [[ -f ~/.zshrc.orig ]]; then
-      :
+    if [[ -f ~/.zshrc && ! -f ~/.zshrc.bak ]]; then
+      cp ~/.{zshrc,zshrc.bak}
+      printf "${ZSH_VER}\n# your original file was backed up to ~/.zshrc.bak" > ~/.zshrc
     else
-      cp ~/.zshrc ~/.zshrc.orig
-      printf "${ZSH_VER}\n# your original file was backed up to ~/.zshrc.orig" > ~/.zshrc
+      :
     fi
     printf "\n\n\n%s\n\n%s" "$LEAD" "$TAIL" >> "$RC"
   fi
@@ -22,18 +23,20 @@ if [[ "$CURRENT_SHELL" = zsh || "$CURRENT_SHELL" = bash ]]; then
   fi
 
   # Make folder colors readable on WSL
-  if grep -qP "WSL" "$RC" || grep -qP "(Microsoft|WSL)" /proc/version; then
-    WSL_DIR_COL="  LS_COLORS=\"ow=01;36;40\" && export LS_COLORS #WSL dir colors\n"
+  if grep -qP "WSL" "$RC" || uname -a | grep -qPi "(Microsoft|WSL)"; then
+    WSL_DIR_COL="LS_COLORS=\"ow=01;36;40\" && export LS_COLORS # WSL dir colors\n"
   else
     WSL_DIR_COL=""
   fi
 
+  # source autojump config if it exists - GH: wting/autojump
   if [ -f /usr/share/autojump/autojump.sh ]; then
     AUTOJUMP=". /usr/share/autojump/autojump.sh"
     else
     AUTOJUMP=
   fi
 
+  # source qfc if it exists - GH: pindexis/qfc
   if [ -f "$HOME/.qfc/README.md" ]; then
     QFC="[[ -s \"$HOME/.config/.qfc/bin/qfc.sh\" ]] && source \"$HOME/.config/.qfc/bin/qfc.sh\"\n"
     else
@@ -41,14 +44,13 @@ if [[ "$CURRENT_SHELL" = zsh || "$CURRENT_SHELL" = bash ]]; then
   fi
 
 sed -i "/$LEAD/,/$TAIL/ c\
-$LEAD\\
+$LEAD\n\\
 $WSL_DIR_COL\\
 $QFC\\
-$WHAT\\
-alias dotloc=\"cd $DOT_LOC\"\\
+alias dotloc=\"cd $DOT_LOC\"\n\\
+$WHAT\n\\
 $AUTOJUMP\\
 $DOTFILES\\
-$PS1\\
 $ZSH_RC\\
 $ZSH_SOURCE\n\\
 $TAIL" "$RC"
@@ -57,11 +59,11 @@ else
   printf "\nCurrent shell is %s\nAliases and functions only work with %s\n\n" "$CURRENT_SHELL" "$SUPPORTED_SHELLS"
 fi
 
-# Link files to ~/ for bash - link to ~/.dotfiles/ for zsh
+# Softlink config files to ~/
 for file in "$DOT_LOC"/.{vimrc,tmux.conf,versions}; do
 ln -sf "$file" "/home/$USERNAME/"
 done
 
-if [[ ! "$(which git)" || ! "$(which curl)" ]]; then 
+if [[ ! "$(which git)" && ! "$(which curl)" ]]; then 
 printf "\n\nvim requires git and curl to install plugins!\n\n"
 fi

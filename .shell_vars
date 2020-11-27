@@ -9,7 +9,6 @@ RC="${HOME}/.${CURRENT_SHELL}rc"
 SUPPORTED_SHELLS="bash and zsh"
 
 DOT_LOC="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-#DOT_LOC="$(readlink -f "$0")"
 
 WHAT="function what { grep -niT \"\$1\" ${DOT_LOC}/.shell_{aliases,functions,vars}; }"
 
