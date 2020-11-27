@@ -1,31 +1,19 @@
 #!/bin/bash
-set -e
-
-wget https://raw.githubusercontent.com/Dovry/dotfiles/master/.bash_aliases -P /home/$username
-
+username="$(whoami)"
 
 # runs a full update & upgrade on the system
 sudo apt-get -qq update
 sudo apt-get -y dist-upgrade
 
 # install packages
-sudo apt-get install -y\ 
-avahi-daemon\ 
-tmux vim\ 
-tree htop\ 
-git curl\ 
-net-tools\ 
-bsdmainutils\ 
-autojump
-
+sudo apt-get install -y vim avahi-daemon tmux autojump tree htop git curl net-tools bsdmainutils
 
 # removes junk, most of this is not installed with the minimal version of ubuntu
-sudo apt-get remove -y --purge libreoffice* aisleriot* gnome-mines* gnome-sudoku thunderbird*
+sudo apt-get remove -y --purge *libreoffice* *aisleriot* *gnome-mines* *gnome-sudoku *thunderbird*
 sudo apt-get remove -y ubuntu-web-launchers rhythmbox cheese
 
 # clean up unused package dependencies
-sudo apt-get autoremove -y
-
+sudo apt-get -y autoremove
 
 # Clean up the homefolder
-rmdir /home/$username/{Music,Public,Templates,Videos,Desktop}
+rm -rf /home/"$username"/{Music,Public,Templates,Videos,Desktop}
