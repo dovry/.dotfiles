@@ -21,7 +21,7 @@ alias alconf='$EDITOR $DOT_LOC/.shell_aliases'
 # modify shell_functions
 alias fuconf='$EDITOR $DOT_LOC/.shell_functions'
 
-# modify tmuxF
+# modify tmux
 alias tmconf='$EDITOR ~/.tmux.conf'
 
 # modify vim
@@ -118,6 +118,7 @@ alias mc='molecule converge'
 alias mt='molecule test'
 alias ml='molecule lint'
 alias ms='molecule syntax'
+alias mde='molecule destroy'
 alias minit='molecule init scenario -r $(pwd | xargs basename)'
 
 ## Terraform

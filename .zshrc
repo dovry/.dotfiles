@@ -36,7 +36,7 @@ if [ -f "$HOME/.config/.qfc/bin/qfc.sh" ]; then
 fi
 
 # Export functions
-for i in $(grep -Po "\w+ \(\)" ~/.dotfiles/.shell_functions | awk '{ print $1 }'); do
+for i in $(grep -Po "\w+ \(\)" .shell_functions | awk '{ print $1 }'); do
  export -f $i
 done
 

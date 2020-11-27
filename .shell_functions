@@ -1,6 +1,6 @@
 function updog {
    printf "\nUpdating...\n" \
-&& sudo apt -qq update \
+&& sudo apt update \
 && sudo apt -y dist-upgrade \
 && sudo apt -y autoremove \
 && sudo apt -y autoclean \
@@ -19,6 +19,12 @@ function .. {
   else
     \cd ..
   fi
+}
+
+function fdcd {
+  [ -n "$1" ] \
+  && docker-compose -f "$1" down \
+  || docker-compose down
 }
 
 # bring down either the current dir's docker-compose.yml's container stack, or a specified file, with "dcre ~/.docker/stack1/prod-compose.yml"
