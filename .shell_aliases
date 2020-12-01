@@ -78,6 +78,7 @@ alias opo='netstat -tulpn | grep LISTEN' # *OP*en *P*orts
 # ls
 alias la='ls -lAh --block-size=M --file-type'
 alias lac='ls -laC --color'
+alias sl='ls'
 
 ## Docker
 alias dver='docker --version'
