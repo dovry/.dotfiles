@@ -63,3 +63,7 @@ function flushdns { systemd-resolve --flush-caches; }
 function network-restart { /etc/init.d/networking restart; }
 
 function bak { cp "$1"{,.bak}; }
+
+WHAT="function what { grep -niT \"\$1\" ${DOT_LOC}/.shell_{aliases,functions,vars}; }"
+
+function where { grep -r "$1"; }

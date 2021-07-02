@@ -35,9 +35,9 @@ if [ -f "$HOME/.config/.qfc/bin/qfc.sh" ]; then
   qfc_quick_command 'vim' '\C-p' 'vim $0'
 fi
 
-# Export functions
-for i in $(grep -Po "\w+ \(\)" .shell_functions | awk '{ print $1 }'); do
- export -f $i
-done
+## Export functions
+#for i in $(grep -Po "\w+ \(\)" .shell_functions | awk '{ print $1 }'); do
+# export -f $i
+#done
 
 source $ZSH/oh-my-zsh.sh
