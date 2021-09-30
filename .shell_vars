@@ -1,4 +1,4 @@
-EDITOR=vim
+EDITOR=code
 
 USERNAME=$(whoami)
 
@@ -8,9 +8,8 @@ RC="${HOME}/.${CURRENT_SHELL}rc"
 
 SUPPORTED_SHELLS="bash and zsh"
 
-DOT_LOC="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-
-WHAT="function what { grep -niT \"\$1\" ${DOT_LOC}/.shell_{aliases,functions,vars}; }"
+BIN=${0/#[!\/]/"$PWD/${0:0:1}"}; 
+DOT_LOC=${BIN%/*}
 
 LEAD="### MANAGED BY DOTFILES"
 

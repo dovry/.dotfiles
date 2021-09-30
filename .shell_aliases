@@ -21,12 +21,18 @@ alias alconf='$EDITOR $DOT_LOC/.shell_aliases'
 # modify shell_functions
 alias fuconf='$EDITOR $DOT_LOC/.shell_functions'
 
+# edit shellconf
+alias shell_setup='$EDITOR $DOTLOC/shell_setup.sh'
+
 # modify tmux
 alias tmconf='$EDITOR ~/.tmux.conf'
 
 # modify vim
 alias vimrc='$EDITOR ~/.vimrc'
 alias vimconf='$EDITOR ~/.vimrc'
+
+# modify ssh config
+alias sshconf='$EDITOR ~/.ssh/config'
 
 # reload / source the config files
 alias rlv='source_vim'
@@ -38,6 +44,8 @@ alias rlb='source_bashrc'
 alias rlbash='source_bashrc'
 alias rlz='source_zshrc'
 alias rlzsh='source_zshrc'
+
+alias sc='shellcheck'
 
 ## apt
 alias upd='sudo apt update'
@@ -65,14 +73,17 @@ alias c='clear'
 alias s='sudo'
 alias h='history'
 alias v='vim'
+alias e='echo'
+alias ytdl='python3 /usr/local/bin/youtube-dl'
 alias rwx='stat -c %a' # shows you the RWX rights on a file (rwx .bash_aliases should return 664)
 alias please='$(history -p !!)' # rerun last command
 alias ffs='$(history -p !!)' # rerun last command
 alias phug='tree -phug' # Print filetype - Human readable size - Username - Groupname
 
+
 # 'look up' aliases
 alias vols='lvs -o +devices' # lists volumes and where they're mounted
-alias pubip='dig +short myip.opendns.com @resolver1.opendns.com' # gets your public ip
+alias pubip='curl ipconfig.io' # gets your public ip
 alias opo='netstat -tulpn | grep LISTEN' # *OP*en *P*orts
 
 # ls
@@ -97,9 +108,26 @@ alias dirm='docker image rm' # docker image remove
 ## Docker-compose
 alias dcver='docker-compose --version'
 alias dc='docker-compose' # shortcut for docker-compose
-alias dcd='docker-compose down' # brings down the environment gracefully
-alias dcu='docker-compose up -d' # brings up the environment
-alias dcp='docker-compose pull' # pulls all images listed in the docker-compose file
+alias dcd='dc down' # brings down the environment gracefully
+alias dcu='dc up -d' # brings up the environment
+alias dcp='dc pull' # pulls all images listed in the docker-compose file
+
+## Kubernetes 
+alias kc='kubectl'
+alias kcv='kc --version'
+alias kca='kc apply'
+alias kcaf='kc apply -f'
+alias kcd='kc delete'
+alias kcgn='kc get nodes'
+
+alias kns='kc get namespace'
+alias knsd='kc delete namespace'
+
+## Helm (Kubernetes)
+alias h='helm'
+alias hra='h repo add'
+alias hru='h repo update'
+alias hsrv='helm_repo_version'
 
 ## Vagrant
 alias vver='vagrant --version'
@@ -124,51 +152,51 @@ alias mde='molecule destroy'
 alias minit='molecule init scenario -r $(pwd | xargs basename)'
 
 ## Terraform
-alias tfver='terraform version'
 alias tf='terraform'
-alias tfp='terraform plan'
-alias tfa='terraform apply'
-alias tfd='terraform destroy'
-alias tft='terraform taint'
-alias tfut='terraform untaint'
-alias tfi='terraform init'
-alias tfv='terraform validate'
+alias tfver='tf version'
+alias tfp='tf plan'
+alias tfa='tf apply'
+alias tfd='tf destroy'
+alias tft='tf taint'
+alias tfut='tf untaint'
+alias tfi='tf init'
+alias tfv='tf validate'
 
 ## Git
 alias g='git'
-alias ga='git add'
-alias gaa='git add --all'
-alias gau='git add -u'
+alias ga='g add'
+alias gaa='g add --all'
+alias gau='g add -u'
 
-alias gb='git branch'
-alias gba='git branch --all'
+alias gb='g branch'
+alias gba='g branch --all'
 
-alias gc='git commit'
-alias gca='git commit --add'
-alias gcam='git commit --add --message'
-alias gcm='git commit --message'
+alias gc='g commit'
+alias gca='g commit --add'
+alias gcam='g commit --add --message'
+alias gcm='g commit --message'
 
-alias gch='git checkout'
-alias gchb='git checkout -b'
-alias gchm='git checkout master'
-alias gck='git checkout'
+alias gch='g checkout'
+alias gchb='g checkout -b'
+alias gchm='g checkout master'
+alias gck='g checkout'
 
-alias gd='git diff'
-alias gds='git diff --staged'
-alias gdt='git difftool'
+alias gd='g diff'
+alias gds='g diff --staged'
+alias gdt='g difftool'
 
-alias gp='git push'
-alias gpa='git remote | xargs -L1 git push -all'
-alias gpl='git pull'
-alias gpo='git push origin'
-alias gpom='git push origin master'
+alias gp='g push'
+alias gpa='g remote | xargs -L1 g push -all'
+alias gpl='g pull'
+alias gpo='g push origin'
+alias gpom='g push origin master'
 
-alias grm='git rm'
-alias grmr='git rm -r'
+alias grm='g rm'
+alias grmr='g rm -r'
 
-alias gs='git status'
+alias gs='g status'
 
-alias gst='git stash'
-alias gsta='git stash apply'
-alias gstd='git stash drop'
-alias gstp='git stash pop'
+alias gst='g stash'
+alias gsta='g stash apply'
+alias gstd='g stash drop'
+alias gstp='g stash pop'
