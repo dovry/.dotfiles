@@ -68,6 +68,6 @@ function bak { cp "$1"{,.bak}; }
 
 function what { grep -niT "$1" "${DOT_LOC}"/.shell_{aliases,functions,vars}; }
 
-function where { grep --recursive --line-number --ignore-case  "$1" ./*; }
+function where { grep --initial-tab --recursive --line-number --ignore-case  "$1" ./*; }
 
 function helm_repo_version { helm search repo "$1" --versions; }
