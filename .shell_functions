@@ -33,10 +33,12 @@ if [ $# -eq 0 ]; then
    docker-compose down \
 && docker-compose pull \
 && docker-compose up -d
-else
+elif [ ! $# -eq 0 ]; then
    docker-compose -f $1 down \
 && docker-compose -f $1 pull \
 && docker-compose -f $1 up -d
+else
+  printf "\nNo compose file specified\n"
 fi
 }
 
@@ -64,6 +66,8 @@ function network-restart { /etc/init.d/networking restart; }
 
 function bak { cp "$1"{,.bak}; }
 
-WHAT="function what { grep -niT \"\$1\" ${DOT_LOC}/.shell_{aliases,functions,vars}; }"
+function what { grep -niT "$1" "${DOT_LOC}"/.shell_{aliases,functions,vars}; }
 
-function where { grep -r "$1"; }
+function where { grep --recursive --line-number --ignore-case  "$1" ./*; }
+
+function helm_repo_version { helm search repo "$1" --versions; }
