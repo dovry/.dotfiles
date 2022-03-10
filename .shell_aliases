@@ -5,6 +5,7 @@ alias ver='cat ~/.versions'
 
 # cd into dotfile dir
 alias cdot='cd $DOT_LOC'
+
 # pull latest files from github
 alias dpl='git -C $DOT_LOC pull'
 
@@ -79,7 +80,7 @@ alias rwx='stat -c %a' # shows you the RWX rights on a file (rwx .bash_aliases s
 alias please='$(history -p !!)' # rerun last command
 alias ffs='$(history -p !!)' # rerun last command
 alias phug='tree -phug' # Print filetype - Human readable size - Username - Groupname
-
+alias shost='printf "\nssh to these servers\n\n" && grep -e "Host" /home/$(whoami)/.ssh/config | grep -v "Hostname" | grep -v "\*"'
 
 # 'look up' aliases
 alias vols='lvs -o +devices' # lists volumes and where they're mounted
@@ -138,6 +139,8 @@ alias vde='vagrant destroy'
 ## Ansible
 alias aver='ansible --version'
 alias ap='ansible-playbook'
+alias avc='ansible-vault encrypt'
+alias avd='ansible-vault decrypt'
 alias ave='ansible-vault edit'
 alias ams='ansible -m setup'
 alias agi='ansible-galaxy install'

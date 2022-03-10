@@ -34,9 +34,9 @@ if [ $# -eq 0 ]; then
 && docker-compose pull \
 && docker-compose up -d
 elif [ ! $# -eq 0 ]; then
-   docker-compose -f $1 down \
-&& docker-compose -f $1 pull \
-&& docker-compose -f $1 up -d
+   docker-compose -f "$1" down \
+&& docker-compose -f "$1" pull \
+&& docker-compose -f "$1" up -d
 else
   printf "\nNo compose file specified\n"
 fi
@@ -48,17 +48,17 @@ function dotsetup { bash ./shell_setup.sh && clear && printf "\nDone\n\n"; }
 
 function dcstrm { docker container stop "$1" && docker container rm "$1"; }
 
-function grope { sudo touch "$1" && sudo $editor "$1"; }		# (forcibly) touch file, then (forcibly) edit
+function grope { sudo touch "$1" && sudo "$EDITOR" "$1"; }		# (forcibly) touch file, then (forcibly) edit
 
-function mkcd { mkdir -p "$1" && cd "$1"; }				# create directory, then change to that dir
+function mkcd { mkdir -p "$1" && cd "$1" || exit; }				# create directory, then change to that dir
 
 function source_vim { echo | vim +"so %"; }  # reload vim configuration
 
 function source_tmux { tmux source-file ~/.tmux.conf; }  # reload tmux configuration
 
-function source_bashrc { source ~/.bashrc; } # reload bashrc
+function source_bashrc { source "$HOME"/.bashrc; } # reload bashrc
 
-function source_zshrc { source ~/.zshrc; } # reload zshrc
+function source_zshrc { source "$HOME"/.zshrc; } # reload zshrc
 
 function flushdns { systemd-resolve --flush-caches; }
 
@@ -68,6 +68,10 @@ function bak { cp "$1"{,.bak}; }
 
 function what { grep -niT "$1" "${DOT_LOC}"/.shell_{aliases,functions,vars}; }
 
-function where { grep --initial-tab --recursive --line-number --ignore-case  "$1" ./*; }
+function where { grep --initial-tab --recursive --line-number --ignore-case  "$1"; }
 
 function helm_repo_version { helm search repo "$1" --versions; }
+
+makemine() {
+  sudo chown "$USER":"$USER" "$1"
+}

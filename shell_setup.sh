@@ -10,7 +10,7 @@ if [[ "$CURRENT_SHELL" = zsh || "$CURRENT_SHELL" = bash ]]; then
   else
     if [[ -f ~/.zshrc && ! -f ~/.zshrc.bak ]]; then
       cp ~/.{zshrc,zshrc.bak}
-      printf "${ZSH_VER}\n# your original file was backed up to ~/.zshrc.bak" > ~/.zshrc
+      printf "%s\n# your original file was backed up to ~/.zshrc.bak" "${ZSH_VER}" > ~/.zshrc
     else
       :
     fi
@@ -30,8 +30,8 @@ if [[ "$CURRENT_SHELL" = zsh || "$CURRENT_SHELL" = bash ]]; then
   fi
 
   # source autojump config if it exists - GH: wting/autojump
-  if [ -f /usr/share/autojump/autojump.sh ]; then
-    AUTOJUMP=". /usr/share/autojump/autojump.sh"
+  if [ -f /usr/share/autojump/autojump."${CURRENT_SHELL}" ]; then
+    AUTOJUMP=". /usr/share/autojump/autojump.${CURRENT_SHELL}"
     else
     AUTOJUMP=
   fi
@@ -48,12 +48,14 @@ $LEAD\n\\
 $WSL_DIR_COL\\
 $QFC\\
 alias dotloc=\"cd $DOT_LOC\"\n\\
-$WHAT\n\\
+. /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh\\
+. /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh\\
 $AUTOJUMP\\
 $DOTFILES\\
 $ZSH_RC\\
 $ZSH_SOURCE\n\\
 $TAIL" "$RC"
+#$WHAT\n\\
 
 else
   printf "\nCurrent shell is %s\nAliases and functions only work with %s\n\n" "$CURRENT_SHELL" "$SUPPORTED_SHELLS"
