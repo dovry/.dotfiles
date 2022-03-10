@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. .shell_vars
+. $DOT_LOC/.shell_vars
 
 # Check which shell, then run config
 if [[ "$CURRENT_SHELL" = zsh || "$CURRENT_SHELL" = bash ]]; then
