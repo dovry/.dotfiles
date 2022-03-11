@@ -88,7 +88,8 @@ alias pubip='curl ipconfig.io' # gets your public ip
 alias opo='netstat -tulpn | grep LISTEN' # *OP*en *P*orts
 
 # ls
-alias la='ls -lAh --block-size=M --file-type'
+alias la='ls -lAh --block-size=M'
+alias ll='ls -laH'
 alias lac='ls -laC --color'
 alias sl='ls'
 
@@ -151,7 +152,7 @@ alias mc='molecule converge'
 alias mt='molecule test'
 alias ml='molecule lint'
 alias ms='molecule syntax'
-alias mde='molecule destroy'
+alias mdes='molecule destroy'
 alias minit='molecule init scenario -r $(pwd | xargs basename)'
 
 ## Terraform

@@ -1,10 +1,8 @@
 # Path to your oh-my-zsh installation.
-
-
 export ZSH=$HOME/.oh-my-zsh
 
 BIN=${0/#[!\/]/"$PWD/${0:0:1}"}; 
-DOT_LOC=${BIN%/*}
+export DOT_LOC=${BIN%/*}
 
 ZSH_THEME="cypher"
 HYPHEN_INSENSITIVE="true"
@@ -29,7 +27,9 @@ plugins=(
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+    export EDITOR='vim'
+  else
+    EDITOR='code'
 fi
 
 if [ -f "$HOME/.config/.qfc/bin/qfc.sh" ]; then
@@ -39,4 +39,30 @@ if [ -f "$HOME/.config/.qfc/bin/qfc.sh" ]; then
   qfc_quick_command 'vim' '\C-p' 'vim $0'
 fi
 
-source $ZSH/oh-my-zsh.sh
+# check for ssh / ssh-agent
+if [[ -n $(which ssh-agent) ]]; then
+  eval "$(ssh-agent)" > /dev/null 2>&1
+  
+  for possiblekey in "$HOME"/.ssh/*; do
+    if grep -q PRIVATE "$possiblekey"; then
+      ssh-add "$possiblekey" > /dev/null 2>&1
+    fi
+  done
+fi
+
+if [[ -n $(which ssh) ]]; then
+  _ssh() 
+  {
+      local cur prev opts
+      COMPREPLY=()
+      cur="${COMP_WORDS[COMP_CWORD]}"
+      prev="${COMP_WORDS[COMP_CWORD-1]}"
+      opts=$(grep '^Host' ~/.ssh/config ~/.ssh/config.d/* 2>/dev/null | grep -v '[?*]' | cut -d ' ' -f 2-)
+  
+      COMPREPLY=( $(compgen -W "$opts" -- ${cur}) )
+      return 0
+  }
+  complete -F _ssh ssh
+fi
+
+source "$ZSH"/oh-my-zsh.sh
