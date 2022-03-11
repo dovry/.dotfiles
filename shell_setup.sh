@@ -44,6 +44,7 @@ if [ "$CURRENT_SHELL" = zsh ] || [ "$CURRENT_SHELL" = bash ]; then
   else
     WSL_DIR_COL="#WSL_DIR_COL not WSL, no colour to set"
   fi
+  
   # source autojump config if it exists - GH: wting/autojump
   if [ -f /usr/share/autojump/autojump."${CURRENT_SHELL}" ]; then
     AUTOJUMP=". /usr/share/autojump/autojump.${CURRENT_SHELL}"
@@ -83,7 +84,7 @@ fi
 for file in "$DOT_LOC"/.vimrc "$DOT_LOC"/.tmux.conf "$DOT_LOC"/.versions; do
 ln -sf "$file" "$HOME"
 done
-if [ ! "$(git --version)" ] && [ ! "$(curl --version)" ]; then
+if [ ! "$(command -v git)" ] && [ ! "$(command -v curl)" ]; then
 printf "\n\nvim requires git and curl to install plugins!\n\n"
 fi
 

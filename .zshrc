@@ -40,8 +40,8 @@ if [ -f "$HOME/.config/.qfc/bin/qfc.sh" ]; then
 fi
 
 # check for ssh / ssh-agent
-if [[ -n $(which ssh-agent) ]]; then
-  eval "$(ssh-agent)" > /dev/null 2>&1
+if [[ -n $(command -v ssh-agent) ]]; then
+  eval `ssh-agent` > /dev/null 2>&1
   
   for possiblekey in "$HOME"/.ssh/*; do
     if grep -q PRIVATE "$possiblekey"; then
@@ -50,7 +50,7 @@ if [[ -n $(which ssh-agent) ]]; then
   done
 fi
 
-if [[ -n $(which ssh) ]]; then
+if [[ -n $(command -v ssh) ]]; then
   _ssh() 
   {
       local cur prev opts
