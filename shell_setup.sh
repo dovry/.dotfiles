@@ -52,10 +52,16 @@ if [ "$CURRENT_SHELL" = zsh ] || [ "$CURRENT_SHELL" = bash ]; then
     AUTOJUMP="#AUTOJUMP not installed"
   fi
 
-  if [ -d "$HOME/.antigen" ]; then
+  if [ -f "$HOME/.antigen/antigen.zsh" ]; then
     ANTI_GEN=". $HOME/.antigen/antigen.zsh"
-  elif [ -f "$HOME/antigen.zsh" ]; then
-    ANTI_GEN=". $HOME/.config/antigen.zsh"
+    ANTI_GEN_SOURCE="\n\
+    \#Antigen configuration\n\
+    antigen use oh-my-zsh \n\
+    antigen bundle command-not-found \n\
+    antigen bundle git \n\
+    antigen bundle zsh-users/zsh-syntax-highlighting \n\
+    antigen apply \n\
+    "
   else
     ANTI_GEN="#ANTI_GEN antigen not installed"
   fi
@@ -70,7 +76,7 @@ $ZSH_RC\\
 $ZSH_SOURCE\\
 $AUTOJUMP\\
 $ANTI_GEN\\
-\\
+$ANTI_GEN_SOURCE\\
 $TAIL" "$RC"
 #$WHAT\n\\
 
