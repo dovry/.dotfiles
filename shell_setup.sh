@@ -66,6 +66,10 @@ if [ "$CURRENT_SHELL" = zsh ] || [ "$CURRENT_SHELL" = bash ]; then
     ANTI_GEN="#ANTI_GEN antigen not installed"
   fi
 
+  if [ "$CURRENT_SHELL" = zsh ] && [ ! -d "$HOME"/.antigen ] && [ "$(command -v curl)" ]; then
+    curl -L git.io/antigen -o "$HOME"/.antigen/antigen.zsh --create-dirs
+    sudo apt-get -y install zsh-autosuggestions zsh-syntax-highlighting
+  fi
 
 sed -i "/$LEAD/,/$TAIL/ c\
 $LEAD\n\\
@@ -90,6 +94,7 @@ fi
 for file in "$DOT_LOC"/.vimrc "$DOT_LOC"/.tmux.conf "$DOT_LOC"/.versions; do
 ln -sf "$file" "$HOME"
 done
+
 if [ ! "$(command -v git)" ] && [ ! "$(command -v curl)" ]; then
 printf "\n\nvim requires git and curl to install plugins!\n\n"
 fi
