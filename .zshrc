@@ -62,6 +62,8 @@ if [[ -n $(command -v ssh) ]]; then
       COMPREPLY=( $(compgen -W "$opts" -- ${cur}) )
       return 0
   }
+  autoload bashcompinit
+  bashcompinit
   complete -F _ssh ssh
 fi
 
