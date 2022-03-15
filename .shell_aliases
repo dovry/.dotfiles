@@ -7,28 +7,16 @@ alias ver='cat ~/.versions'
 alias cdot='cd $DOT_LOC'
 
 # pull latest files from github
-alias dpl='git -C $DOT_LOC pull'
+alias dopl='git -C "$DOT_LOC" pull'
 
-# modify bashrc
+# modify dotfiles
 alias bashrc='$EDITOR ~/.bashrc'
-
-# modify zshrc
 alias zshrc='$EDITOR ~/.zshrc'
 alias zconf='$EDITOR ~/.zshrc'
-
-# modify shell_aliases
 alias alconf='$EDITOR $DOT_LOC/.shell_aliases'
-
-# modify shell_functions
 alias fuconf='$EDITOR $DOT_LOC/.shell_functions'
-
-# edit shellconf
 alias shell_setup='$EDITOR $DOTLOC/shell_setup.sh'
-
-# modify tmux
 alias tmconf='$EDITOR ~/.tmux.conf'
-
-# modify vim
 alias vimrc='$EDITOR ~/.vimrc'
 alias vimconf='$EDITOR ~/.vimrc'
 
