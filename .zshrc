@@ -12,7 +12,6 @@ DISABLE_UPDATE_PROMPT="true"
 
 plugins=(
   ansible
-  autojump
   command-not-found
   copyfile
   dircycle
