@@ -5,7 +5,7 @@ BIN=${0/#[!\/]/"$PWD/${0:0:1}"};
 DOT_LOC=${BIN%/*}
 # ----
 
-CURRENT_SHELL="$(getent passwd "$(id -u -n)" | awk -F: '{print $NF}' | sed -n -e "s/^.*bin\///p")" && export CURRENT_SHELL
+CURRENT_SHELL="$(getent passwd "$(id -u -n)" | sed -n -e "s/^.*bin\///p")" && export CURRENT_SHELL
 
 LEAD="### MANAGED BY DOTFILES"
 TAIL="### END MANAGED BY DOTFILES"
