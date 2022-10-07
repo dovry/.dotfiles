@@ -9,8 +9,9 @@ sudo apt-get -y dist-upgrade
 sudo apt-get install -y vim tmux autojump tree htop git curl net-tools bsdmainutils
 
 # removes junk, most of this is not installed with the minimal version of ubuntu
-sudo apt-get remove -y --purge *libreoffice* *aisleriot* *gnome-mines* *gnome-sudoku *thunderbird*
-sudo apt-get remove -y ubuntu-web-launchers rhythmbox cheese
+sudo apt-get remove -y --purge \
+*libreoffice* *aisleriot* *gnome-mines* *gnome-sudoku* \
+ubuntu-web-launchers rhythmbox cheese
 
 # clean up unused package dependencies
 sudo apt-get -y autoremove
