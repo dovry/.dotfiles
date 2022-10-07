@@ -91,7 +91,7 @@ else
 fi
 
 # Softlink config files to ~/
-for file in "$DOT_LOC"/.vimrc "$DOT_LOC"/.tmux.conf "$DOT_LOC"/.versions; do
+for file in "$DOT_LOC"/{.vimrc,.tmux.conf,.versions}; do
 ln -sf "$file" "$HOME"
 done
 

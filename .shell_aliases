@@ -1,5 +1,5 @@
 # prints dotfile versions neatly - see .shell_functions
-alias ver='cat ~/.versions'
+alias ver='cat "$DOTLOC"/.versions'
 
 ### Dotfile management
 
